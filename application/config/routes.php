@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -56,4 +56,4 @@ $route['default_controller'] = 'welcome';
 // $route['translate_uri_dashes'] = FALSE;
 
 
-$route['contohpath'] = 'admin/Basecontroller/index';
+$route['contohpath'] = 'admin/BaseController/index';
