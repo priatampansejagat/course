@@ -56,4 +56,5 @@ $route['default_controller'] = 'welcome';
 // $route['translate_uri_dashes'] = FALSE;
 
 
-$route['contohpath'] = 'admin/BaseController/index';
+$route['contohpath'] = 'registered/Basecontroller/index';
+$route['visitor'] = 'visitor/BaseController/index';

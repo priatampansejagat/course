@@ -38,7 +38,7 @@ class BaseController extends CI_Controller {
 		//LOGIN STATUS FUNCTION======================================
 
 		$data=[];
-		$this->load->view('admin/basepage',$data);
+		$this->load->view('registered/basepage',$data);
 
 	}
 
