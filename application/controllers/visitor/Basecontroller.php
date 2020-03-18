@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // include('dataseed.php');
 
-class BaseController extends CI_Controller {
+class Basecontroller extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -38,7 +38,7 @@ class BaseController extends CI_Controller {
 		//LOGIN STATUS FUNCTION======================================
 
 		$data=[];
-		$this->load->view('admin/basepage',$data);
+		$this->load->view('visitor/home',$data);
 
 	}
 

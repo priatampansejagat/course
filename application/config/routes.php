@@ -57,4 +57,4 @@ $route['default_controller'] = 'welcome';
 
 
 $route['contohpath'] = 'registered/Basecontroller/index';
-$route['visitor'] = 'visitor/BaseController/index';
+$route['visitor'] = 'visitor/Basecontroller/index';
