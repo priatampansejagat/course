@@ -13,6 +13,7 @@ class BaseController extends CI_Controller {
 		// $this->load->library(['MySession','MyFlash']);
 
 		// $this->load->model(['']);
+		$this->load->model('BaseModel');
 		
 	}
 
@@ -36,9 +37,11 @@ class BaseController extends CI_Controller {
 		// 	show_404();
 		// }
 		//LOGIN STATUS FUNCTION======================================
+		$data_dummy = $this->BaseModel->test();
+		echo($data_dummy['menu']);
 
 		$data=[];
-		$this->load->view('registered/basepage',$data);
+		// $this->load->view('registered/basepage',$data);
 
 	}
 
