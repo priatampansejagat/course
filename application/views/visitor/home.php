@@ -66,7 +66,7 @@
 											<a href="courses-list.html" class="btn btn-warning btn-theme text-uppercase" style="padding: 10px;">Login</a>
 										</li>
 										<li>
-											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
+											<a href="<?= base_url('register') ?>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
 										</li>
 									</ul>
 								</div>
