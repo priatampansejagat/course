@@ -21,6 +21,10 @@
     <!-- END CORE CSS FRAMEWORK -->
 
     <script src="<?= base_url(); ?>assets/admin/assets/plugins/jquery/jquery-1.11.3.min.js" type="text/javascript"></script>
+
+    <!-- datepicker -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -39,8 +43,9 @@
                     <span>Online Conference, 17 September 2020</span>
                 </div>
                 <div class="tiles grey p-t-20 p-b-20 no-margin text-black tab-content">
+                    <div id="message"></div>
                     <div role="tabpanel" class="tab-pane active" id="tab_login">
-                        <form class="animated fadeIn validate" id="" name="">
+                        <form class="animated fadeIn validate" id="regist_form" name="regist_form">
                             <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
                                 <div class="col-md-3 col-sm-12">
                                     <label class="vertical-center" for="fullname">Fullname</label>
@@ -62,7 +67,7 @@
                                     <label class="vertical-center" for="date_of_birth">Date of Birth</label>
                                 </div>
                                 <div class="col-md-9 col-sm-12">
-                                    <input class="form-control" id="date_of_birth" name="date_of_birth" placeholder="Date of Birth" type="datetime">
+                                    <input class="form-control datepicker" id="date_of_birth" name="date_of_birth" placeholder="Date of Birth" type="text" data-provide="datepicker">
                                 </div>
                             </div>
                             <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
@@ -166,6 +171,31 @@
                             </div>
                             <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
                                 <div class="col-md-3 col-sm-12">
+                                    <label class="vertical-center" for="uname">Username</label>
+                                </div>
+                                <div class="col-md-9 col-sm-12">
+                                    <input class="form-control" id="uname" name="uname" placeholder="Enter Username" type="text">
+                                </div>
+                            </div>
+                            <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+                                <div class="col-md-3 col-sm-12">
+                                    <label class="vertical-center" for="password">Password</label>
+                                </div>
+                                <div class="col-md-9 col-sm-12">
+                                    <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password">
+                                </div>
+                            </div>
+                            <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+                                <div class="col-md-3 col-sm-12">
+                                    <label class="vertical-center" for="password2">Repeat Password</label>
+                                </div>
+                                <div class="col-md-9 col-sm-12">
+                                    <input class="form-control" id="password2" name="password2" placeholder="Repeat Password" type="password">
+                                    <span class="float-left" style="font-size: 13px;" id="pesan_password_ulangi"></span>
+                                </div>
+                            </div>
+                            <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+                                <div class="col-md-3 col-sm-12">
                                     <label class="vertical-center" for="proof_of_student">Proof of Student</label>
                                 </div>
                                 <div class="col-md-9 col-sm-12">
@@ -193,7 +223,7 @@
                             </div>
                             <div class="row p-t-10 m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
                                 <div class="control-group col-md-12">
-                                    <a href="" class="btn btn-info btn-cons" style="width: 100%; background-color: #ffc000;">Register</a>
+                                    <a href="" class="btn btn-info btn-cons" id="register" style="width: 100%; background-color: #ffc000;">Register</a>
                                 </div>
                             </div>
                         </form>
@@ -205,6 +235,10 @@
 
     <script>
         $(document).ready(function() {
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+            });
+
             $('#country_input').hide();
             $('#status_input').hide();
             $('#study_input').hide();
@@ -232,7 +266,91 @@
                     $('#study_input').hide();
                 }
             });
+
+            $('#date_of_birth').change(function() {
+                var dob = $('#date_of_birth').val();
+                if (dob != '') {
+                    dob = new Date(dob);
+                    var today = new Date();
+                    var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+                    $('#age').html(age + ' years old');
+                }
+            });
+
+            $('#password2').on('keyup', function() {
+                if ($('#password').val() == $('#password2').val()) {
+                    $('#pesan_password_ulangi').text('✓ Password sesuai').css('color', 'green');
+                } else {
+                    $('#pesan_password_ulangi').text('✕ Password tidak sesuai').css('color', 'red');
+                }
+            });
         })
+
+        $('#register').click(function() {
+            var fullname = $('#fullname').val();
+            var place_of_birth = $('#place_of_birth').val();
+            var date_of_birth = $('#date_of_birth').val();
+            var email = $('#email').val();
+            var institution = $('#institution').val();
+            var country = $('#country').val() == 0 ? $('#country_input').val() : $("#country").val();
+            var mobile_number = $('#mobile_number').val();
+            var status = $('#status').val() == 0 ? $('#status_input').val() : $("#status").val();
+            var field_of_study = $('#field_of_study').val() == 0 ? $('#study_input').val() : $("#field_of_study").val();
+            var username = $('#username').val();
+            var password = $('#password').val();
+            var password2 = $('#password2').val();
+            var proof_of_student = $('#proof_of_student').val();
+            var proof_of_academic = $('#proof_of_academic').val();
+            var proof_of_payments = $('#proof_of_payments').val();
+
+            var formData = new FormData(document.forms.namedItem("regist_form"));
+            $.ajax({
+                type: 'POST',
+                url: base_url + post_url,
+                data: {
+                    param: {
+                        "fullname": fullname,
+                        "place_of_birth": place_of_birth,
+                        "date_of_birth": date_of_birth,
+                        "email": email,
+                        "institution": institution,
+                        "country": country,
+                        "mobile_number": mobile_number,
+                        "status": status,
+                        "field_of_study": field_of_study,
+                        "proof_of_student": proof_of_student,
+                        "proof_of_academic": proof_of_academic,
+                        "proof_of_payments": proof_of_payments,
+                        "username": username,
+                        "password": password
+                    },
+                    url: add_user_url
+                },
+                success: function(data) {
+                    $('#message').html(
+                        '<div id="alertFadeOut" class="alert alert-primary alert-dismissible show fadeIn animated" style="width:100% !important; margin-bottom:20px !important;">' +
+                        '<div class="alert-body">' +
+                        '<button class="close" data-dismiss="alert">' +
+                        '<span>&times;</span>' +
+                        '</button>' +
+                        '<strong>Congratulations! </strong>Data Saved' +
+                        '</div>' +
+                        '</div>');
+                },
+                error: function(xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    $('#message-error').html(
+                        '<div class="alert alert-danger alert-dismissible show fadeIn animated" style="width:100% !important; margin-bottom:20px !important;">' +
+                        '<div class="alert-body">' +
+                        '<button class="close" data-dismiss="alert">' +
+                        '<span>&times;</span>' +
+                        '</button>' +
+                        '<strong>Sorry! </strong>Data Failed to Save <br>' +
+                        '</div>' +
+                        '</div>');
+                }
+            });
+        });
 
         function fileValidation1() {
             var fileInput = document.getElementById('imgProfile');
@@ -293,6 +411,8 @@
                 }
             }
         }
+
+        //# sourceURL=/view/register/register.js
     </script>
 
     <!-- END CONTAINER -->
