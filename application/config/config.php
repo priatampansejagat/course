@@ -25,6 +25,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 
 // $config['base_url'] = 'http://localhost/course/';
+// $config['api_url'] = 'http://localhost/courseapi/';
 // $config['api_url'] = 'http://temporaryapi.rumahpeneleh.or.id/';
 
 $http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '') . '://';
