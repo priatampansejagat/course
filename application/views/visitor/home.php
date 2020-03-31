@@ -14,7 +14,7 @@
 	<meta name="keywords" content="">
 	<meta name="author" content="International Research Collaboration">
 	<!-- set the page title -->
-	<title>International Research Collaboration</title>
+	<title>Research Academy</title>
 	<!-- include google roboto font cdn link -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
 	<!-- include the site bootstrap stylesheet -->
@@ -61,14 +61,14 @@
 								<!-- navbar collapse -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 									<!-- main navigation -->
-									<ul class="nav navbar-nav navbar-right main-navigation text-uppercase font-lato">
+									<!-- <ul class="nav navbar-nav navbar-right main-navigation text-uppercase font-lato">
 										<li>
-											<a href="courses-list.html" class="btn btn-warning btn-theme text-uppercase" style="padding: 10px;">Login</a>
+											<a href="login" class="btn btn-warning btn-theme text-uppercase" style="padding: 10px;">Login</a>
 										</li>
 										<li>
-											<a href="<?= base_url('register') ?>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
+											<a href="register" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
 										</li>
-									</ul>
+									</ul> -->
 								</div>
 							</nav>
 						</div>

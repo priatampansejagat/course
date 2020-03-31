@@ -25,6 +25,9 @@
     <!-- datepicker -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
+    <!-- Global Constant -->
+    <script src="<?= base_url(); ?>assets/global-constant.js"></script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -223,7 +226,7 @@
                             </div>
                             <div class="row p-t-10 m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
                                 <div class="control-group col-md-12">
-                                    <a href="" class="btn btn-info btn-cons" id="register" style="width: 100%; background-color: #ffc000;">Register</a>
+                                    <a href="#" class="btn btn-info btn-cons" id="register" style="width: 100%; background-color: #ffc000;">Register</a>
                                 </div>
                             </div>
                         </form>
@@ -296,7 +299,7 @@
             var mobile_number = $('#mobile_number').val();
             var status = $('#status').val() == 0 ? $('#status_input').val() : $("#status").val();
             var field_of_study = $('#field_of_study').val() == 0 ? $('#study_input').val() : $("#field_of_study").val();
-            var username = $('#username').val();
+            var uname = $('#uname').val();
             var password = $('#password').val();
             var password2 = $('#password2').val();
             var proof_of_student = $('#proof_of_student').val();
@@ -304,11 +307,14 @@
             var proof_of_payments = $('#proof_of_payments').val();
 
             var formData = new FormData(document.forms.namedItem("regist_form"));
+            console.log(fullname);
             $.ajax({
                 type: 'POST',
                 url: base_url + post_url,
                 data: {
                     param: {
+                        "uname": uname,
+                        "password": password,
                         "fullname": fullname,
                         "place_of_birth": place_of_birth,
                         "date_of_birth": date_of_birth,
@@ -318,11 +324,6 @@
                         "mobile_number": mobile_number,
                         "status": status,
                         "field_of_study": field_of_study,
-                        "proof_of_student": proof_of_student,
-                        "proof_of_academic": proof_of_academic,
-                        "proof_of_payments": proof_of_payments,
-                        "username": username,
-                        "password": password
                     },
                     url: add_user_url
                 },
