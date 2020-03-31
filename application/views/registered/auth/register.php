@@ -49,6 +49,44 @@
                     <div id="message"></div>
                     <div role="tabpanel" class="tab-pane active" id="tab_login">
                         <form class="animated fadeIn validate" id="regist_form" name="regist_form">
+                            
+                            
+                            <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+                                <div class="col-md-3 col-sm-12">
+                                    <h3>Akun</h3>
+                                </div>
+                            </div>
+                            <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+                                <div class="col-md-3 col-sm-12">
+                                    <label class="vertical-center" for="uname">Username</label>
+                                </div>
+                                <div class="col-md-9 col-sm-12">
+                                    <input class="form-control" id="uname" name="uname" placeholder="Enter Username" type="text">
+                                </div>
+                            </div>
+                            <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+                                <div class="col-md-3 col-sm-12">
+                                    <label class="vertical-center" for="password">Password</label>
+                                </div>
+                                <div class="col-md-9 col-sm-12">
+                                    <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password">
+                                </div>
+                            </div>
+                            <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+                                <div class="col-md-3 col-sm-12">
+                                    <label class="vertical-center" for="password2">Repeat Password</label>
+                                </div>
+                                <div class="col-md-9 col-sm-12">
+                                    <input class="form-control" id="password2" name="password2" placeholder="Repeat Password" type="password">
+                                    <span class="float-left" style="font-size: 13px;" id="pesan_password_ulangi"></span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+                                <div class="col-md-3 col-sm-12">
+                                    <h3>Data Diri</h3>
+                                </div>
+                            </div>
                             <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
                                 <div class="col-md-3 col-sm-12">
                                     <label class="vertical-center" for="fullname">Fullname</label>
@@ -172,31 +210,7 @@
                                     <input class="form-control" id="study_input" name="study_input" placeholder="Enter Your Major" type="text">
                                 </div>
                             </div>
-                            <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
-                                <div class="col-md-3 col-sm-12">
-                                    <label class="vertical-center" for="uname">Username</label>
-                                </div>
-                                <div class="col-md-9 col-sm-12">
-                                    <input class="form-control" id="uname" name="uname" placeholder="Enter Username" type="text">
-                                </div>
-                            </div>
-                            <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
-                                <div class="col-md-3 col-sm-12">
-                                    <label class="vertical-center" for="password">Password</label>
-                                </div>
-                                <div class="col-md-9 col-sm-12">
-                                    <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password">
-                                </div>
-                            </div>
-                            <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
-                                <div class="col-md-3 col-sm-12">
-                                    <label class="vertical-center" for="password2">Repeat Password</label>
-                                </div>
-                                <div class="col-md-9 col-sm-12">
-                                    <input class="form-control" id="password2" name="password2" placeholder="Repeat Password" type="password">
-                                    <span class="float-left" style="font-size: 13px;" id="pesan_password_ulangi"></span>
-                                </div>
-                            </div>
+                            
                             <div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
                                 <div class="col-md-3 col-sm-12">
                                     <label class="vertical-center" for="proof_of_student">Proof of Student</label>
