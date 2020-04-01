@@ -177,6 +177,10 @@
                     </div>
                 </div>
 
+                <div class="container-login100-form-btn p-t-15">
+                    <a class="text-center" href="visitor">Back to Home</a>
+                </div>
+
             </div>
         </div>
     </div>
@@ -285,7 +289,10 @@
                             scrollTop: 0
                         }, "slow");
                         $("#alertFadeOut").fadeOut(3000);
-                        window.location.href = "login";
+                        $("form[name='regist_form']")
+                            .closest("form")
+                            .trigger("reset");
+                        // window.location.href = "visitor";
                     },
                     error: function(xhr, status, error) {
                         var err = eval("(" + xhr.responseText + ")");

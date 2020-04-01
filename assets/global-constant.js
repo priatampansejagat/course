@@ -2,7 +2,7 @@ var pathparts = location.pathname.split("/");
 if (location.host == "localhost") {
 	var base_url = location.origin + "/" + pathparts[1].trim("/") + "/";
 } else {
-	var base_url = location.origin + "/";
+	var base_url = location.origin + "/" + pathparts[1].trim("/") + "/";
 }
 
 /* URL BACKEND CURL */
