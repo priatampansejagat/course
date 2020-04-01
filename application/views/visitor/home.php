@@ -35,16 +35,13 @@
 		<!-- header of the page -->
 		<header id="page-header" class="page-header-stick">
 			<!-- header holder -->
-			<div class="header-holder">
+			<div class="">
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-6 col-sm-3">
 							<!-- logo -->
 							<div class="logo">
-								<a href="home.html">
-									<img class="hidden-xs" src="<?= base_url(); ?>assets/visitor/images/logo.png" alt="studylms">
-									<img class="hidden-sm hidden-md hidden-lg" src="<?= base_url(); ?>assets/visitor/images/logo-dark.png" alt="studylms">
-								</a>
+								<h1 style="color: #fff">Research Academy</h1>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-9 static-block">

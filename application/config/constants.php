@@ -84,4 +84,4 @@ defined('EXIT_DATABASE')       or define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      or define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-define('BASE_URL_API', 'http://temporaryapi.rumahpeneleh.or.id/');
+define('BASE_URL_API', 'http://api.research-academy.org/');
