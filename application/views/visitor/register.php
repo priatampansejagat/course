@@ -97,7 +97,7 @@
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Mobile Number is required">
                         <span class="label-input100">Mobile Number</span>
-                        <input class="input100" type="text" id="mobile_number" name="mobile_number" placeholder="Type your Mobile Number">
+                        <input class="input100" type="number" id="mobile_number" name="mobile_number" placeholder="Type your Mobile Number">
                         <span class="focus-input100"></span>
                     </div>
 
