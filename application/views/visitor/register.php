@@ -177,6 +177,9 @@
                     </div>
                 </div>
 
+                <div class="flex-col-c p-t-50">
+                    <p>Have an Account? <a href="login">Sign In</a> Now</p>
+                </div>
             </div>
         </div>
     </div>

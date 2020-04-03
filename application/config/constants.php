@@ -85,3 +85,4 @@ defined('EXIT__AUTO_MIN')      or define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 define('BASE_URL_API', 'http://temporaryapi.rumahpeneleh.or.id/');
+define('URL_API_LOGIN', 'login');

@@ -38,16 +38,25 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url('<?= base_url(); ?>assets/auth/images/08.jpg'); background-repeat: no-repeat; background-position: center; background-attachment: fixed;">
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                <form class="login100-form validate-form">
+                <form class="login100-form validate-form" method="POST" action="<?= base_url('User/auth') ?>">
                     <span class="login100-form-title p-b-49">
                         Login
                     </span>
 
-                    <div id="message"></div>
+                    <?php if ($this->session->flashdata('login_error')) { ?>
+                        <div class="alert alert-danger alert-dismissible show fadeIn animated" id="alertFadeOut" style="width:100% !important; margin-bottom:0 !important;">
+                            <div class="alert-body">
+                                <button class="close" data-dismiss="alert">
+                                    <span>&times;</span>
+                                </button>
+                                <strong>Login Gagal</strong><br>Periksa kembali username dan password.
+                            </div>
+                        </div>
+                    <?php } ?>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                         <span class="label-input100">Username</span>
-                        <input class="input100" type="text" id="uname" name="uname" placeholder="Type your username">
+                        <input class="input100" type="text" id="username" name="username" placeholder="Type your username">
                         <span class="focus-input100"></span>
                     </div>
 
@@ -56,16 +65,16 @@
                         <input class="input100" type="password" id="password" name="password" placeholder="Type your password">
                         <span class="focus-input100"></span>
                     </div><br>
-                </form>
 
-                <div class="container-login100-form-btn">
-                    <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn" id="login">
-                            Login
-                        </button>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" id="login">
+                                Login
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </form>
 
                 <div class="flex-col-c p-t-50">
                     <p>Don't Have an Account? <a href="register">Sign Up</a> Now</p>
@@ -78,48 +87,49 @@
     <div id="dropDownSelect1"></div>
 
     <script>
-        $('#login').click(function() {
-            var uname = $('#uname').val();
-            var password = $('#password').val();
+        $("#alertFadeOut").fadeOut(3000);
+        // $('#login').click(function() {
+        //     var uname = $('#uname').val();
+        //     var password = $('#password').val();
 
-            $.ajax({
-                type: 'POST',
-                url: base_url + post_url,
-                data: {
-                    param: {
-                        "username": uname,
-                        "password": password,
-                    },
-                    url: login_user_url
-                },
-                success: function(data) {
-                    $('#message').html(
-                        '<div id="alertFadeOut" class="alert alert-primary alert-dismissible show fadeIn animated" id="alertFadeOut" style="width:100% !important; margin-bottom:20px !important;">' +
-                        '<div class="alert-body">' +
-                        '<strong>Congratulations! </strong>Data Saved' +
-                        '</div>' +
-                        '</div>');
-                    $("html, body").animate({
-                        scrollTop: 0
-                    }, "slow");
-                    $("#alertFadeOut").fadeOut(3000);
-                    window.location.href = "visitor";
-                },
-                error: function(xhr, status, error) {
-                    var err = eval("(" + xhr.responseText + ")");
-                    $('#message').html(
-                        '<div class="alert alert-danger alert-dismissible show fadeIn animated" id="alertFadeOut" style="width:100% !important; margin-bottom:20px !important;">' +
-                        '<div class="alert-body">' +
-                        '<strong>Sorry! </strong>Data Failed to Save <br>' +
-                        '</div>' +
-                        '</div>');
-                    $("html, body").animate({
-                        scrollTop: 0
-                    }, "slow");
-                    $("#alertFadeOut").fadeOut(3000);
-                }
-            });
-        });
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: base_url + post_url,
+        //         data: {
+        //             param: {
+        //                 "username": uname,
+        //                 "password": password,
+        //             },
+        //             url: login_user_url
+        //         },
+        //         success: function(data) {
+        //             $('#message').html(
+        //                 '<div id="alertFadeOut" class="alert alert-primary alert-dismissible show fadeIn animated" id="alertFadeOut" style="width:100% !important; margin-bottom:20px !important;">' +
+        //                 '<div class="alert-body">' +
+        //                 '<strong>Congratulations! </strong>Data Saved' +
+        //                 '</div>' +
+        //                 '</div>');
+        //             $("html, body").animate({
+        //                 scrollTop: 0
+        //             }, "slow");
+        //             $("#alertFadeOut").fadeOut(3000);
+        //             window.location.href = "visitor";
+        //         },
+        //         error: function(xhr, status, error) {
+        //             var err = eval("(" + xhr.responseText + ")");
+        //             $('#message').html(
+        //                 '<div class="alert alert-danger alert-dismissible show fadeIn animated" id="alertFadeOut" style="width:100% !important; margin-bottom:20px !important;">' +
+        //                 '<div class="alert-body">' +
+        //                 '<strong>Sorry! </strong>Data Failed to Save <br>' +
+        //                 '</div>' +
+        //                 '</div>');
+        //             $("html, body").animate({
+        //                 scrollTop: 0
+        //             }, "slow");
+        //             $("#alertFadeOut").fadeOut(3000);
+        //         }
+        //     });
+        // });
 
         //# sourceURL=/view/login/login.js
     </script>

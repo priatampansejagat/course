@@ -51,7 +51,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 
 
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'User';
 // $route['404_override'] = '';
 // $route['translate_uri_dashes'] = FALSE;
 
@@ -64,7 +64,3 @@ $route['visitor'] = 'visitor/Basecontroller/index';
 
 // registered entity
 $route['home'] = 'registered/HomeController/index';
-
-
-
-
