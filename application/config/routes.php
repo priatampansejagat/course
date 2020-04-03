@@ -60,3 +60,11 @@ $route['contohpath'] = 'registered/Basecontroller/index';
 $route['register'] = 'visitor/Basecontroller/register';
 $route['login'] = 'visitor/Basecontroller/auth';
 $route['visitor'] = 'visitor/Basecontroller/index';
+
+
+// registered entity
+$route['home'] = 'registered/HomeController/index';
+
+
+
+
