@@ -24,7 +24,7 @@ class GlobalFunction{
 
 	public function isLogedIn($key){
 		// LOGIN STATUS FUNCTION======================================
-		if ($this->CI->mysession->checkData($key) == false || $this->CI->mysession->loginStatus() == false) {
+		if ($this->CI->mysession->checkData($key) == false || $this->CI->mysession->loginStatus($key) == false) {
 			redirect(base_url().'login','refresh');
 		}
 	}
@@ -82,6 +82,35 @@ class GlobalFunction{
 		    }
 		}
 	}
+
+
+	public function getBasicData(){
+
+		$data=[];
+		// get data user data
+		$selfusername 	=	$this->CI->mysession->loginGetData('username');	
+		$dataUser = $this->CI->BasicQuery->selectAll('user',array('username' => $this->CI->mysession->loginGetData('username')));
+		$data['user'] = $dataUser;
+
+		// get menu
+		$condMenu = array( 'id_role' => 'fdd38312da2d5ddc4b90a49aaa2bcf52d586572db5ce37cb2630799476aa13e4' );
+		$resultMenu = $this->CI->BasicQuery->selectAllResult('menu',$condMenu);
+
+		foreach ($resultMenu as $key => $value) {
+			
+			$data['menu'][$value['id']]=$value;
+
+			// selecting submenu
+			$condSubMenu = array('id_menu' => $value['id']);
+			$resultSubMenu = $this->CI->BasicQuery->selectAllResult('submenu',$condSubMenu);
+
+			$data['menu'][$value['id']]['submenu'] = $resultSubMenu;
+
+		}
+
+		return $data;
+	}
+
 
 }
 	

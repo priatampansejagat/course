@@ -64,3 +64,4 @@ $route['visitor'] = 'visitor/Basecontroller/index';
 
 // registered entity
 $route['home'] = 'registered/HomeController/index';
+$route['peserta'] = 'registered/PesertaController/index';
