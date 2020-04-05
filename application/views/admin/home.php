@@ -5,9 +5,9 @@
     <?php
       $this->load->helper(array('form', 'url'));
 
-      $this->load->view('registered/layouts/header');
+      $this->load->view('admin/layouts/header');
 
-      $this->load->view('registered/layouts/csshandler');
+      $this->load->view('admin/layouts/csshandler');
     ?>
 
   </head>
@@ -15,11 +15,11 @@
   <body class="">
 
       <!-- Menu Bar Top -->
-      <?php $this->load->view('registered/layouts/menubartop');  ?>
+      <?php $this->load->view('admin/layouts/menubartop');  ?>
 
       <div class="page-container row-fluid">
         <!-- aside -->
-        <?php $this->load->view('registered/layouts/menubar');  ?>
+        <?php $this->load->view('admin/layouts/menubar');  ?>
         
 
 
@@ -41,7 +41,7 @@
 
 
     <!-- jshandler -->
-    <?php $this->load->view('registered/layouts/jshandler');  ?>
+    <?php $this->load->view('admin/layouts/jshandler');  ?>
 
   </body>
 </html>

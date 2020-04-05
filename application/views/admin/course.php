@@ -5,7 +5,7 @@
     <?php
       $this->load->helper(array('form', 'url'));
 
-      $this->load->view('registered/layouts/header');
+      $this->load->view('admin/layouts/header');
     ?>
     
     <link href="<?php echo base_url();?>assets/admin/assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen" />
@@ -13,7 +13,7 @@
     <link href="<?php echo base_url();?>assets/admin/assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
 
     <?php   
-      $this->load->view('registered/layouts/csshandler');
+      $this->load->view('admin/layouts/csshandler');
     ?>
 
     
@@ -23,11 +23,11 @@
   <body class="">
 
       <!-- Menu Bar Top -->
-      <?php $this->load->view('registered/layouts/menubartop');  ?>
+      <?php $this->load->view('admin/layouts/menubartop');  ?>
 
       <div class="page-container row-fluid">
         <!-- aside -->
-        <?php $this->load->view('registered/layouts/menubar');  ?>
+        <?php $this->load->view('admin/layouts/menubar');  ?>
         
 
 
@@ -94,7 +94,7 @@
 
 
     <!-- jshandler -->
-    <?php $this->load->view('registered/layouts/jshandler');  ?>
+    <?php $this->load->view('admin/layouts/jshandler');  ?>
 
      <!-- BEGIN PAGE LEVEL PLUGINS -->
     <script src="<?php echo base_url();?>assets/admin/assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>

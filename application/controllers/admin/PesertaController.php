@@ -32,7 +32,7 @@ class PesertaController extends CI_Controller
 			$userCond = array('role_id' => '83bbe0cd25d8cc4b8c076497a57d4b6452e84946b9042dc7983a7806a1f636cf');
 			$data['peserta'] = $this->BasicQuery->selectAllResult('user',$userCond);
 			// echo(json_encode($data));
-			$this->load->view('registered/peserta',$data);
+			$this->load->view('admin/peserta',$data);
 
 		}else{
 			show_404();
