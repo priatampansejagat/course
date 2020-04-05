@@ -66,3 +66,4 @@ $route['visitor'] = 'visitor/Basecontroller/index';
 $route['home'] = 'admin/HomeController/index';
 $route['participant'] = 'admin/PesertaController/index';
 $route['course'] = 'admin/CourseController/index';
+$route['mentor'] = 'admin/MentorController/index';

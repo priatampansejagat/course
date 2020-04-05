@@ -102,6 +102,7 @@
             </div>
             <ul class="nav quick-section ">
               <li class="quicklinks">
+                <?php $this->load->view('admin/layouts/dynamicTools'); ?>
                 <!-- <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">
                   <i class="material-icons">tune</i>
                 </a> -->
