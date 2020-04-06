@@ -57,10 +57,18 @@ $route['default_controller'] = 'User';
 
 
 $route['contohpath'] = 'registered/Basecontroller/index';
-$route['register'] = 'visitor/Basecontroller/register';
-$route['login'] = 'visitor/Basecontroller/auth';
-$route['visitor'] = 'visitor/Basecontroller/index';
 
+// auth
+$route['register'] = 'User/register';
+$route['login'] = 'User/auth';
+$route['setting'] = 'User/setting';
+
+// page
+$route['visitor'] = 'User/index';
+$route['courselist'] = 'User/courseList';
+$route['coursedetail'] = 'User/courseDetail';
+$route['payment'] = 'User/payment';
+$route['mycourse'] = 'User/myCourse';
 
 // registered entity
 $route['home'] = 'registered/HomeController/index';

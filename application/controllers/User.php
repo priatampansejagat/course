@@ -43,8 +43,13 @@ class User extends CI_Controller
         // }
         //LOGIN STATUS FUNCTION======================================
 
-        $data = [];
-        $this->load->view('visitor/home', $data);
+        $data['title'] = 'Home';
+        $data['page_tittle'] = 'Research Academy';
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/home/home', $data);
+        $this->load->view('visitor/templates/footer');
     }
 
     public function auth()
@@ -57,7 +62,7 @@ class User extends CI_Controller
         ]);
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('visitor/login');
+            $this->load->view('visitor/auth/login');
         } else {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
@@ -83,23 +88,78 @@ class User extends CI_Controller
                     redirect('User');
                 } else if ($data_object->data->message == 'Username dan password tidak boleh kosong') {
                     $this->session->set_flashdata('login_error', 'error');
-                    redirect('login');
+                    redirect('User/auth');
                 } else if ($data_object->data->message == 'Periksa kembali username dan password') {
                     $this->session->set_flashdata('login_error', 'error');
-                    redirect('login');
+                    redirect('User/auth');
                 } else {
                     $this->session->set_flashdata('login_error', 'error');
-                    redirect('login');
+                    redirect('User/auth');
                 }
             } else {
                 $this->session->set_flashdata('login_error', 'error');
-                redirect('login');
+                redirect('User/auth');
             }
         }
     }
 
     public function register()
     {
-        $this->load->view('visitor/register');
+        $this->load->view('visitor/auth/register');
+    }
+
+    public function setting()
+    {
+        $data['title'] = 'Setting';
+        $data['page_title'] = 'My Account';
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/auth/settings', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function courseList()
+    {
+        $data['title'] = 'Course List';
+        $data['page_title'] = 'Course List';
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/course/list', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function courseDetail()
+    {
+        $data['title'] = 'Course Detail';
+        $data['page_title'] = 'Course Detail';
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/course/detail', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function payment()
+    {
+        $data['title'] = 'Payment Confirmation';
+        $data['page_title'] = 'Payment Confirmation';
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/payment/index', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function myCourse()
+    {
+        $data['title'] = 'My Course';
+        $data['page_title'] = 'My Course';
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/course/myCourse', $data);
+        $this->load->view('visitor/templates/footer');
     }
 }
