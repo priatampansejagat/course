@@ -42,8 +42,12 @@ class MySession {
 
 
     // Login
-    public function loginStatus(){
-      return $this->CI->session->userdata('status');
+    public function loginStatus($datauser){
+      if ($this->CI->session->userdata($datauser)) {
+        return true;
+      }else{
+        return false;
+      }
     }
 
     public function loginSetData($username,$status,$privilege){

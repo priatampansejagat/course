@@ -11,10 +11,10 @@
           </ul>
           <!-- BEGIN LOGO -->
           <a href="index.html">
-            <img src="<?php echo base_url();?>theme/bundle/barebone/assets/img/logo.png" class="logo" alt="" data-src="<?php echo base_url();?>theme/bundle/barebone/assets/img/logo.png" data-src-retina="<?php echo base_url();?>theme/bundle/barebone/assets/img/logo2x.png" width="106" height="21" />
+            <img src="<?php echo base_url();?>assets/admin/assets/img/logo.png" class="logo" alt="" data-src="<?php echo base_url();?>assets/admin/assets/img/logo.png" data-src-retina="<?php echo base_url();?>assets/admin/assets/img/logo2x.png" width="106" height="21" />
           </a>
           <!-- END LOGO -->
-          <ul class="nav pull-right notifcation-center">
+          <!-- <ul class="nav pull-right notifcation-center">
             <li class="dropdown hidden-xs hidden-sm">
               <a href="index.html" class="dropdown-toggle active" data-toggle="">
                 <i class="material-icons">home</i>
@@ -30,7 +30,7 @@
                 <i class="material-icons">chat</i>
               </a>
             </li>
-          </ul>
+          </ul> -->
         </div>
         <!-- END RESPONSIVE MENU TOGGLER -->
         <div class="header-quick-nav">
@@ -44,18 +44,21 @@
               </li>
             </ul>
             <ul class="nav quick-section">
-              <li class="quicklinks  m-r-10">
+              <!-- <li class="quicklinks  m-r-10">
                 <a href="#" class="">
                   <i class="material-icons">refresh</i>
                 </a>
-              </li>
-              <li class="quicklinks">
+              </li> -->
+              <!-- <li class="quicklinks">
                 <a href="#" class="">
                   <i class="material-icons">apps</i>
                 </a>
-              </li>
-              <li class="quicklinks"> <span class="h-seperate"></span></li>
+              </li> -->
+              <!-- <li class="quicklinks"> <span class="h-seperate"></span></li> -->
               <li class="quicklinks">
+                <h5><span class="semi-bold"><?php echo($onpage); ?></span></h5>
+              </li>
+              <!-- <li class="quicklinks">
                 <a href="#" class="" id="my-task-list" data-placement="bottom" data-content='' data-toggle="dropdown" data-original-title="Notifications">
                   <i class="material-icons">notifications_none</i>
                   <span class="badge badge-important bubble-only"></span>
@@ -64,16 +67,16 @@
               <li class="m-r-10 input-prepend inside search-form no-boarder">
                 <span class="add-on"> <i class="material-icons">search</i></span>
                 <input name="" type="text" class="no-boarder " placeholder="Search Dashboard" style="width:250px;">
-              </li>
+              </li> -->
             </ul>
           </div>
           <div id="notification-list" style="display:none">
             <div style="width:300px">
               <div class="notification-messages info">
-                <div class="user-profile">
-                  <img src="<?php echo base_url();?>theme/bundle/barebone/assets/img/profiles/d.jpg" alt="" data-src="<?php echo base_url();?>theme/bundle/barebone/assets/img/profiles/d.jpg" data-src-retina="<?php echo base_url();?>theme/bundle/barebone/assets/img/profiles/d2x.jpg" width="35" height="35">
-                </div>
-                <div class="message-wrapper">
+                <!-- <div class="user-profile">
+                  <img src="<?php echo base_url();?>assets/admin/assets/img/profiles/d.jpg" alt="" data-src="<?php echo base_url();?>assets/admin/assets/img/profiles/d.jpg" data-src-retina="<?php echo base_url();?>assets/admin/assets/img/profiles/d2x.jpg" width="35" height="35">
+                </div> -->
+                <!-- <div class="message-wrapper">
                   <div class="heading">
                     David Nester - Commented on your wall
                   </div>
@@ -83,7 +86,7 @@
                   <div class="date pull-left">
                     A min ago
                   </div>
-                </div>
+                </div> -->
                 <div class="clearfix"></div>
               </div>
             </div>
@@ -92,17 +95,18 @@
           <!-- BEGIN CHAT TOGGLER -->
           <div class="pull-right">
             <div class="chat-toggler sm">
-              <div class="profile-pic">
-                <img src="<?php echo base_url();?>theme/bundle/barebone/assets/img/profiles/avatar_small.jpg" alt="" data-src="<?php echo base_url();?>theme/bundle/barebone/assets/img/profiles/avatar_small.jpg" data-src-retina="<?php echo base_url();?>theme/bundle/barebone/assets/img/profiles/avatar_small2x.jpg" width="35" height="35" />
+              <!-- <div class="profile-pic">
+                <img src="<?php echo base_url();?>assets/admin/assets/img/profiles/avatar_small.jpg" alt="" data-src="<?php echo base_url();?>assets/admin/assets/img/profiles/avatar_small.jpg" data-src-retina="<?php echo base_url();?>assets/admin/assets/img/profiles/avatar_small2x.jpg" width="35" height="35" />
                 <div class="availability-bubble online"></div>
-              </div>
+              </div> -->
             </div>
             <ul class="nav quick-section ">
               <li class="quicklinks">
-                <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">
+                <?php $this->load->view('admin/layouts/dynamicTools'); ?>
+                <!-- <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">
                   <i class="material-icons">tune</i>
-                </a>
-                <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
+                </a> -->
+                <!-- <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
                   <li>
                     <a href="user-profile.html"> My Account</a>
                   </li>
@@ -118,13 +122,13 @@
                   <li>
                     <a href="login.html"><i class="material-icons">power_settings_new</i>&nbsp;&nbsp;Log Out</a>
                   </li>
-                </ul>
+                </ul> -->
               </li>
-              <li class="quicklinks"> <span class="h-seperate"></span></li>
-              <li class="quicklinks">
-                <a href="#" class="chat-menu-toggle" data-webarch="toggle-right-side"><i class="material-icons">chat</i><span class="badge badge-important hide">1</span>
-                </a>
-                <div class="simple-chat-popup chat-menu-toggle hide">
+              <!-- <li class="quicklinks"> <span class="h-seperate"></span></li> -->
+              <!-- <li class="quicklinks"> -->
+               <!--  <a href="#" class="chat-menu-toggle" data-webarch="toggle-right-side"><i class="material-icons">chat</i><span class="badge badge-important hide">1</span>
+                </a> -->
+                <!-- <div class="simple-chat-popup chat-menu-toggle hide">
                   <div class="simple-chat-popup-arrow"></div>
                   <div class="simple-chat-popup-inner">
                     <div style="width:100px">
@@ -132,8 +136,8 @@
                       <div class="message">Hey you there </div>
                     </div>
                   </div>
-                </div>
-              </li>
+                </div> -->
+              <!-- </li> -->
             </ul>
           </div>
           <!-- END CHAT TOGGLER -->

@@ -71,4 +71,7 @@ $route['payment'] = 'User/payment';
 $route['mycourse'] = 'User/myCourse';
 
 // registered entity
-$route['home'] = 'registered/HomeController/index';
+$route['home'] = 'admin/HomeController/index';
+$route['participant'] = 'admin/PesertaController/index';
+$route['course'] = 'admin/CourseController/index';
+$route['mentor'] = 'admin/MentorController/index';

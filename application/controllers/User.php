@@ -82,7 +82,7 @@ class User extends CI_Controller
                         'id'                 => $data_object->data->content->id,
                         'username'           => $data_object->data->content->username,
                         'fullname'           => $data_object->data->content->fullname,
-                        'role'               => $data_object->data->content->j3b5vhj23v5k2b3k52b3k5hb2hv3gh2cjgvhjvhfyuvjbvg2f3u5vjvv,
+                        'role'               => $data_object->data->content->j3b5vhj23v5k2b3k52b3k5hb2hv3gh2cjgvhjvhfyuvjbvg2f3u5vjvv
                     );
                     $this->session->set_userdata($data_session);
                     redirect('User');
