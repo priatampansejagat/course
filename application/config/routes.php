@@ -61,6 +61,7 @@ $route['contohpath'] = 'registered/Basecontroller/index';
 // auth
 $route['register'] = 'User/register';
 $route['login'] = 'User/auth';
+$route['logout'] = 'User/logout';
 $route['setting'] = 'User/setting';
 
 // page

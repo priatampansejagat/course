@@ -50,14 +50,13 @@
                                             <li class="dropdown">
                                                 <a href="#" class="btn btn-warning btn-theme text-uppercase dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 10px 20px; border-radius: 25px"><?= $this->session->userdata('username') ?></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="home.html">Upload File</a></li>
                                                     <li><a href="setting">Settings</a></li>
-                                                    <li><a href="home3.html">Logout</a></li>
+                                                    <li><a href="logout">Logout</a></li>
                                                 </ul>
                                             </li>
                                         <?php } else { ?>
                                             <li>
-                                                <a href="login" class="btn btn-warning btn-theme text-uppercase" style="padding: 10px;">Login</a>
+                                                <a href="login" class="btn btn-warning btn-theme text-uppercase" style="padding: 10px 20px; border-radius: 25px">Login</a>
                                             </li>
                                         <?php } ?>
                                     </ul>
