@@ -108,6 +108,8 @@ class GlobalFunction{
 
 		}
 
+		$data['api_url'] = $this->api_url();
+
 		return $data;
 	}
 
