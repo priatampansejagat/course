@@ -10,18 +10,6 @@ class GlobalFunction{
 
 	}
 
-	public function url(){
-		$http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '') . '://';
-		$finalUrl    = $http . 'research-academy.org'; 
-		return $finalUrl;
-	}
-
-	public function api_url(){
-		// $http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '') . '://';
-		$finalUrl    = 'http://temporaryapi.rumahpeneleh.or.id/'; 
-		return $finalUrl;
-	}
-
 	public function isLogedIn($key){
 		// LOGIN STATUS FUNCTION======================================
 		if ($this->CI->mysession->checkData($key) == false || $this->CI->mysession->loginStatus($key) == false) {
@@ -107,8 +95,6 @@ class GlobalFunction{
 			$data['menu'][$value['id']]['submenu'] = $resultSubMenu;
 
 		}
-
-		$data['api_url'] = $this->api_url();
 
 		return $data;
 	}

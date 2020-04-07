@@ -24,7 +24,7 @@ class HomeController extends CI_Controller
 
 		$this->globalfunction->isLogedIn('username');
 
-		if ($this->mysession->loginGetData('role')=='fdd38312da2d5ddc4b90a49aaa2bcf52d586572db5ce37cb2630799476aa13e4') {
+		if ($this->mysession->loginGetData('role')==AS_ADMIN) {
 
 			$data = $this->globalfunction->getBasicData();
 

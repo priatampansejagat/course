@@ -18,6 +18,10 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 
+
+    <!-- GC -->
+    <script src="<?= base_url(); ?>assets/global-constant.js"></script>
+    <!-- end GC -->
   </head>
 
   <body class="">
@@ -383,28 +387,29 @@
         var password = $('#password').val();
         var password2 = $('#password_confirm').val();
 
-        var datajson = {
-            "uname": uname,
-            "password": password,
-            "fullname": fullname,
-            "place_of_birth": place_of_birth,
-            "date_of_birth": date_of_birth,
-            "email": email,
-            "institution": institution,
-            "country": country,
-            "mobile_number": mobile_number,
-            "status": status,
-            "field_of_study": field_of_study,
-            "as": 'd730bb9677663feb30d4c4e9d273c7c9c713e4d5b8eebf9218a2f587dd7c5d9b'
-        }
 
-        // console.log(JSON.stringify(datajson));
+        console.log(base_url + post_url);
         $.ajax({
           type: 'POST',
           // dataType: "jsonp",
-          crossDomain:true,
-          url: "<?php echo $api_url.'regissubmit'; ?>",
-          data: JSON.stringify(datajson),
+          url: base_url + post_url,
+          data: {
+                param: {
+                    "uname": uname,
+                    "password": password,
+                    "fullname": fullname,
+                    "place_of_birth": place_of_birth,
+                    "date_of_birth": date_of_birth,
+                    "email": email,
+                    "institution": institution,
+                    "country": country,
+                    "mobile_number": mobile_number,
+                    "status": status,
+                    "field_of_study": field_of_study,
+                    "as": 'd730bb9677663feb30d4c4e9d273c7c9c713e4d5b8eebf9218a2f587dd7c5d9b'
+                },
+                url: add_user_url
+            },
           
           success: function(respons){
 

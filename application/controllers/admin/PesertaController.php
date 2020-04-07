@@ -24,12 +24,12 @@ class PesertaController extends CI_Controller
 		
 		$this->globalfunction->isLogedIn('username');
 
-		if ($this->mysession->loginGetData('role')=='fdd38312da2d5ddc4b90a49aaa2bcf52d586572db5ce37cb2630799476aa13e4') {
+		if ($this->mysession->loginGetData('role')== AS_ADMIN) {
 
 			$data = $this->globalfunction->getBasicData();
 			$data['onpage'] = 'PESERTA';
 
-			$userCond = array('role_id' => '83bbe0cd25d8cc4b8c076497a57d4b6452e84946b9042dc7983a7806a1f636cf');
+			$userCond = array('role_id' => AS_STUDENT);
 			$data['peserta'] = $this->BasicQuery->selectAllResult('user',$userCond);
 			// echo(json_encode($data));
 			$this->load->view('admin/peserta',$data);

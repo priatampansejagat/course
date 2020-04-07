@@ -5,6 +5,7 @@ if (location.host == "localhost") {
 	var base_url = location.origin + "/";
 }
 
+
 /* URL BACKEND CURL */
 post_url = "api/IndexApi/post";
 post_file_url = "api/IndexApi/post_file";
