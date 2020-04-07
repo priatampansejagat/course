@@ -15,3 +15,5 @@ get_url = "api/IndexApi/get";
 /* URL API */
 add_user_url = "regissubmit";
 login_user_url = "login";
+get_datatable_url = "datatable";
+

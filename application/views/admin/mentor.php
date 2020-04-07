@@ -21,6 +21,7 @@
 
     <!-- GC -->
     <script src="<?= base_url(); ?>assets/global-constant.js"></script>
+    <script src="<?= base_url(); ?>assets/global-functions.js"></script>
     <!-- end GC -->
   </head>
 
@@ -388,7 +389,7 @@
         var password2 = $('#password_confirm').val();
 
 
-        console.log(base_url + post_url);
+        // console.log(base_url + post_url);
         $.ajax({
           type: 'POST',
           // dataType: "jsonp",
@@ -413,10 +414,15 @@
           
           success: function(respons){
 
-            console.log(respons);
+            // if (true) {}
+            // dataTable_add_row('#example2', dataTable_getData);
 
         }});
       });
+
+
+      var dataTable_getData = dataTable_getData(get_datatable_url, 'mentor');
+      dataTable_add_row('#example2', dataTable_getData);
 
     </script>
 
