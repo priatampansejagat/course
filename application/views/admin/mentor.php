@@ -21,7 +21,6 @@
 
     <!-- GC -->
     <script src="<?= base_url(); ?>assets/global-constant.js"></script>
-    <script src="<?= base_url(); ?>assets/global-functions.js"></script>
     <!-- end GC -->
   </head>
 
@@ -52,9 +51,18 @@
                         <!-- <a href="javascript:;" class="reload"></a> -->
                         <!-- <a href="javascript:;" class="remove"></a> -->
                       </div>
+
                     </div>
                     <div class="grid-body ">
                       
+                      <div class="alert alert-info" id="alertSuccess">
+                        <button class="close" data-dismiss="alert"></button>
+                        <p id="message"></p> </div>
+                      <div class="alert alert-danger" id="alertFailed">
+                        <button class="close" data-dismiss="alert"></button>
+                        <p id="message"></p> </div>  
+                      
+
                       <div class="grid-body no-border">
                         <!-- <form class="form-no-horizontal-spacing" id="form-condensed"> -->
                           <div class="row column-seperation">
@@ -257,30 +265,15 @@
                       <table class="table table-striped" id="example2">
                         <thead>
                           <tr>
-                            <th>ID</th>
-                            <th>Nama</th>
+                            <th>Num</th>
+                            <th>Name</th>
                             <th>Phone Number</th>
                             <th>Country</th>
                             <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <?php
-                            foreach ($mentor as $key => $value) {
-                          ?>    
-                              <tr class="">
-                                <td><?php echo($value['id']) ?></td>
-                                <td><?php echo($value['fullname']) ?></td>
-                                <td><?php echo($value['phone_number']) ?></td>
-                                <td class="center"><?php echo($value['country']) ?></td>
-                                <td class="center">Belum tersedia</td>
-                              </tr>
 
-                          <?php  }
-                          ?>
-
-
-                          
                           
                         </tbody>
                       </table>
@@ -312,6 +305,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
+
     <script type="text/javascript">
       $("#formaddmentor").hide();
       function addmentor() {
@@ -319,6 +313,23 @@
           $("#formaddmentor").show();
         }else{
           $("#formaddmentor").hide();
+        }
+      }
+
+      $("#alertFailed").hide();
+      $("#alertSuccess").hide();
+      function alertSuccess() {
+        if ($("#alertSuccess").is(":hidden")) {
+          $("#alertSuccess").show();
+        }else{
+          $("#alertSuccess").hide();
+        }
+      }
+      function alertFailed() {
+        if ($("#alertFailed").is(":hidden")) {
+          $("#alertFailed").show();
+        }else{
+          $("#alertFailed").hide();
         }
       }
 
@@ -413,16 +424,58 @@
             },
           
           success: function(respons){
-
-            // if (true) {}
-            // dataTable_add_row('#example2', dataTable_getData);
-
+            alert(respons);
+            var jsonArr = JSON.parse(respons);
+            $('#message').text(jsonArr['message']);
+            if (jsonArr['proc'] == 'true') {
+              dataTable_refresh();
+              alertSuccess();
+            }else{
+              alertFailed();
+            }
+            
         }});
       });
 
+      dataTable_refresh();
 
-      var dataTable_getData = dataTable_getData(get_datatable_url, 'mentor');
-      dataTable_add_row('#example2', dataTable_getData);
+      // datatable
+      function dataTable_refresh(){
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                  param: { "request": 'mentor' },
+                  url: get_datatable_url
+              },
+            success: function(respons){
+              var jsonArr = JSON.parse(respons);
+
+              $("#example2").DataTable().fnClearTable();
+              for (var i = 0; i < jsonArr['data'].length ; i++) {
+                // console.log('datatable =' + jsonArr['data'][i]['id']);
+                var data = [
+                          '',
+                          i+1,
+                          jsonArr['data'][i]['fullname'],
+                          jsonArr['data'][i]['phone_number'],
+                          jsonArr['data'][i]['country'],
+                          '<a onclick="delmentor('+jsonArr['data'][i]['fullname']+')" class="btn btn-danger" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a>'
+
+                ];
+
+                $("#example2").DataTable().fnAddData(data); 
+              } 
+
+          }});
+
+      }
+
+
+      function delmentor($id){
+        alert('deleting mentor'+$id);
+      }
 
     </script>
 

@@ -29,9 +29,8 @@ class MentorController extends CI_Controller
 			$data = $this->globalfunction->getBasicData();
 			$data['onpage'] = 'MENTOR';
 
-
-			$userCond = array('role_id' => AS_MENTOR);
-			$data['mentor'] = $this->BasicQuery->selectAllResult('user',$userCond);
+			// $userCond = array('role_id' => AS_MENTOR);
+			// $data['mentor'] = $this->BasicQuery->selectAllResult('user',$userCond);
 			// echo(json_encode($data));
 			$this->load->view('admin/mentor',$data);
 
