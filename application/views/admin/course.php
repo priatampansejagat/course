@@ -54,10 +54,10 @@
                     <div class="grid-body ">
                       
                       <div class="alert alert-info" id="alertSuccess">
-                        <button class="close" data-dismiss="alert"></button>
+                        <button class="close" onclick="alertSuccessHide()"></button>
                         <p id="message"></p> </div>
                       <div class="alert alert-danger" id="alertFailed">
-                        <button class="close" data-dismiss="alert"></button>
+                        <button class="close" onclick="alertFailedHide()"></button>
                         <p id="message"></p> </div>  
                       
 
@@ -68,7 +68,7 @@
                               <h4>Basic Information</h4>
                               <div class="row form-row">
                                 <div class="col-md-12">
-                                  <input name="tittle" id="tittle" type="text" class="form-control" placeholder="Tittle">
+                                  <input name="title" id="title" type="text" class="form-control" placeholder="Title">
                                 </div>
                               </div>
                               <div class="row form-row">
@@ -96,7 +96,7 @@
                                 <div class="col-md-12">
 
                                   <!-- <span class="label-input100">Country</span> -->
-                                  <select class="form-contro" id="mentor" name="mentor" placeholder="Choose Course Mentor" type="text">
+                                  <select class="form-contro" id="mentor_id" name="mentor_id" placeholder="Choose Course Mentor" type="text">
                                       <option value="" selected disabled>Select Mentor</option>
 
                                       <?php foreach ($mentor_list as $key => $value) { ?>
@@ -221,17 +221,20 @@
       function alertSuccess() {
         if ($("#alertSuccess").is(":hidden")) {
           $("#alertSuccess").show();
-        }else{
-          $("#alertSuccess").hide();
         }
+      }
+      function alertSuccessHide(){
+        $("#alertSuccess").hide();
       }
       
       function alertFailed() {
         if ($("#alertFailed").is(":hidden")) {
           $("#alertFailed").show();
-        }else{
-          $("#alertFailed").hide();
         }
+      }
+
+      function alertFailedHide(){
+        $("#alertFailed").hide();
       }
 
       $('#start_date').datepicker({
@@ -265,11 +268,11 @@
 
       $("#savecourse").click(function(){
 
-        var tittle = $('#tittle').val();
+        var title = $('#title').val();
         var description = $('#description').val();
         var start_date = $('#start_date').val();
         var end_date = $('#end_date').val();
-        var mentor = $('#mentor').val();
+        var mentor_id = $('#mentor_id').val();
         var price = $('#price').val();
 
         // console.log(base_url + post_url);
@@ -279,18 +282,18 @@
           url: base_url + post_url,
           data: {
                 param: {
-                    "tittle": tittle,
+                    "title": title,
                     "description": description,
                     "start_date": start_date,
                     "end_date": end_date,
-                    "mentor": mentor,
+                    "mentor_id": mentor_id,
                     "price": price
                 },
                 url: create_course_url
             },
           
           success: function(respons){
-            // alert(respons);
+            // console.log(respons);
             var jsonArr = JSON.parse(respons);
             $('#message').text(jsonArr['message']);
             if (jsonArr['proc'] == 'true') {
@@ -313,6 +316,7 @@
                   url: get_datatable_url
               },
             success: function(respons){
+              // alert(respons);
               var jsonArr = JSON.parse(respons);
 
               $("#example2").DataTable().fnClearTable();
@@ -321,10 +325,10 @@
                 var data = [
                           '',
                           i+1,
-                          jsonArr['data'][i]['tittle'],
+                          jsonArr['data'][i]['title'],
                           jsonArr['data'][i]['mentor']['fullname'],
                           jsonArr['data'][i]['price'],
-                          '<a onclick="delmentor('+jsonArr['data'][i]['fullname']+')" class="btn btn-danger" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a>'
+                          '<a onclick="delmentor('+jsonArr['data'][i]['id']+')" class="btn btn-danger" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a>'
 
                 ];
                 $("#example2").DataTable().fnAddData(data); 

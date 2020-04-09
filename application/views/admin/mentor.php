@@ -56,10 +56,10 @@
                     <div class="grid-body ">
                       
                       <div class="alert alert-info" id="alertSuccess">
-                        <button class="close" data-dismiss="alert"></button>
+                        <button class="close" onclick="alertSuccessHide()"></button>
                         <p id="message"></p> </div>
                       <div class="alert alert-danger" id="alertFailed">
-                        <button class="close" data-dismiss="alert"></button>
+                        <button class="close" onclick="alertFailedHide()"></button>
                         <p id="message"></p> </div>  
                       
 
@@ -321,17 +321,20 @@
       function alertSuccess() {
         if ($("#alertSuccess").is(":hidden")) {
           $("#alertSuccess").show();
-        }else{
-          $("#alertSuccess").hide();
         }
       }
-
+      function alertSuccessHide(){
+        $("#alertSuccess").hide();
+      }
+      
       function alertFailed() {
         if ($("#alertFailed").is(":hidden")) {
           $("#alertFailed").show();
-        }else{
-          $("#alertFailed").hide();
         }
+      }
+
+      function alertFailedHide(){
+        $("#alertFailed").hide();
       }
 
       $('#date_of_birth').datepicker({
