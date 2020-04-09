@@ -325,6 +325,7 @@
           $("#alertSuccess").hide();
         }
       }
+
       function alertFailed() {
         if ($("#alertFailed").is(":hidden")) {
           $("#alertFailed").show();
@@ -424,7 +425,6 @@
             },
           
           success: function(respons){
-            alert(respons);
             var jsonArr = JSON.parse(respons);
             $('#message').text(jsonArr['message']);
             if (jsonArr['proc'] == 'true') {
@@ -446,7 +446,7 @@
             type: 'POST',
             url: base_url + post_url,
             data: {
-                  param: { "request": 'mentor' },
+                  param: { "ihateapple": 'mentor' },
                   url: get_datatable_url
               },
             success: function(respons){

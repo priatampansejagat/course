@@ -29,8 +29,8 @@ class CourseController extends CI_Controller
 			$data = $this->globalfunction->getBasicData();
 			$data['onpage'] = 'COURSE';
 
-			$userCond = array('role_id' => '83bbe0cd25d8cc4b8c076497a57d4b6452e84946b9042dc7983a7806a1f636cf');
-			$data['peserta'] = $this->BasicQuery->selectAllResult('user',$userCond);
+			$userCond = array('role_id' => AS_MENTOR);
+			$data['mentor_list'] = $this->BasicQuery->selectAllResult('user',$userCond);
 			// echo(json_encode($data));
 			$this->load->view('admin/course',$data);
 
