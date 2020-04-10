@@ -23,5 +23,8 @@ create_course_url = "createcourse";
 // multi-data
 get_datatable_url = "datatable";
 
-// single-data
 
+
+/* DICTIONARY */
+course_dic = "course";
+mentor_dic = "course";
