@@ -27,4 +27,4 @@ get_datatable_url = "datatable";
 
 /* DICTIONARY */
 course_dic = "course";
-mentor_dic = "course";
+mentor_dic = "mentor";
