@@ -17,8 +17,8 @@ add_user_url = "regissubmit";
 login_user_url = "login";
 
 // course
+read_course_url = "course";
 create_course_url = "createcourse";
-read_course_url = "readcourse";
 
 // multi-data
 get_datatable_url = "datatable";
