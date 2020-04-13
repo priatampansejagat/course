@@ -328,15 +328,22 @@
                           jsonArr['data'][i]['title'],
                           jsonArr['data'][i]['mentor']['fullname'],
                           jsonArr['data'][i]['price'],
-                          '<a onclick="delmentor('+jsonArr['data'][i]['id']+')" class="btn btn-danger" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a>'
+                          '<a onclick="delcourse(this)" class="btn btn-danger" id="'+jsonArr['data'][i]['id']+'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a>'
 
                 ];
                 $("#example2").DataTable().fnAddData(data); 
+                
               } 
 
           }});
       }
       dataTable_refresh();
+
+
+      function delcourse(obj){
+        alert(obj.id);
+      }
+
 
     </script>
 
