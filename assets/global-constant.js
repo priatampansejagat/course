@@ -19,6 +19,8 @@ login_user_url = "login";
 // course
 read_course_url = "course";
 create_course_url = "createcourse";
+create_chapter_url = "createchapter";
+create_chapter_url_vid = "createchapter_vid";
 
 // multi-data
 get_datatable_url = "datatable";
