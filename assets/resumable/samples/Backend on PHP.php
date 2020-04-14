@@ -129,6 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $_GET['resumableIdentifier']='';
     }
     $temp_dir = 'temp/'.$_GET['resumableIdentifier'];
+
     if(!(isset($_GET['resumableFilename']) && trim($_GET['resumableFilename'])!='')){
         $_GET['resumableFilename']='';
     }
@@ -136,6 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $_GET['resumableChunkNumber']='';
     }
     $chunk_file = $temp_dir.'/'.$_GET['resumableFilename'].'.part'.$_GET['resumableChunkNumber'];
+    
     if (file_exists($chunk_file)) {
          header("HTTP/1.0 200 Ok");
        } else {
