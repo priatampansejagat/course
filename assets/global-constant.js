@@ -18,6 +18,7 @@ login_user_url = "login";
 
 // course
 send_payment_url = "payconfirm";
+send_paymentfile_url = "payconfirm_file";
 read_course_url = "course";
 create_course_url = "createcourse";
 create_chapter_url = "createchapter";
