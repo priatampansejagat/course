@@ -416,6 +416,7 @@
               for (var i = 0; i < jsonArr['data'].length ; i++) {
                 // console.log('datatable =' + jsonArr['data'][i]['id']);
                 var chapter_id = jsonArr['data'][i]['id'];
+
                 var data = [
                           '',
                           jsonArr['data'][i]['sequence'],
@@ -428,6 +429,24 @@
                           '<a onclick="delcourse(this)" class="btn btn-danger" id="'+ chapter_id +'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' 
 
                 ];
+
+                if (jsonArr['data'][i]['video_link'] != "#") {
+                  var vid_link = jsonArr['data'][i]['video_link'];
+                  data = [
+                          '',
+                          jsonArr['data'][i]['sequence'],
+                          jsonArr['data'][i]['tittle'],
+                          jsonArr['data'][i]['description'],
+                          '<a href="'+ vid_link +'" class="btn btn-success btn-xs btn-mini" id="chapter_video_view_'+ chapter_id +'" name="chapter_video_view_'+ chapter_id +'">Watch</a> '+
+                          '<button class="btn btn-warning btn-xs btn-mini" id="chapter_video_select_'+ chapter_id +'" name="chapter_video_select_'+ chapter_id +'">Add Video</button> '+
+                          '<button class="btn btn-danger btn-xs btn-mini" id="chapter_video_upload_'+ chapter_id +'" name="chapter_video_upload_'+ chapter_id +'">upload Video</button> '+
+                          '<div id="results_'+ chapter_id +'" class="panel"></div>',
+
+                          '<a onclick="delcourse(this)" class="btn btn-danger" id="'+ chapter_id +'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' 
+
+                        ];
+                }
+
                 $("#example2").DataTable().fnAddData(data); 
 
                 // initiate resumable =================================================
@@ -571,11 +590,13 @@
           resumable[chapter_id].on('complete', function () {
               $('#message_video').text('Upload Complete');
               alertSuccess_video();
+              $('.deleteFile_'+chapter_id).click();
           });
 
           resumable[chapter_id].on('fileError', function(file, message){
             $('#message_video').text('Upload Failed');
             alertFailed_video();
+            $('.deleteFile_'+chapter_id).click();
           });
 
       }
