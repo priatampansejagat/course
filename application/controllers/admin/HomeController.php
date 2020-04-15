@@ -22,7 +22,7 @@ class HomeController extends CI_Controller
 		// echo(json_encode($_SESSION));
 		$data = [];
 
-		$this->globalfunction->isLogedIn('username');
+		// $this->globalfunction->isLogedIn('username');
 
 		if ($this->mysession->loginGetData('role')==AS_ADMIN) {
 
