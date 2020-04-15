@@ -51,7 +51,8 @@
                             </div>
                             <div class="col-xs-12 col-md-9">
                                 <!-- <input type="file" id="file_payment" name="file_payment" class="form-control element-block" placeholder="Username or email address *"> -->
-                                <a href="#" class="btn btn-warning">Choose File</a>
+                                <button id="choose_file" class="btn btn-warning">Choose File</button>
+                                <div id="results" class="panel"></div>
                             </div>
                         </div>
                     </div>
@@ -71,58 +72,137 @@
     </section>
 </main>
 
+<script src="<?php echo base_url();?>assets/resumable/resumable.js" type="text/javascript"></script>
 <script>
-    $("#send").click(function() {
-        var regist_no = $('#regist_no').val();
-        var nominal = $('#nominal').val();
-        var formData = new FormData(document.forms.namedItem("form-payment"));
-        formData.append('url', 'http://temporaryapi.rumahpeneleh.or.id/payconfirm_file');
+    // $("#send").click(function() {
+    //     var regist_no = $('#regist_no').val();
+    //     var nominal = $('#nominal').val();
+    //     var formData = new FormData(document.forms.namedItem("form-payment"));
+    //     formData.append('url', 'http://temporaryapi.rumahpeneleh.or.id/payconfirm_file');
 
-        var file = $('#file_payment').val();
+    //     var file = $('#file_payment').val();
 
-        if (regist_no && nominal && file != '') {
-            $.ajax({
-                type: "POST",
-                url: base_url + post_url,
-                data: {
-                    param: {
-                        "payment_id": regist_no,
-                        "payment_nominal": nominal,
-                    },
-                    url: send_payment_url
-                },
-                success: function(data) {
-                    $.ajax({
-                        url: base_url + post_file_url,
-                        type: 'POST',
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        dataType: 'json',
-                        success: function(data) {}
-                    });
-                },
-                error: function(xhr, status, error) {
-                    var err = eval("(" + xhr.responseText + ")");
-                    $('#message').html(
-                        '<div id="alertFadeOut" class="alert alert-danger alert-dismissible show fadeIn animated" style="width:100% !important; margin-bottom:20px !important;">' +
-                        '<div class="alert-body">' +
-                        '<strong>Please,</strong>' +
-                        err.message +
-                        '</div>' +
-                        '</div>');
-                }
-            });
-        } else {
-            $('#message').html(
-                '<div id="alertFadeOut" class="alert alert-danger alert-dismissible show fadeIn animated" style="width:100% !important; margin-bottom:20px !important;">' +
-                '<div class="alert-body">' +
-                '<strong>Please,</strong> Complete the Data' +
-                '</div>' +
-                '</div>');
-        }
+    //     if (regist_no && nominal && file != '') {
+    //         $.ajax({
+    //             type: "POST",
+    //             url: base_url + post_url,
+    //             data: {
+    //                 param: {
+    //                     "payment_id": regist_no,
+    //                     "payment_nominal": nominal,
+    //                 },
+    //                 url: send_payment_url
+    //             },
+    //             success: function(data) {
+    //                 $.ajax({
+    //                     url: base_url + post_file_url,
+    //                     type: 'POST',
+    //                     data: formData,
+    //                     cache: false,
+    //                     contentType: false,
+    //                     processData: false,
+    //                     dataType: 'json',
+    //                     success: function(data) {}
+    //                 });
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 var err = eval("(" + xhr.responseText + ")");
+    //                 $('#message').html(
+    //                     '<div id="alertFadeOut" class="alert alert-danger alert-dismissible show fadeIn animated" style="width:100% !important; margin-bottom:20px !important;">' +
+    //                     '<div class="alert-body">' +
+    //                     '<strong>Please,</strong>' +
+    //                     err.message +
+    //                     '</div>' +
+    //                     '</div>');
+    //             }
+    //         });
+    //     } else {
+    //         $('#message').html(
+    //             '<div id="alertFadeOut" class="alert alert-danger alert-dismissible show fadeIn animated" style="width:100% !important; margin-bottom:20px !important;">' +
+    //             '<div class="alert-body">' +
+    //             '<strong>Please,</strong> Complete the Data' +
+    //             '</div>' +
+    //             '</div>');
+    //     }
+    // });
+
+    var     regist_no = $('#regist_no').val(),
+            nominal = $('#nominal').val(),
+            resumableButton = $("#choose_file"),
+            results = $("#results"),
+            resumable       = new Resumable({
+                                    target: noncurl_api_url + send_paymentfile_url,
+                                    maxChunkRetries: 5,
+                                    query:{
+                                            payment_id: regist_no
+                                    },
+                                    maxFiles: 3,
+                                    prioritizeFirstAndLastChunk: true,
+                                    simultaneousUploads: 4,
+                                    chunkSize: 1 * 1024 * 1024
+                                });
+
+    resumable.assignBrowse(resumableButton);
+
+    resumable.on('fileAdded', function (file, event) {
+
+        var template =
+            '<div data-uniqueid="' + file.uniqueIdentifier + '">' +
+            '<div class="fileName">' + file.fileName + ' (' + file.file.type + ')' + '</div>' +
+            '<div style="color:red;" class="large-6 right deleteFile" data-toggle="tooltip" title="Delete"><i class="fa fa-times"></i></div>'+
+            '<div class="progress large-6">' +
+            '<span class="meter" style="width:0%;"></span>' +
+            '</div>' +
+            '</div>';
+
+        results.append(template);
     });
+
+    $(document).on('click', '.deleteFile', function () {
+        var self = $(this),
+              parent = self.parent(),
+              identifier = parent.data('uniqueid'),
+              file = resumable.getFromUniqueIdentifier(identifier);
+
+        resumable.removeFile(file);
+        parent.remove();
+    });
+
+
+    $("#send").click(function(){
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                  param: { "payment_id": regist_no, "payment_nominal": nominal },
+                  url: send_payment_url
+              },
+            success: function(respons){
+                if (results.children().length > 0) {
+                      resumable.upload();
+                  } else {
+                      // nothingToUpload.show();
+                  }
+
+                  resumable.on('fileProgress', function (file) {
+                      //Action
+                  });
+
+                  resumable.on('uploadStart', function () {
+                      // action
+                  });
+
+                  resumable.on('complete', function () {
+                      // Action
+                  });
+
+                  resumable.on('fileError', function(file, message){
+                    //Action
+                  });
+          }});
+
+    });
+
 
     //# sourceURL=/view/payment/payment.js
 </script>
