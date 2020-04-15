@@ -67,9 +67,12 @@ $route['setting'] = 'User/setting';
 // page
 $route['visitor'] = 'User/index';
 $route['courselist'] = 'User/courseList';
-$route['coursedetail'] = 'User/courseDetail';
+$route['coursedetail/(:any)'] = 'User/courseDetail/$1';
 $route['payment'] = 'User/payment';
+$route['paymentconfirmation/(:any)'] = 'User/paymentConfirmation/$1';
+$route['coursedetail/registcourse/(:any)'] = 'User/registCourse/$1';
 $route['mycourse'] = 'User/myCourse';
+$route['invoice'] = 'User/invoice';
 
 // registered entity
 $route['home'] = 'admin/HomeController/index';

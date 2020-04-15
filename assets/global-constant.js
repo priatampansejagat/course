@@ -17,13 +17,12 @@ add_user_url = "regissubmit";
 login_user_url = "login";
 
 // course
+send_payment_url = "payconfirm";
 read_course_url = "course";
 create_course_url = "createcourse";
 
 // multi-data
 get_datatable_url = "datatable";
-
-
 
 /* DICTIONARY */
 course_dic = "course";
