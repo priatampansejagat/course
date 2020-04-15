@@ -136,15 +136,27 @@ class User extends CI_Controller
         $this->load->view('visitor/templates/footer');
     }
 
-    public function courseDetail()
+    public function courseDetail($param)
     {
-        $data['title'] = 'Course Detail';
-        $data['page_title'] = 'Course Detail';
+        $option = array(
+            'type' => 'post',
+            'url_api' => URL_API_DATATABLE,
+            'data' => json_encode((object) ["ihateapple" => "single_course", "id" => $param]),
+        );
 
-        $this->load->view('visitor/templates/header', $data);
-        $this->load->view('visitor/templates/topbar', $data);
-        $this->load->view('visitor/course/detail', $data);
-        $this->load->view('visitor/templates/footer');
+        $this->curl_api->set_option($option);
+        $data_object = $this->curl_api->exec();
+
+        if (isset($data_object->data->id)) {
+            $data['title'] = 'Course Detail';
+            $data['page_title'] = 'Course Detail';
+            $data['data_course'] = $data_object;
+
+            $this->load->view('visitor/templates/header', $data);
+            $this->load->view('visitor/templates/topbar', $data);
+            $this->load->view('visitor/course/detail', $data);
+            $this->load->view('visitor/templates/footer');
+        }
     }
 
     public function payment()
@@ -154,8 +166,51 @@ class User extends CI_Controller
 
         $this->load->view('visitor/templates/header', $data);
         $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/payment/list', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function paymentConfirmation($id)
+    {
+        $data['title'] = 'Payment Confirmation';
+        $data['page_title'] = 'Payment Confirmation';
+        $data['id_payment'] = $id;
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
         $this->load->view('visitor/payment/index', $data);
         $this->load->view('visitor/templates/footer');
+    }
+
+    public function registCourse($course_id)
+    {
+        $option = array(
+            'type' => 'post',
+            'url_api' => URL_API_REGISTCOURSE,
+            'data' => json_encode((object) ["user_id" => $_SESSION["id"], "course_id" => $course_id]),
+        );
+
+        $this->curl_api->set_option($option);
+        $data_object = $this->curl_api->exec();
+
+        if ($data_object->status == 200) {
+            $data['title'] = 'Invoice';
+            $data['page_title'] = 'Invoice';
+            $data['data_payment'] = $data_object;
+
+            $this->load->view('visitor/templates/header', $data);
+            $this->load->view('visitor/templates/topbar', $data);
+            $this->load->view('visitor/payment/invoice', $data);
+            $this->load->view('visitor/templates/footer');
+        } else {
+            $data['title'] = 'Payment Confirmation';
+            $data['page_title'] = 'Payment Confirmation';
+
+            $this->load->view('visitor/templates/header', $data);
+            $this->load->view('visitor/templates/topbar', $data);
+            $this->load->view('visitor/payment/list', $data);
+            $this->load->view('visitor/templates/footer');
+        }
     }
 
     public function myCourse()
@@ -166,6 +221,17 @@ class User extends CI_Controller
         $this->load->view('visitor/templates/header', $data);
         $this->load->view('visitor/templates/topbar', $data);
         $this->load->view('visitor/course/myCourse', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function invoice()
+    {
+        $data['title'] = 'Invoice';
+        $data['page_title'] = 'Invoice';
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/payment/invoice', $data);
         $this->load->view('visitor/templates/footer');
     }
 }

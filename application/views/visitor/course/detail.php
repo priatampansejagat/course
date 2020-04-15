@@ -14,7 +14,7 @@
             <ol class="breadcrumb">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="contact.html">Course</a></li>
-                <li class="active">Swift Programming for Beginners</li>
+                <li class="active"><?= $data_course->data->title ?></li>
             </ol>
         </div>
     </nav>
@@ -24,7 +24,7 @@
             <!-- content -->
             <article id="content" class="col-xs-12 col-md-9">
                 <!-- content h1 -->
-                <h1 class="content-h1 fw-semi">Swift Programming for Beginners</h1>
+                <h1 class="content-h1 fw-semi"><?= $data_course->data->title ?></h1>
                 <!-- view header -->
                 <header class="view-header row">
                     <div class="col-xs-12 col-sm-9 d-flex">
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="description-wrap">
                                     <h2 class="author-heading"><a href="#">Instructor</a></h2>
-                                    <h3 class="author-heading-subtitle text-uppercase">lospher cooke</h3>
+                                    <h3 class="author-heading-subtitle text-uppercase"><?= $data_course->data->mentor->fullname ?></h3>
                                 </div>
                             </div>
                         </div>
@@ -53,33 +53,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-3">
-                        <div class="rating-holder">
-                            <ul class="star-rating list-unstyled justify-end">
-                                <li><span class="fas fa-star"><span class="sr-only">star</span></span></li>
-                                <li><span class="fas fa-star"><span class="sr-only">star</span></span></li>
-                                <li><span class="fas fa-star"><span class="sr-only">star</span></span></li>
-                                <li><span class="fas fa-star"><span class="sr-only">star</span></span></li>
-                                <li><span class="fas fa-star"><span class="sr-only">star</span></span></li>
-                            </ul>
-                            <strong class="element-block text-right subtitle fw-normal">(2 Reviews)</strong>
-                        </div>
-                    </div>
                 </header>
-                <div class="aligncenter content-aligncenter">
-                    <img src="http://placehold.it/828x430" alt="image description">
-                </div>
                 <h3 class="content-h3">Course Description</h3>
-                <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
-                <p>Encyclopaedia galactica Orion's sword explorations vanquish the impossible, astonishment radio telescope with pretty stories for which there's little good evidence light years muse about, great turbulent clouds billions upon billions the sky calls to us realm of the galaxies laws of physics globular star cluster. Quasar the only home we've ever known extraordi claims require extraordinary evidence billions upon billions Drake Equation.</p>
-                <h3 class="content-h3">What you will learn</h3>
-                <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
-                <ul class="listDefault list-unstyled">
-                    <li>Thomas Edison may have been behind the invention.</li>
-                    <li>Edison worked alongside partners, both financial and commercial, to get his best inventions off the ground,</li>
-                    <li>Battling challenging cost targets and the need to build.</li>
-                </ul>
-                <p>Quasar the only home we've ever known extraordinary claims require extraordinary evidence billions billions Drake Eqa tion. Stirred by starlight! At the edge of forever. Rich in mystery Sea of Tranquility. Are creatures of the cosmos descend from astronomers. Trillion and billions upon billions upon billions upon billions upon billions. upon billions upon billions!</p>
+                <p><?= $data_course->data->description ?></p>
                 <h2>Carriculam</h2>
                 <!-- sectionRow -->
                 <section class="sectionRow">
@@ -266,19 +242,18 @@
                     <header class="widgetHead text-center bg-theme">
                         <h3 class="text-uppercase">Take This Course</h3>
                     </header>
-                    <strong class="price element-block font-lato" data-label="price:">Idr 390.000</strong>
+                    <label for="price">Price:</label>
+                    <strong class="price element-block font-lato" id="price"><?= rupiah($data_course->data->price, "Idr") ?></strong>
                     <ul class="list-unstyled font-lato">
-                        <li><i class="far fa-user icn no-shrink"></i> 199 Students</li>
                         <li><i class="far fa-clock icn no-shrink"></i> Duration: 30 days</li>
                         <li><i class="fas fa-bullhorn icn no-shrink"></i> Lectures: 10</li>
-                        <li><i class="far fa-play-circle icn no-shrink"></i> Video: 12 hours</li>
                         <li><i class="far fa-address-card icn no-shrink"></i> Certificate of Completion</li>
                     </ul>
                 </section>
                 <!-- button register -->
                 <section class="widget">
                     <div class="btns-wrap">
-                        <a href="register" class="btn btn-warning btn-theme text-uppercase" style="width: 100%; color: black; font-weight: bold">register Now</a>
+                        <a href="registcourse/<?= $data_course->data->id ?>" class="btn btn-warning btn-theme text-uppercase" style="width: 100%; color: black; font-weight: bold">register Now</a>
                     </div>
                 </section>
                 <!-- widget intro -->

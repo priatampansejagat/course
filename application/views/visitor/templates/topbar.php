@@ -1,28 +1,32 @@
 <!-- main container of all the page elements -->
 <div id="wrapper">
     <!-- header of the page -->
-    <?php if (strcasecmp($title, 'home')  == 0) { ?>
+    <?php if (strcasecmp($title, 'home')  == 0) {
+        $logo = "logo-research-academy.png";
+    ?>
         <header id="page-header" class="page-header-stick">
-        <?php } else { ?>
+        <?php } else {
+        $logo = "logo-research-academy-dark.png"
+        ?>
             <header id="page-header">
             <?php } ?>
             <!-- header holder -->
-            <div class="header-holder">
+            <div style="header-holder">
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-6 col-sm-3">
                             <!-- logo -->
                             <div class="logo">
                                 <a href="visitor">
-                                    <img class="hidden-xs" src="<?= base_url(); ?>assets/visitor/images/logo.png" alt="studylms">
-                                    <img class="hidden-sm hidden-md hidden-lg" src="<?= base_url(); ?>assets/visitor/images/logo-dark.png" alt="studylms">
+                                    <img class="hidden-xs" src="<?= base_url(); ?>assets/visitor/images/<?= $logo ?>" style="width: 70%" alt="studylms">
+                                    <img class="hidden-sm hidden-md hidden-lg" src="<?= base_url(); ?>assets/visitor/images/logo-research-academy-dark.png" style="width: 50%" alt="studylms">
                                 </a>
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-9 static-block">
                             <!-- nav -->
                             <nav id="nav" class="navbar navbar-default">
-                                <div class="navbar-header">
+                                <div class="navbar-header" style="padding-top: 15px">
                                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                         <span class="sr-only">Toggle navigation</span>
                                         <span class="icon-bar"></span>
@@ -31,27 +35,27 @@
                                     </button>
                                 </div>
                                 <!-- navbar collapse -->
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-top: 35px">
                                     <!-- main navigation -->
                                     <ul class="nav navbar-nav navbar-right main-navigation text-uppercase font-lato">
                                         <li>
-                                            <a href="visitor">home</a>
+                                            <a href="<?= base_url('visitor') ?>">home</a>
                                         </li>
                                         <li>
-                                            <a href="courselist">course list</a>
+                                            <a href="<?= base_url('courselist') ?>">course list</a>
                                         </li>
                                         <li>
-                                            <a href="mycourse">my course</a>
+                                            <a href="<?= base_url('mycourse') ?>">my course</a>
                                         </li>
                                         <li>
-                                            <a href="payment">Payment Confirmation</a>
+                                            <a href="<?= base_url('payment') ?>">Payment Confirmation</a>
                                         </li>
                                         <?php if ($this->session->userdata('id')) { ?>
                                             <li class="dropdown">
                                                 <a href="#" class="btn btn-warning btn-theme text-uppercase dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 10px 20px; border-radius: 25px"><?= $this->session->userdata('username') ?></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="setting">Settings</a></li>
-                                                    <li><a href="logout">Logout</a></li>
+                                                    <li><a href="<?= base_url('setting') ?>">Settings</a></li>
+                                                    <li><a href="<?= base_url('logout') ?>">Logout</a></li>
                                                 </ul>
                                             </li>
                                         <?php } else { ?>

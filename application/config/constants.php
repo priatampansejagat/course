@@ -86,6 +86,8 @@ defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest auto
 
 define('BASE_URL_API', 'http://temporaryapi.rumahpeneleh.or.id/');
 define('URL_API_LOGIN', 'login');
+define('URL_API_DATATABLE', 'datatable');
+define('URL_API_REGISTCOURSE', 'regiscourse');
 
 define('AS_MENTOR', 'd730bb9677663feb30d4c4e9d273c7c9c713e4d5b8eebf9218a2f587dd7c5d9b');
 define('AS_ADMIN', 'fdd38312da2d5ddc4b90a49aaa2bcf52d586572db5ce37cb2630799476aa13e4');
