@@ -6,7 +6,13 @@
       $this->load->helper(array('form', 'url'));
 
       $this->load->view('admin/layouts/header');
+    ?>
 
+    <link href="<?php echo base_url();?>assets/admin/assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<?php echo base_url();?>assets/admin/assets/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url();?>assets/admin/assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <?php   
       $this->load->view('admin/layouts/csshandler');
     ?>
 
@@ -206,24 +212,22 @@
                             
                           </div>
                           <div class="col-md-6">
-                            <h4> Upload File (MP4) </h4>
                              
                             <div class="row form-row">
                               <div class="col-md-4">
                                 <!-- <input type='file' accept=".mp4" id='chapter_video' name="chapter_video" /> -->
-                                <button class="btn btn-warning btn-cons" id='chapter_video' name="chapter_video">Add File</button> 
+                                
                                 
                               </div>
                               <div class="col-md-8">
-                                <div id="results" class="panel"></div>
+                                
                               </div>  
                              
                             </div>
 
                             <div class="row form-row">
                               <div class="col-md-12">
-                                <div class="alert-box alert" id="nothingToUpload" data-nothingToUpload>Nothing To Upload, Please Add The Video</div>
-                                <div class="alert-box secondary"></div>
+                                
                               </div>  
                                 
                             </div>  
@@ -254,6 +258,46 @@
 
 
 
+            <div class="row-fluid" id="formaddcourse">
+              <div class="span12">
+                <div class="grid simple ">
+                  <div class="grid-title">
+                    <h4>Capters</h4>
+                    <div class="tools">
+                      <a href="javascript:;" class="collapse"></a>
+                    </div>
+
+                  </div>
+                  <div class="grid-body ">
+                    
+                    <div class="alert alert-info" id="alertSuccess_video">
+                      <button class="close" onclick="alertSuccessHide_video()"></button>
+                      <p id="message_video"></p> </div>
+                    <div class="alert alert-danger" id="alertFailed_video">
+                      <button class="close" onclick="alertFailedHide_video()"></button>
+                      <p id="message_video"></p> </div>  
+                    
+
+                    <table class="table table-striped" id="example2">
+                      <thead>
+                        <tr>
+                          <th style="width: 50px;">Seq.</th>
+                          <th>Title</th>
+                          <th>Description</th>
+                          <th>Video</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>  
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
           </div>
         </div>
         <!-- END PAGE CONTAINER -->
@@ -266,59 +310,30 @@
 
     <script src="<?php echo base_url();?>assets/resumable/resumable.js" type="text/javascript"></script>
 
+    <script src="<?php echo base_url();?>assets/admin/assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url();?>assets/admin/assets/plugins/jquery-datatable/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url();?>assets/admin/assets/plugins/jquery-datatable/extra/js/dataTables.tableTools.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/admin/assets/plugins/datatables-responsive/js/datatables.responsive.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/admin/assets/plugins/datatables-responsive/js/lodash.min.js"></script>
+
+    <script src="<?php echo base_url();?>assets/admin/assets/js/datatables.js" type="text/javascript"></script>
+
+
     <script type="text/javascript">
 
       //START OF INITIATING VARIABLE=============================================================
 
       //variable global
       var course_id       = "<?php echo($course['info']['id']); ?>";
+      var arrChapter      = [];
+      var resumableButton = [];
+      var uploadButton = [];
+      var resumable       = [];
+      var results         = [];
 
-      //initiate variable chapter
-      var browseButton = $('#chapter_video'),
-          nothingToUpload = $('[data-nothingToUpload]'),
-          results = $('#results'),
-          r = new Resumable({
-              target: base_url + post_url + create_chapter_url_vid,
-              query: {},
-              maxChunkRetries: 5,
-              maxFiles: 3,
-              prioritizeFirstAndLastChunk: true,
-              simultaneousUploads: 4,
-              chunkSize: 1 * 1024 * 1024
-          });
-
-      r.assignBrowse(browseButton);
-      // r.assignDrop(draggable);
-
-      r.on('fileAdded', function (file, event) {
-              var template =
-                  '<div data-uniqueid="' + file.uniqueIdentifier + '">' +
-                  '<div class="fileName">' + file.fileName + ' (' + file.file.type + ')' + '</div>' +
-                  '<div class="large-6 right deleteFile" data-toggle="tooltip" title="Delete">X</div>'+
-                  '<div class="progress large-6">' +
-                  '<span class="meter" style="width:0%;"></span>' +
-                  '</div>' +
-                  '</div>';
-
-              results.append(template);
-              nothingToUpload.hide();
-          });
-
-      $(document).on('click', '.deleteFile', function () {
-              var self = $(this),
-                  parent = self.parent(),
-                  identifier = parent.data('uniqueid'),
-                  file = r.getFromUniqueIdentifier(identifier);
-
-              r.removeFile(file);
-              parent.remove();
-              nothingToUpload.show();
-          });
 
 
       //END OF INITIATING VARIABLE=============================================================
-
-
 
       $("#alertFailed").hide();
       $("#alertSuccess").hide();
@@ -358,16 +373,139 @@
         }
       }
 
-      function alertFailedHide_chapter(){
-        $("#alertFailed_chapter").hide();
+      function alertFailedHide_video(){
+        $("#alertFailed_video").hide();
       }
+
+      $("#alertFailed_video").hide();
+      $("#alertSuccess_video").hide();
+      function alertSuccess_video() {
+        if ($("#alertSuccess_video").is(":hidden")) {
+          $("#alertSuccess_video").show();
+        }
+      }
+      function alertSuccessHide_video(){
+        $("#alertSuccess_video").hide();
+      }
+      
+      function alertFailed_video() {
+        if ($("#alertFailed_video").is(":hidden")) {
+          $("#alertFailed_video").show();
+        }
+      }
+
+      function alertFailedHide_video(){
+        $("#alertFailed_video").hide();
+      }
+
+      // 
+      // datatable
+      function dataTable_refresh(){
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                  param: { "ihateapple": course_chapter_dic, "course_id": course_id },
+                  url: get_datatable_url
+              },
+            success: function(respons){
+              // alert(respons);
+              var jsonArr = JSON.parse(respons);
+              arrChapter = jsonArr;
+              $("#example2").DataTable().fnClearTable();
+              for (var i = 0; i < jsonArr['data'].length ; i++) {
+                // console.log('datatable =' + jsonArr['data'][i]['id']);
+                var chapter_id = jsonArr['data'][i]['id'];
+                var data = [
+                          '',
+                          jsonArr['data'][i]['sequence'],
+                          jsonArr['data'][i]['tittle'],
+                          jsonArr['data'][i]['description'],
+                          '<button class="btn btn-warning btn-xs btn-mini" id="chapter_video_select_'+ chapter_id +'" name="chapter_video_select_'+ chapter_id +'">Add Video</button> '+
+                          '<button class="btn btn-danger btn-xs btn-mini" id="chapter_video_upload_'+ chapter_id +'" name="chapter_video_upload_'+ chapter_id +'">upload Video</button> '+
+                          '<div id="results_'+ chapter_id +'" class="panel"></div>',
+
+                          '<a onclick="delcourse(this)" class="btn btn-danger" id="'+ chapter_id +'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' 
+
+                ];
+                $("#example2").DataTable().fnAddData(data); 
+
+                // initiate resumable =================================================
+                initiateResumable(chapter_id);
+
+              } 
+
+          }});
+      }
+      dataTable_refresh();
+
+
+      function initiateResumable(chapter_id){
+
+        uploadButton[chapter_id] = $("#chapter_video_upload_"+ chapter_id );
+        uploadButton[chapter_id].hide();
+        uploadButton[chapter_id].click(function(){
+          uploadVideo(chapter_id);          
+        });
+
+        resumableButton [ chapter_id ]   = $("#chapter_video_select_"+ chapter_id );
+        results [ chapter_id ]     = $("#results_"+ chapter_id);
+
+        resumable [ chapter_id ] = new Resumable({
+            target: noncurl_api_url + create_chapter_url_vid,
+            maxChunkRetries: 5,
+            query:{
+                    chapter_id: chapter_id,
+                    course_id: course_id
+            },
+            maxFiles: 3,
+            prioritizeFirstAndLastChunk: true,
+            simultaneousUploads: 4,
+            chunkSize: 1 * 1024 * 1024
+        });
+
+        resumable [ chapter_id ].assignBrowse(resumableButton [ chapter_id ]);
+
+
+        resumable[chapter_id].on('fileAdded', function (file, event) {
+
+          uploadButton[chapter_id].show();
+
+                var template =
+                    '<div data-uniqueid="' + file.uniqueIdentifier + '">' +
+                    '<div class="fileName">' + file.fileName + ' (' + file.file.type + ')' + '</div>' +
+                    '<div style="color:red;" class="large-6 right deleteFile_'+chapter_id+'" data-toggle="tooltip" title="Delete"><i class="fa fa-times"></i></div>'+
+                    '<div class="progress large-6">' +
+                    '<span class="meter" style="width:0%;"></span>' +
+                    '</div>' +
+                    '</div>';
+
+                results[ chapter_id ].append(template);
+          });
+
+        $(document).on('click', '.deleteFile_'+chapter_id, function () {
+              var self = $(this),
+                  parent = self.parent(),
+                  identifier = parent.data('uniqueid'),
+                  file = resumable[chapter_id].getFromUniqueIdentifier(identifier);
+
+              resumable[chapter_id].removeFile(file);
+              parent.remove();
+              uploadButton[chapter_id].hide();
+          });
+      }
+
+
+
+
+      // onPage Execution
 
 
       $("#save_chapter").click(function(){
 
-         var  chapt_sequence        = $("#chapter_sequence").val(),
-              chapt_title           = $("#chapter_title").val(),
-              chapt_description     = $("#chapter_description").val();
+          var  chapt_sequence        = $("#chapter_sequence").val();
+          var  chapt_title           = $("#chapter_title").val();
+          var  chapt_description     = $("#chapter_description").val();
 
         // console.log(base_url + post_url);
         $.ajax({
@@ -378,59 +516,65 @@
                 param: {
                     "course_id": course_id,
                     "sequence": chapt_sequence,
-                    "tittle": chapter_title,
+                    "title": chapt_title,
                     "description": chapt_description
                 },
                 url: create_chapter_url
             },
           
           success: function(respons){
-            // console.log(respons);
+            console.log(respons);
             var jsonArr = JSON.parse(respons);
             $('#message_chapter').text(jsonArr['message']);
             if (jsonArr['proc'] == 'true') {
-              uploadVideo(jsonArr['data']['id']);
+              // uploadVideo(jsonArr['data']['id']);
+              alertSuccess_chapter();
             }else{
               alertFailed_chapter();
             }
             
-        }});
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) { 
+              // alert("Status: " + textStatus); 
+              alert("Error: " + errorThrown); 
+          } 
+        });
       });
 
 
 
 
-      function uploadVideo (chapt_id) {
-
-          if (results.children().length > 0) {
-              r.upload();
+      function uploadVideo (chapter_id) {
+          
+          if (results[chapter_id].children().length > 0) {
+              resumable[chapter_id].upload();
           } else {
-              nothingToUpload.show();
+              // nothingToUpload.show();
           }
 
-          r.on('fileProgress', function (file) {
+          resumable[chapter_id].on('fileProgress', function (file) {
               var progress = Math.floor(file.progress() * 100);
-              $('[data-uniqueId=' + file.uniqueIdentifier + ']').find('.meter').css('width', progress + '%');
+              // $('[data-uniqueId=' + file.uniqueIdentifier + ']').find('.meter').css('width', progress + '%');
               $('[data-uniqueId=' + file.uniqueIdentifier + ']').find('.meter').html('&nbsp;' + progress + '%');
           });
 
-          r.on('fileSuccess', function (file, message) {
+          resumable[chapter_id].on('fileSuccess', function (file, message) {
               $('[data-uniqueId=' + file.uniqueIdentifier + ']').find('.progress').addClass('success');
           });
 
 
-          r.on('uploadStart', function () {
+          resumable[chapter_id].on('uploadStart', function () {
               // $('.alert-box').text('Uploading....');
           });
 
-          r.on('complete', function () {
+          resumable[chapter_id].on('complete', function () {
               $('#message_chapter').text('Upload Complete');
-              alertSuccess_chapter();
+              alertSuccess_video();
           });
 
-          r.on('fileError', function(file, message){
+          resumable[chapter_id].on('fileError', function(file, message){
             $('#message_chapter').text('Upload Failed');
-            alertFailed_chapter();
+            alertFailed_video();
           });
 
       }

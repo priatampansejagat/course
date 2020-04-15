@@ -29,4 +29,10 @@ get_datatable_url = "datatable";
 
 /* DICTIONARY */
 course_dic = "course";
+course_chapter_dic = "course_chapter";
 mentor_dic = "mentor";
+
+
+/*NON CURL*/
+noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
+
