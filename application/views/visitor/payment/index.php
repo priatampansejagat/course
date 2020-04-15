@@ -50,7 +50,6 @@
                                 <label for="file_payment">Proof of Payment</label>
                             </div>
                             <div class="col-xs-12 col-md-9">
-                                <!-- <input type="file" id="file_payment" name="file_payment" class="form-control element-block" placeholder="Username or email address *"> -->
                                 <a href="#" id="choose_file" class="btn btn-warning">Choose File</a>
                                 <div id="results" class="panel"></div>
                             </div>
@@ -116,7 +115,6 @@
         parent.remove();
     });
 
-
     $("#send").click(function() {
         var nominal = $('#nominal').val();
         $.ajax({
@@ -154,9 +152,7 @@
                 });
             }
         });
-
     });
-
 
     //# sourceURL=/view/payment/payment.js
 </script>
