@@ -528,6 +528,7 @@
             $('#message_chapter').text(jsonArr['message']);
             if (jsonArr['proc'] == 'true') {
               // uploadVideo(jsonArr['data']['id']);
+              dataTable_refresh();
               alertSuccess_chapter();
             }else{
               alertFailed_chapter();
@@ -568,12 +569,12 @@
           });
 
           resumable[chapter_id].on('complete', function () {
-              $('#message_chapter').text('Upload Complete');
+              $('#message_video').text('Upload Complete');
               alertSuccess_video();
           });
 
           resumable[chapter_id].on('fileError', function(file, message){
-            $('#message_chapter').text('Upload Failed');
+            $('#message_video').text('Upload Failed');
             alertFailed_video();
           });
 
