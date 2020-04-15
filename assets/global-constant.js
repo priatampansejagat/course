@@ -20,10 +20,18 @@ login_user_url = "login";
 send_payment_url = "payconfirm";
 read_course_url = "course";
 create_course_url = "createcourse";
+create_chapter_url = "createchapter";
+create_chapter_url_vid = "createchapter_vid";
 
 // multi-data
 get_datatable_url = "datatable";
 
 /* DICTIONARY */
 course_dic = "course";
+course_chapter_dic = "course_chapter";
 mentor_dic = "mentor";
+
+
+/*NON CURL*/
+noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
+

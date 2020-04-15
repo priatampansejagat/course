@@ -7,7 +7,7 @@
 
       $this->load->view('admin/layouts/header');
     ?>
-    
+    <link href="<?php echo base_url();?>assets/admin/assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url();?>assets/admin/assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo base_url();?>assets/admin/assets/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url();?>assets/admin/assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
@@ -74,7 +74,9 @@
                               <div class="row form-row">
                                 
                                 <div class="col-md-12">
+
                                   <textarea id="description" name="description" placeholder="Enter description ..." class="form-control" rows="5"></textarea>
+                                  
                                 </div>
                                
                               </div>
@@ -199,6 +201,8 @@
     <script src="<?php echo base_url();?>assets/admin/assets/plugins/jquery-datatable/extra/js/dataTables.tableTools.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/admin/assets/plugins/datatables-responsive/js/datatables.responsive.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/admin/assets/plugins/datatables-responsive/js/lodash.min.js"></script>
+    <script src="<?php echo base_url();?>assets/admin/assets/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+    <script src="<?php echo base_url();?>assets/admin/assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS INIT -->
     <script src="<?php echo base_url();?>assets/admin/assets/js/datatables.js" type="text/javascript"></script>
     <!-- END JAVASCRIPTS -->
@@ -328,15 +332,25 @@
                           jsonArr['data'][i]['title'],
                           jsonArr['data'][i]['mentor']['fullname'],
                           jsonArr['data'][i]['price'],
-                          '<a onclick="delmentor('+jsonArr['data'][i]['id']+')" class="btn btn-danger" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a>'
+                          '<a onclick="delcourse(this)" class="btn btn-danger" id="'+jsonArr['data'][i]['id']+'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' +
+                          '<a class="btn btn-primary" href="course/'+jsonArr['data'][i]['id']+'" data-toggle="tooltip" title="Detail & Setting" ><i class="fa fa-cogs"></i></a> '+
+                          '<a class="btn btn-success" href="course/participant/'+jsonArr['data'][i]['id']+'" data-toggle="tooltip" title="Participant" ><i class="fa fa-users"></i></a>'
 
                 ];
                 $("#example2").DataTable().fnAddData(data); 
+
               } 
 
           }});
       }
       dataTable_refresh();
+
+
+      function delcourse(obj){
+        alert(obj.id);
+      }
+
+
 
     </script>
 

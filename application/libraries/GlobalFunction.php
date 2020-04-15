@@ -71,6 +71,12 @@ class GlobalFunction{
 		}
 	}
 
+	public function changeto_HTMLcharref($str){
+		$str = str_replace('"', ' &quot; ', $str);
+
+		return $str;
+	}
+
 
 	public function getBasicData(){
 

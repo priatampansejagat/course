@@ -10,6 +10,19 @@ class IndexApi extends CI_Controller
         $this->load->library('session');
     }
 
+    function _log($str) {
+
+        // log to the output
+        $log_str = date('d.m.Y').": {$str}\r\n";
+        echo $log_str;
+
+        // log to file
+        if (($fp = fopen('./_log.txt', 'a+')) !== false) {
+            fputs($fp, $log_str);
+            fclose($fp);
+        }
+    }
+
     public function post_file()
     {
         $filename = $_FILES['file']['name'];
@@ -21,6 +34,8 @@ class IndexApi extends CI_Controller
             "x-auth-userid: " . $this->session->userdata('id'),
             "Content-Type:multipart/form-data"
         );
+
+        $this->_log('get_file_url : '.$target_url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $target_url);
