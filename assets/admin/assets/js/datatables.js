@@ -298,7 +298,7 @@ $(document).ready(function() {
             /* Open this row */
             this.removeClass = "fa fa-minus-circle";
             this.addClass = "fa fa-plus-circle";  
-            oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr), 'details' );
+            // oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr), 'details' );
         }
     });
 	

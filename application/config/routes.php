@@ -57,6 +57,27 @@ $route['default_controller'] = 'User';
 
 
 $route['contohpath'] = 'registered/Basecontroller/index';
-$route['register'] = 'visitor/Basecontroller/register';
-$route['login'] = 'visitor/Basecontroller/auth';
-$route['visitor'] = 'visitor/Basecontroller/index';
+
+// auth
+$route['register'] = 'User/register';
+$route['login'] = 'User/auth';
+$route['logout'] = 'User/logout';
+$route['setting'] = 'User/setting';
+
+// page
+$route['visitor'] = 'User/index';
+$route['courselist'] = 'User/courseList';
+$route['coursedetail/(:any)'] = 'User/courseDetail/$1';
+$route['payment'] = 'User/payment';
+$route['paymentconfirmation/(:any)'] = 'User/paymentConfirmation/$1';
+$route['coursedetail/registcourse/(:any)'] = 'User/registCourse/$1';
+$route['mycourse'] = 'User/myCourse';
+$route['invoice'] = 'User/invoice';
+
+// registered entity
+$route['home'] = 'admin/HomeController/index';
+$route['participant'] = 'admin/PesertaController/index';
+$route['course'] = 'admin/CourseController/index';
+$route['course/(:any)'] = 'admin/CourseController/courseBy_id/$1';
+$route['course/participant/(:any)'] = 'admin/CourseController/course_participant/$1';
+$route['mentor'] = 'admin/MentorController/index';
