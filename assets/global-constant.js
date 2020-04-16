@@ -18,10 +18,12 @@ login_user_url = "login";
 
 // course
 send_payment_url = "payconfirm";
+send_paymentfile_url = "payconfirm_file";
 read_course_url = "course";
 create_course_url = "createcourse";
 create_chapter_url = "createchapter";
 create_chapter_url_vid = "createchapter_vid";
+confirm_register_user = "confirm_register";
 
 // multi-data
 get_datatable_url = "datatable";
@@ -29,7 +31,9 @@ get_datatable_url = "datatable";
 /* DICTIONARY */
 course_dic = "course";
 course_chapter_dic = "course_chapter";
+course_member = "course_member";
 mentor_dic = "mentor";
+user_dic = "user";
 
 
 /*NON CURL*/

@@ -30,7 +30,7 @@
                             <th style="width: 35%">Payment Code</th>
                             <th style="width: 20%">Total</th>
                             <th style="width: 30%">Status</th>
-                            <!-- <th style="width: 25%"></th> -->
+                            <th style="width: 25%"></th>
                         </tr>
                     </thead>
                 </table>
@@ -99,12 +99,12 @@
                 {
                     "data": "status"
                 },
-                // {
-                //     "data": {
-                //         status: "status",
-                //         id: "id"
-                //     }
-                // },
+                {
+                    "data": {
+                        status: "status",
+                        id: "id"
+                    }
+                },
             ],
             columnDefs: [{
                     targets: 1,
@@ -123,32 +123,35 @@
                         if (cellData == 1) {
                             var html = '<p class="text-success">Waiting Confirmation from System</p>';
                         } else if (cellData == 2) {
-                            var html = '<p class="text-success">Success</p>';
+                            var html = '<p class="text-success">Payment Accepted</p>';
                         } else if (cellData == 3) {
-                            var html = '<p class="text-danger">Failed</p>';
+                            var html = '<p class="text-danger">Payment Failed</p>';
                         } else {
                             var html = '<p class="text-warning">Waiting for Confirmation</p>';
                         }
                         $(td).html(html);
                     }
                 },
-                // {
-                //     targets: 3,
-                //     searchable: false,
-                //     orderable: false,
-                //     createdCell: function(td, cellData, rowData, row, col) {
-                //         var id = cellData.id;
-                //         if (cellData.status == 1) {
-                //             console.log(typeof(cellData.id));
-                //             var html = '<a href="#" class="btn disabled" style="background-color: #b3b3b3; color:white; width: 200px;">Menunggu Konfirmasi Admin</a>';
-                //         } else {
-                //             var html = '<a href="<?= base_url("paymentconfirmation/") ?>' + cellData.id +
-                //                 '" class="btn btn-warning" style="width: 200px;">Send Payment Confirmation</a>';
-                //         }
-                //         $(td).addClass("text-center");
-                //         $(td).html(html);
-                //     }
-                // }
+                {
+                    targets: 3,
+                    searchable: false,
+                    orderable: false,
+                    createdCell: function(td, cellData, rowData, row, col) {
+                        var id = cellData.id;
+                        if (cellData.status == 1) {
+                            console.log(typeof(cellData.id));
+                            var html = '<a href="#" class="btn disabled" style="background-color: #b3b3b3; color:white; width: 200px;">Waiting for Amin Confirmation</a>';
+                        } else if (cellData.status == 2) {
+                            console.log(typeof(cellData.id));
+                            var html = '<a href="#" class="btn btn-success disabled">Payment Accepted</a>';
+                        } else {
+                            var html = '<a href="<?= base_url("paymentconfirmation/") ?>' + cellData.id +
+                                '" class="btn btn-warning" style="width: 200px;">Send Payment Confirmation</a>';
+                        }
+                        $(td).addClass("text-center");
+                        $(td).html(html);
+                    }
+                }
             ]
         });
     });
