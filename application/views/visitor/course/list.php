@@ -20,8 +20,9 @@
     <!-- upcoming events block -->
     <section class="upcoming-events-block container">
         <!-- upcoming events list -->
-        <ul class="list-unstyled upcoming-events-list course-list">
-        </ul>
+        <div class="list-unstyled upcoming-events-list course-list">
+        </div>
+        <hr>
         <nav aria-label="Page navigation">
             <!-- pagination -->
             <ul class="pagination">
@@ -49,21 +50,9 @@
                 var dataJson = JSON.parse(data);
                 var pageCount = dataJson.data.length / pageSize;
 
-                for (var i = 0; i < pageCount; i++) {
-                    $(".pagination").append('<li><a href="#">' + (i + 1) + '</a></li> ');
-                }
-                $(".pagination li").first().addClass("active");
-
-                showPage = function(page) {
-                    $(".line-content").hide();
-                    $(".line-content").each(function(n) {
-                        if (n >= pageSize * (page - 1) && n < pageSize * page)
-                            $(this).show();
-                    });
-                }
                 $.each(dataJson.data, function(key, value) {
                     var date_custom = new Date(Date.parse(value.start_date));
-                    course.append('<li>' +
+                    course.append('<li class="course-data">' +
                         '<div class="alignright">' +
                         '<a href="coursedetail/' + value.id + '" class="btn btn-warning text-uppercase">detail</a>' +
                         '</div>' +
@@ -79,6 +68,27 @@
                         '<address> by : ' + value.mentor.fullname + '</address>' +
                         '</div>' +
                         '</li>');
+                });
+
+                for (var i = 0; i < pageCount; i++) {
+                    $(".pagination").append('<li><a href="#">' + (i + 1) + '</a></li> ');
+                }
+                $(".pagination li").first().addClass("active");
+
+                showPage = function(page) {
+                    $(".course-data").hide();
+                    $(".course-data").each(function(n) {
+                        if (n >= pageSize * (page - 1) && n < pageSize * page)
+                            $(this).show();
+                    });
+                }
+
+                showPage(1);
+
+                $(".pagination li").click(function() {
+                    $(".pagination li").removeClass("active");
+                    $(this).addClass("active");
+                    showPage(parseInt($(this).text()))
                 });
             }
         });
