@@ -83,8 +83,8 @@ class CourseController extends CI_Controller
 			$data['course']['info']			= $this->BasicQuery->selectAll('course',$courseCond);
 			$data['course']['member'] 		= $this->BasicQuery->selectAllResult('course_member',$courseCond2);
 
-			echo(json_encode($data));
-			// $this->load->view('admin/course_detail',$data);
+			// echo(json_encode($data));
+			$this->load->view('admin/course_participant',$data);
 
 		}else{
 			show_404();
