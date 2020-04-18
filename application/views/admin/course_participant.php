@@ -72,7 +72,7 @@
             <div class="admin-bar" id="quick-access" style="display:">
               <div class="admin-bar-inner">
                 <div class="form-horizontal">
-                  <h4 class="">Do you want to confirm <span id="confirmInfo"></span></h4>
+                  <h4 class="">Do you want to <span id="actionInfo"></span> <span id="NameInfo"></span></h4>
                   <p id="selectedUser" hidden></p>
                 </div>
                 <button onclick="confirmClick(this)" class="btn btn-danger btn-cons btn-add" type="button" id="confirmClick" >Confirm</button>
@@ -123,14 +123,18 @@
             success: function(respons){
               // alert(respons);
               var jsonArr = JSON.parse(respons);
-
+              console.log(respons);
               $("#example2").DataTable().fnClearTable();
               for (var i = 0; i < jsonArr['data'].length ; i++) {
                 // console.log('datatable =' + jsonArr['data'][i]['id']);
                 var style='';
 
-                if (jsonArr['data'][i]['confirmed'] == 'confirmed') {
+                if (jsonArr['data'][i]['confirmed'] == 'registered') {
                   style="color:blue";
+                }else if (jsonArr['data'][i]['confirmed'] == 'paid') {
+                  style="color:yellow";
+                }else if (jsonArr['data'][i]['confirmed'] == 'confirmed') {
+                  style="color:green";
                 }else{
                   style="color:red";
                 }
@@ -140,6 +144,7 @@
                           jsonArr['data'][i]['detail']['fullname'],
                           '<div style="'+style+'">'+jsonArr['data'][i]['confirmed']+'</div>',
                           '<a onclick="confirm(this)" class="btn btn-danger" id="'+jsonArr['data'][i]['id']+'"  name="'+jsonArr['data'][i]['detail']['fullname']+'"data-toggle="tooltip" title="Confirm" ><i class="fa fa-check"></i></a> ' +
+                          '<a onclick="decline(this)" class="btn btn-white" id="'+jsonArr['data'][i]['id']+'"  name="'+jsonArr['data'][i]['detail']['fullname']+'"data-toggle="tooltip" title="Decline" ><i class="fa fa-times"></i></a> ' +
                           '<a class="btn btn-primary" href="<?php echo base_url(); ?>users/'+jsonArr['data'][i]['detail']['id']+'" data-toggle="tooltip" title="Detail" ><i class="fa fa-arrow-right"></i></a> '
 
                 ];
@@ -156,14 +161,24 @@
 
       function confirm(obj){
         $("#selectedUser").text(obj.id);
-        $("#confirmInfo").text(obj.name);
+        $("#actionInfo").text('confirm');
+        $("#NameInfo").text(obj.name);
+        $("#test2").click();
+      }
+
+      function decline(obj){
+        $("#selectedUser").text(obj.id);
+        $("#actionInfo").text('decline');
+        $("#NameInfo").text(obj.name);
         $("#test2").click();
       }
 
       function confirmClick(obj){
         // alert( $("#selectedUser").text());
         var course_member_id = $("#selectedUser").text();
-        $.ajax({
+
+        if ($("#actionInfo").text() == 'confirm') {
+          $.ajax({
             type: 'POST',
             url: base_url + post_url,
             data: {
@@ -176,8 +191,28 @@
               dataTable_refresh();
               $("#cancelConfirm").click();
           }});
+        }else{
+          $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                  param: { 
+                          "course_member_id": course_member_id
+                        },
+                  url: decline_register_user
+              },
+            success: function(respons){
+              dataTable_refresh();
+              $("#cancelConfirm").click();
+          }});
+        }
+        
 
       }
+
+
+      
+
 
     </script>
 

@@ -24,6 +24,7 @@ create_course_url = "createcourse";
 create_chapter_url = "createchapter";
 create_chapter_url_vid = "createchapter_vid";
 confirm_register_user = "confirm_register";
+decline_register_user = "decline_register";
 
 // multi-data
 get_datatable_url = "datatable";
