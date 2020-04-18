@@ -20,138 +20,94 @@
     <!-- upcoming events block -->
     <section class="upcoming-events-block container">
         <!-- upcoming events list -->
-        <ul class="list-unstyled upcoming-events-list">
-            <li>
-                <div class="alignright">
-                    <img src="http://placehold.it/220x130" alt="image description">
-                </div>
-                <div class="alignleft">
-                    <time datetime="2011-01-12" class="time text-uppercase">
-                        <strong class="date fw-normal">01</strong>
-                        <strong class="month fw-light font-lato">march</strong>
-                        <strong class="day fw-light font-lato">WEDNESDAY</strong>
-                    </time>
-                </div>
-                <div class="description-wrap">
-                    <h3 class="list-heading"><a href="event-sigle.html">WordPress Theme Development with Bootstrap</a></h3>
-                    <address><time datetime="2011-01-12">8:00 am - 5:00 pm</time> | Great Russell Street, WC1B 3DG UK</address>
-                    <a href="coursedetail" class="btn btn-warning text-uppercase">see class</a>
-                </div>
-            </li>
-            <li>
-                <div class="alignright">
-                    <img src="http://placehold.it/220x130" alt="image description">
-                </div>
-                <div class="alignleft">
-                    <time datetime="2011-01-12" class="time text-uppercase">
-                        <strong class="date fw-normal">05</strong>
-                        <strong class="month fw-light font-lato">march</strong>
-                        <strong class="day fw-light font-lato">SATURDAY</strong>
-                    </time>
-                </div>
-                <div class="description-wrap">
-                    <h3 class="list-heading"><a href="event-sigle.html">Build Apps with React Native</a></h3>
-                    <address><time datetime="2011-01-12">12:00 pm - 5:00 pm</time> | No1 Warehouse London, UK</address>
-                    <a href="coursedetail" class="btn btn-warning text-uppercase">see class</a>
-                </div>
-            </li>
-            <li>
-                <div class="alignright">
-                    <img src="http://placehold.it/220x130" alt="image description">
-                </div>
-                <div class="alignleft">
-                    <time datetime="2011-01-12" class="time text-uppercase">
-                        <strong class="date fw-normal">13</strong>
-                        <strong class="month fw-light font-lato">march</strong>
-                        <strong class="day fw-light font-lato">Thursday</strong>
-                    </time>
-                </div>
-                <div class="description-wrap">
-                    <h3 class="list-heading"><a href="event-sigle.html">Free Yoga &amp; Excercise Class at Every Morning</a></h3>
-                    <address><time datetime="2011-01-12">4:00 pm - 8:00 pm</time> | 21 New Globe Walk London, UK</address>
-                    <a href="coursedetail" class="btn btn-warning text-uppercase">see class</a>
-                </div>
-            </li>
-            <li>
-                <div class="alignright">
-                    <img src="http://placehold.it/220x130" alt="image description">
-                </div>
-                <div class="alignleft">
-                    <time datetime="2011-01-12" class="time text-uppercase">
-                        <strong class="date fw-normal">18</strong>
-                        <strong class="month fw-light font-lato">march</strong>
-                        <strong class="day fw-light font-lato">saturday</strong>
-                    </time>
-                </div>
-                <div class="description-wrap">
-                    <h3 class="list-heading"><a href="event-sigle.html">Free Yoga Class at Every Morning</a></h3>
-                    <address><time datetime="2011-01-12">8:00 am - 5:00 pm</time> | Great Russell Street, WC1B 3DG UK</address>
-                    <a href="coursedetail" class="btn btn-warning text-uppercase">see class</a>
-                </div>
-            </li>
-            <li>
-                <div class="alignright">
-                    <img src="http://placehold.it/224x149" alt="image description">
-                </div>
-                <div class="alignleft">
-                    <time datetime="2011-01-12" class="time text-uppercase">
-                        <strong class="date fw-normal">22</strong>
-                        <strong class="month fw-light font-lato">march</strong>
-                        <strong class="day fw-light font-lato">wednesday</strong>
-                    </time>
-                </div>
-                <div class="description-wrap">
-                    <h3 class="list-heading"><a href="event-sigle.html">Learn Network Webinar for Music Teachers</a></h3>
-                    <address><time datetime="2011-01-12">12:00 pm - 5:00 pm</time> | No1 Warehouse London, UK</address>
-                    <a href="coursedetail" class="btn btn-warning text-uppercase">see class</a>
-                </div>
-            </li>
-            <li>
-                <div class="alignright">
-                    <img src="http://placehold.it/220x130" alt="image description">
-                </div>
-                <div class="alignleft">
-                    <time datetime="2011-01-12" class="time text-uppercase">
-                        <strong class="date fw-normal">02</strong>
-                        <strong class="month fw-light font-lato">april</strong>
-                        <strong class="day fw-light font-lato">tuesday</strong>
-                    </time>
-                </div>
-                <div class="description-wrap">
-                    <h3 class="list-heading"><a href="event-sigle.html">Digital Marketing Briefing: Viyalosla 2017</a></h3>
-                    <address><time datetime="2011-01-12">4:00 pm - 8:00 pm</time> | 21 New Globe Walk London, UK</address>
-                    <a href="coursedetail" class="btn btn-warning text-uppercase">see class</a>
-                </div>
-            </li>
-            <li>
-                <div class="alignright">
-                    <img src="http://placehold.it/220x130" alt="image description">
-                </div>
-                <div class="alignleft">
-                    <time datetime="2011-01-12" class="time text-uppercase">
-                        <strong class="date fw-normal">13</strong>
-                        <strong class="month fw-light font-lato">april</strong>
-                        <strong class="day fw-light font-lato">thursday</strong>
-                    </time>
-                </div>
-                <div class="description-wrap">
-                    <h3 class="list-heading"><a href="#">Educational School Technology</a></h3>
-                    <address><time datetime="2011-01-12">12:00 pm - 5:00 pm</time> | No1 Warehouse London, UK</address>
-                    <a href="coursedetail" class="btn btn-warning text-uppercase">see class</a>
-                </div>
-            </li>
+        <ul class="list-unstyled upcoming-events-list myCourse">
         </ul>
         <nav aria-label="Page navigation">
             <!-- pagination -->
             <ul class="pagination">
-                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">2</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">›</span>
-                    </a>
-                </li>
             </ul>
         </nav>
     </section>
 </main>
+
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                param: {
+                    "ihateapple": "mycourse",
+                    "user_id": "<?= $this->session->userdata["id"] ?>"
+                },
+
+                url: get_datatable_url
+            },
+            success: function(data) {
+                var pageSize = 3;
+                var course = $('.myCourse');
+                var dataJson = JSON.parse(data);
+                var pageCount = dataJson.data.length / pageSize;
+
+                $.each(dataJson.data, function(key, value) {
+                    var date_custom = new Date(Date.parse(value.course_detail.start_date));
+                    course.append('<li class="course-data">' +
+                        '<div class="alignright">' +
+                        '<a href="classdetail/' + value.course_detail.id + '" class="btn btn-warning text-uppercase">See Class</a>' +
+                        '</div>' +
+                        '<div class="alignleft">' +
+                        '<time datetime="2011-01-12" class="time text-uppercase">' +
+                        '<strong class="date fw-normal">' + (date_custom.getDate() < 10 ? '0' + date_custom.getDate() : date_custom.getDate()) + '</strong>' +
+                        '<strong class="month fw-light font-lato">' + month(date_custom.getMonth()) + '</strong>' +
+                        '<strong class="day fw-light font-lato">' + (date_custom.getFullYear()) + '</strong>' +
+                        '</time>' +
+                        '</div>' +
+                        '<div class="description-wrap">' +
+                        '<h3 class="list-heading">' + value.course_detail.title + '</h3>' +
+                        '<address> by : ' + value.mentor.fullname + '</address>' +
+                        '</div>' +
+                        '</li>');
+                });
+
+                for (var i = 0; i < pageCount; i++) {
+                    $(".pagination").append('<li><a href="#">' + (i + 1) + '</a></li> ');
+                }
+                $(".pagination li").first().addClass("active");
+
+                showPage = function(page) {
+                    $(".course-data").hide();
+                    $(".course-data").each(function(n) {
+                        if (n >= pageSize * (page - 1) && n < pageSize * page)
+                            $(this).show();
+                    });
+                }
+
+                showPage(1);
+
+                $(".pagination li").click(function() {
+                    $(".pagination li").removeClass("active");
+                    $(this).addClass("active");
+                    showPage(parseInt($(this).text()))
+                });
+            }
+        });
+    });
+
+    function month(params) {
+        var month = new Array();
+        month[0] = "January";
+        month[1] = "February";
+        month[2] = "March";
+        month[3] = "April";
+        month[4] = "May";
+        month[5] = "June";
+        month[6] = "July";
+        month[7] = "August";
+        month[8] = "September";
+        month[9] = "October";
+        month[10] = "November";
+        month[11] = "December";
+
+        return month[params];
+    }
+</script>
