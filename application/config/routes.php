@@ -76,8 +76,10 @@ $route['invoice'] = 'User/invoice';
 
 // registered entity
 $route['home'] = 'admin/HomeController/index';
+$route['users/(:any)'] = 'admin/UsersController/single_user/$1';
 $route['participant'] = 'admin/PesertaController/index';
+$route['mentor'] = 'admin/MentorController/index';
 $route['course'] = 'admin/CourseController/index';
 $route['course/(:any)'] = 'admin/CourseController/courseBy_id/$1';
 $route['course/participant/(:any)'] = 'admin/CourseController/course_participant/$1';
-$route['mentor'] = 'admin/MentorController/index';
+

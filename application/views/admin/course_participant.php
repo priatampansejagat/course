@@ -140,7 +140,7 @@
                           jsonArr['data'][i]['detail']['fullname'],
                           '<div style="'+style+'">'+jsonArr['data'][i]['confirmed']+'</div>',
                           '<a onclick="confirm(this)" class="btn btn-danger" id="'+jsonArr['data'][i]['id']+'"  name="'+jsonArr['data'][i]['detail']['fullname']+'"data-toggle="tooltip" title="Confirm" ><i class="fa fa-check"></i></a> ' +
-                          '<a class="btn btn-primary" href="'+jsonArr['data'][i]['course_id']+'/'+jsonArr['data'][i]['detail']['id']+'" data-toggle="tooltip" title="Detail" ><i class="fa fa-cogs"></i></a> '
+                          '<a class="btn btn-primary" href="<?php echo base_url(); ?>users/'+jsonArr['data'][i]['detail']['id']+'" data-toggle="tooltip" title="Detail" ><i class="fa fa-arrow-right"></i></a> '
 
                 ];
 
