@@ -30,6 +30,13 @@ class UsersController extends CI_Controller
 
 			$userCond = array('id' => $id);
 			$data['data']['user'] = $this->BasicQuery->selectAll('user',$userCond);
+
+			$payCond = array('id_user' => $id, 'status' => 1);
+			$data['data']['payment'] = $this->BasicQuery->selectAllResult('payment',$payCond);
+
+			foreach ($data['data']['payment'] as $key => $value) {
+				$data['data']['payment'][$key]['course'] = $this->BasicQuery->selectAll('course', array('id' => $value['course_id']));
+			}
 			// echo(json_encode($data));
 			$this->load->view('admin/user_info',$data);
 

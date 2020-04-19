@@ -62,44 +62,37 @@
 		                        </li>
 		                        <li>
 		                          <div class="details-wrapper">
-		                            <div class="name"><?php echo $data['user']['username']; ?></div>
-		                            <div class="description">Username</div>
+		                            <div class="name"><?php echo $data['user']['institution']; ?></div>
+		                            <div class="description">Institution</div>
 		                          </div>
 		                          <div class="clearfix"></div>
 		                          <br>
 		                        </li>
 		                        <li>
 		                          <div class="details-wrapper">
-		                            <div class="name"><?php echo $data['user']['username']; ?></div>
-		                            <div class="description">Username</div>
+		                            <div class="name"><?php echo $data['user']['phone_number']; ?></div>
+		                            <div class="description">Phone Number</div>
 		                          </div>
 		                          <div class="clearfix"></div>
 		                          <br>
 		                        </li>
 		                        <li>
 		                          <div class="details-wrapper">
-		                            <div class="name"><?php echo $data['user']['username']; ?></div>
-		                            <div class="description">Username</div>
+		                            <div class="name"><?php echo $data['user']['profesion']; ?></div>
+		                            <div class="description">Profesion</div>
 		                          </div>
 		                          <div class="clearfix"></div>
 		                          <br>
 		                        </li>
 		                        <li>
 		                          <div class="details-wrapper">
-		                            <div class="name"><?php echo $data['user']['username']; ?></div>
-		                            <div class="description">Username</div>
+		                            <div class="name"><?php echo $data['user']['major_of_study']; ?></div>
+		                            <div class="description">Major of Study</div>
 		                          </div>
 		                          <div class="clearfix"></div>
 		                          <br>
 		                        </li>
-		                        <li>
-		                          <div class="details-wrapper">
-		                            <div class="name"><?php echo $data['user']['username']; ?></div>
-		                            <div class="description">Username</div>
-		                          </div>
-		                          <div class="clearfix"></div>
-		                          <br>
-		                        </li>
+		                        
 		                        <!-- 
 		                        <li>
 		                          <div class="details-wrapper">
@@ -123,15 +116,59 @@
 		                      </div>
 		                      <div class="tiles-body">
 		                        <div class="tiles-title">PROFILE PICTURE</div>
-		                        <div class="heading"> 8,545,654 <i class="fa fa-map-marker"></i> </div>
+		                        <div class="heading"> 
+
+		                        </div>
 		                      </div>
-		                      <div id="world-map" style="height:405px"></div>
+		                      <div style="height:405px">
+
+
+
+		                      </div>
 		                    </div>
 		                    <div class="clearfix"></div>
 		                  </div>
 		                </div>
             		</div>
 
+            		<div class="col-md-4">
+		                <div class="row spacing-bottom ">
+		                  <div class="col-md-12">
+		                    <div class="tiles purple added-margin">
+		                      <div class="tiles-body">
+		                        <div class="controller">
+		                        </div>
+		                        <div class="tiles-title"> INCOMPLETE PAYMENT </div>
+							    	
+			                      <ul class="progress-list">
+			                        
+			                        <?php foreach ($data['payment'] as $key => $value) { ?>
+			                        	
+			                        	<li>
+				                          <div class="details-wrapper">
+				                            <div class="name">Pay for : <?php echo $value['pay_for']; ?></div>
+				                            <div class="heading"> <span ><?php echo $value['course']['title']; ?></span> </div>
+				                          </div>
+				                          <div class=" pull-right"> 
+
+
+				                          </div>
+				                          <div class="clearfix"></div>
+				                        </li>
+			                        
+			                        <?php } ?>
+			                        
+			                      </ul>
+		                        
+		                      </div>
+		                    </div>
+		                    <div class="tiles white added-margin">
+		                      <div id="chart"> </div>
+		                    </div>
+		                  </div>
+		                </div>
+		            </div>   
+		            
 
             	</div>
             </div>	
