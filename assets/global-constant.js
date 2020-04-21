@@ -23,6 +23,8 @@ read_course_url = "course";
 create_course_url = "createcourse";
 create_chapter_url = "createchapter";
 create_chapter_url_vid = "createchapter_vid";
+upload_certificate_url = "cert_upload";
+delete_certificate_url = "cert_delete";
 confirm_register_user = "confirm_register";
 decline_register_user = "decline_register";
 
@@ -31,6 +33,7 @@ get_datatable_url = "datatable";
 
 /* DICTIONARY */
 course_dic = "course";
+course_single_dic = "single_course";
 course_chapter_dic = "course_chapter";
 course_member = "course_member";
 mentor_dic = "mentor";
