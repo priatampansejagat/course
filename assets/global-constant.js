@@ -28,6 +28,13 @@ delete_certificate_url = "cert_delete";
 confirm_register_user = "confirm_register";
 decline_register_user = "decline_register";
 
+// event
+create_event_url = "createevent";
+add_course_event_url = "add_course_event";
+add_cover_event_url = "add_cover_event";
+delete_cover_event_url = "delete_cover_event";
+delete_bridge_event_course_url = "delete_bridge_event_course";
+
 // multi-data
 get_datatable_url = "datatable";
 
@@ -38,6 +45,9 @@ course_chapter_dic = "course_chapter";
 course_member = "course_member";
 mentor_dic = "mentor";
 user_dic = "user";
+event_dic = "event";
+event_single_dic = "single_event";
+event_member = "event_member";
 
 
 /*NON CURL*/

@@ -84,4 +84,6 @@ $route['mentor'] = 'admin/MentorController/index';
 $route['course'] = 'admin/CourseController/index';
 $route['course/(:any)'] = 'admin/CourseController/courseBy_id/$1';
 $route['course/participant/(:any)'] = 'admin/CourseController/course_participant/$1';
+$route['adm_event'] = 'admin/EventController/index';
+$route['adm_event/(:any)'] = 'admin/EventController/eventBy_id/$1';
 

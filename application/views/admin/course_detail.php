@@ -143,7 +143,6 @@
 
                             <div class="row small-text">
                               <p class="col-md-12">
-                                This form is used to add a mentor. Mentors that have been added can be deleted in the table.
                               </p>
                             </div>
                           </div>
