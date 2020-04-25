@@ -34,6 +34,11 @@ add_course_event_url = "add_course_event";
 add_cover_event_url = "add_cover_event";
 delete_cover_event_url = "delete_cover_event";
 delete_bridge_event_course_url = "delete_bridge_event_course";
+confirm_event_register_user = "regisevent_confirm";
+decline_event_register_user = "regisevent_decline";
+create_gallery_event_url = "create_gallery_event";
+upload_gallery_event_url = "upload_gallery_event";
+delete_picture_event_url = "delete_gallery_event";
 
 // multi-data
 get_datatable_url = "datatable";
@@ -47,8 +52,8 @@ mentor_dic = "mentor";
 user_dic = "user";
 event_dic = "event";
 event_single_dic = "single_event";
-event_member = "event_member";
-
+event_member_dic = "event_member";
+event_gallery_dic = "event_gallery";
 
 /*NON CURL*/
 noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";

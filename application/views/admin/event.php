@@ -305,7 +305,9 @@
                           jsonArr['data'][i]['price'],
                           '<a onclick="delevent(this)" class="btn btn-danger" id="'+jsonArr['data'][i]['id']+'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' +
                           '<a class="btn btn-primary" href="adm_event/'+jsonArr['data'][i]['id']+'" data-toggle="tooltip" title="Detail & Setting" ><i class="fa fa-cogs"></i></a> '+
-                          '<a class="btn btn-success" href="adm_event/participant/'+jsonArr['data'][i]['id']+'" data-toggle="tooltip" title="Participant" ><i class="fa fa-users"></i></a>'
+                          '<a class="btn btn-success" href="adm_event/participant/'+jsonArr['data'][i]['id']+'" data-toggle="tooltip" title="Participant" ><i class="fa fa-users"></i></a> ' +
+                          '<a class="btn btn-info" href="adm_event/gallery/'+jsonArr['data'][i]['id']+'" data-toggle="tooltip" title="Gallery" ><i class="fa fa-picture-o"></i></a>'
+
 
                 ];
                 $("#example2").DataTable().fnAddData(data); 
