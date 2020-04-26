@@ -458,13 +458,16 @@
               $("#example2").DataTable().fnClearTable();
               for (var i = 0; i < jsonArr['data'].length ; i++) {
                 // console.log('datatable =' + jsonArr['data'][i]['id']);
+
+                var user_id= jsonArr['data'][i]['id'];
                 var data = [
                           '',
                           i+1,
                           jsonArr['data'][i]['fullname'],
                           jsonArr['data'][i]['phone_number'],
                           jsonArr['data'][i]['country'],
-                          '<a onclick="delmentor('+jsonArr['data'][i]['fullname']+')" class="btn btn-danger" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a>'
+                          '<a onclick="delmentor('+jsonArr['data'][i]['fullname']+')" class="btn btn-danger" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> '+
+                          '<a href="'+ base_url+ 'users/'+ user_id +'" class="btn btn-primary" data-toggle="tooltip" title="Detail" ><i class="fa fa-arrow-right"></i></a> '
 
                 ];
 
