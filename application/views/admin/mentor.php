@@ -428,6 +428,7 @@
             },
           
           success: function(respons){
+            // console.log(respons);
             var jsonArr = JSON.parse(respons);
             $('#message').text(jsonArr['message']);
             if (jsonArr['proc'] == 'true') {

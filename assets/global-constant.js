@@ -40,6 +40,11 @@ create_gallery_event_url = "create_gallery_event";
 upload_gallery_event_url = "upload_gallery_event";
 delete_picture_event_url = "delete_gallery_event";
 
+// user
+update_profile_url = "regisupdate";
+update_profile_textbased_url = "regisupdate_text";
+
+
 // multi-data
 get_datatable_url = "datatable";
 
@@ -50,6 +55,7 @@ course_chapter_dic = "course_chapter";
 course_member = "course_member";
 mentor_dic = "mentor";
 user_dic = "user";
+user_single_dic = "single_user";
 event_dic = "event";
 event_single_dic = "single_event";
 event_member_dic = "event_member";
