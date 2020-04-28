@@ -14,34 +14,15 @@ class User extends CI_Controller
         $this->load->library('curl_api');
         $this->load->helper('form');
         $this->load->helper('url');
-
-        // $this->load->library(['MySession','MyFlash']);
-
-        // $this->load->model(['']);
-
     }
 
     public function index()
     {
-
-        //LOGIN STATUS FUNCTION======================================
-        // if ($this->mysession->loginStatus() == false) {
-        // 	redirect(base_url().'login','refresh');
-        // }
-
-        // if ($this->mysession->loginGetData('privilege')=='1') {
-
-        // 	// get data user
-        // 	$selfusername 	=	$this->mysession->loginGetData('username');		
-        // 	$data = $this->loadData();
-
-
-        // 	$this->load->view('admin/homeView',$data);
-
-        // }else{
-        // 	show_404();
-        // }
-        //LOGIN STATUS FUNCTION======================================
+        if (isset($_SESSION['id'])) {
+            if ($_SESSION['role'] == AS_ADMIN) {
+                redirect('home');
+            }
+        }
 
         $data['title'] = 'Home';
         $data['page_tittle'] = 'Research Academy';
@@ -85,7 +66,13 @@ class User extends CI_Controller
                         'role'               => $data_object->data->j3b5vhj23v5k2b3k52b3k5hb2hv3gh2cjgvhjvhfyuvjbvg2f3u5vjvv
                     );
                     $this->session->set_userdata($data_session);
-                    redirect('User');
+                    if ($data_object->data->j3b5vhj23v5k2b3k52b3k5hb2hv3gh2cjgvhjvhfyuvjbvg2f3u5vjvv == AS_ADMIN) {
+                        redirect('home');
+                    } else if ($data_object->data->j3b5vhj23v5k2b3k52b3k5hb2hv3gh2cjgvhjvhfyuvjbvg2f3u5vjvv == AS_MENTOR) {
+                        redirect('home');
+                    } else {
+                        redirect('User');
+                    }
                 } else if ($data_object->data->message == 'Username dan password tidak boleh kosong') {
                     $this->session->set_flashdata('login_error', 'error');
                     redirect('User/auth');
@@ -159,6 +146,63 @@ class User extends CI_Controller
         }
     }
 
+    public function eventList()
+    {
+        $data['title'] = 'Event List';
+        $data['page_title'] = 'Event List';
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/event/list', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function eventDetail($param)
+    {
+        $option = array(
+            'type' => 'post',
+            'url_api' => URL_API_DATATABLE,
+            'data' => json_encode((object) ["ihateapple" => "single_event", "event_id" => $param]),
+        );
+
+        $this->curl_api->set_option($option);
+        $data_object = $this->curl_api->exec();
+
+        if (isset($data_object->data->event_info->id)) {
+            $data['title'] = 'Event Detail';
+            $data['page_title'] = 'Event Detail';
+            $data['data_event'] = $data_object->data;
+
+            $this->load->view('visitor/templates/header', $data);
+            $this->load->view('visitor/templates/topbar', $data);
+            $this->load->view('visitor/event/detail', $data);
+            $this->load->view('visitor/templates/footer');
+        }
+    }
+
+    public function mentorDetail($param)
+    {
+        $option = array(
+            'type' => 'post',
+            'url_api' => URL_API_DATATABLE,
+            'data' => json_encode((object) ["ihateapple" => "single_user", "user_id" => $param]),
+        );
+
+        $this->curl_api->set_option($option);
+        $data_object = $this->curl_api->exec();
+
+        if (isset($data_object->data->user->id)) {
+            $data['title'] = 'Detail Mentor';
+            $data['page_title'] = 'Detail Mentor';
+            $data['data_user'] = $data_object->data;
+
+            $this->load->view('visitor/templates/header', $data);
+            $this->load->view('visitor/templates/topbar', $data);
+            $this->load->view('visitor/mentor/detail', $data);
+            $this->load->view('visitor/templates/footer');
+        }
+    }
+
     public function payment()
     {
         $data['title'] = 'Payment Confirmation';
@@ -184,6 +228,10 @@ class User extends CI_Controller
 
     public function registCourse($course_id)
     {
+        if (!isset($_SESSION["id"])) {
+            redirect('User/auth');
+        }
+
         $option = array(
             'type' => 'post',
             'url_api' => URL_API_REGISTCOURSE,
@@ -213,6 +261,41 @@ class User extends CI_Controller
         }
     }
 
+    public function registEvent($event_id)
+    {
+        if (!isset($_SESSION["id"])) {
+            redirect('User/auth');
+        }
+
+        $option = array(
+            'type' => 'post',
+            'url_api' => URL_API_REGISTEVENT,
+            'data' => json_encode((object) ["user_id" => $_SESSION["id"], "event_id" => $event_id]),
+        );
+
+        $this->curl_api->set_option($option);
+        $data_object = $this->curl_api->exec();
+
+        if ($data_object->status == 200) {
+            $data['title'] = 'Invoice';
+            $data['page_title'] = 'Invoice';
+            $data['data_payment'] = $data_object;
+
+            $this->load->view('visitor/templates/header', $data);
+            $this->load->view('visitor/templates/topbar', $data);
+            $this->load->view('visitor/payment/invoiceEvent', $data);
+            $this->load->view('visitor/templates/footer');
+        } else {
+            $data['title'] = 'Payment Confirmation';
+            $data['page_title'] = 'Payment Confirmation';
+
+            $this->load->view('visitor/templates/header', $data);
+            $this->load->view('visitor/templates/topbar', $data);
+            $this->load->view('visitor/payment/list', $data);
+            $this->load->view('visitor/templates/footer');
+        }
+    }
+
     public function myCourse()
     {
         $data['title'] = 'My Course';
@@ -221,6 +304,31 @@ class User extends CI_Controller
         $this->load->view('visitor/templates/header', $data);
         $this->load->view('visitor/templates/topbar', $data);
         $this->load->view('visitor/course/myCourse', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function classDetail($course_id)
+    {
+        $data['title'] = 'Class Detail';
+        $data['page_title'] = 'Class Detail';
+        $data['course_id'] = $course_id;
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/course/detailClass', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function classVideo($course_id, $chapter_id)
+    {
+        $data['title'] = 'Class Detail';
+        $data['page_title'] = 'Class Detail';
+        $data['course_id'] = $course_id;
+        $data['chapter_id'] = $chapter_id;
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/course/classVideo', $data);
         $this->load->view('visitor/templates/footer');
     }
 

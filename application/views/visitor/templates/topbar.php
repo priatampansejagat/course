@@ -17,8 +17,11 @@
                         <div class="col-xs-6 col-sm-3">
                             <!-- logo -->
                             <div class="logo">
-                                <a href="visitor">
-                                    <img class="hidden-xs" src="<?= base_url(); ?>assets/visitor/images/<?= $logo ?>" style="width: 70%" alt="studylms">
+                                <a href="<?= base_url('visitor') ?>">
+                                    <?php if (strcasecmp($title, 'home')  == 0) { ?>
+                                    <?php } else { ?>
+                                        <img class="hidden-xs" src="<?= base_url(); ?>assets/visitor/images/<?= $logo ?>" style="width: 70%" alt="studylms">
+                                    <?php } ?>
                                     <img class="hidden-sm hidden-md hidden-lg" src="<?= base_url(); ?>assets/visitor/images/logo-research-academy-dark.png" style="width: 50%" alt="studylms">
                                 </a>
                             </div>
@@ -26,7 +29,7 @@
                         <div class="col-xs-6 col-sm-9 static-block">
                             <!-- nav -->
                             <nav id="nav" class="navbar navbar-default">
-                                <div class="navbar-header" style="padding-top: 15px">
+                                <div class="navbar-header" style="padding-top: 15px;">
                                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                         <span class="sr-only">Toggle navigation</span>
                                         <span class="icon-bar"></span>
@@ -35,7 +38,7 @@
                                     </button>
                                 </div>
                                 <!-- navbar collapse -->
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-top: 35px">
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-top: 35px; padding-bottom: 15px">
                                     <!-- main navigation -->
                                     <ul class="nav navbar-nav navbar-right main-navigation text-uppercase font-lato">
                                         <li>
@@ -45,11 +48,19 @@
                                             <a href="<?= base_url('courselist') ?>">course list</a>
                                         </li>
                                         <li>
-                                            <a href="<?= base_url('mycourse') ?>">my course</a>
+                                            <a href="<?= base_url('eventlist') ?>">event list</a>
                                         </li>
                                         <li>
-                                            <a href="<?= base_url('payment') ?>">Payment Confirmation</a>
+                                            <a href="<?= base_url('') ?>">publication</a>
                                         </li>
+                                        <?php if (($this->session->userdata('id'))) { ?>
+                                            <li>
+                                                <a href="<?= base_url('mycourse') ?>">my course</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('payment') ?>">Payment Confirmation</a>
+                                            </li>
+                                        <?php } ?>
                                         <?php if ($this->session->userdata('id')) { ?>
                                             <li class="dropdown">
                                                 <a href="#" class="btn btn-warning btn-theme text-uppercase dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 10px 20px; border-radius: 25px"><?= $this->session->userdata('username') ?></a>
