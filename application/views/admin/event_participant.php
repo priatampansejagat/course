@@ -107,7 +107,7 @@
       // datatable
       function dataTable_refresh(){
         var condition = {
-                          'course_id':"<?php echo $course['info']['id']; ?>"
+                          'event_id':"<?php echo $event['info']['id']; ?>"
         };
 
         $.ajax({
@@ -115,7 +115,7 @@
             url: base_url + post_url,
             data: {
                   param: { 
-                          "ihateapple": course_member, 
+                          "ihateapple": event_member_dic, 
                           "condition": condition
                         },
                   url: get_datatable_url
@@ -175,7 +175,7 @@
 
       function confirmClick(obj){
         // alert( $("#selectedUser").text());
-        var course_member_id = $("#selectedUser").text();
+        var event_member_id = $("#selectedUser").text();
 
         if ($("#actionInfo").text() == 'confirm') {
           $.ajax({
@@ -183,9 +183,9 @@
             url: base_url + post_url,
             data: {
                   param: { 
-                          "course_member_id": course_member_id
+                          "event_member_id": event_member_id
                         },
-                  url: confirm_register_user
+                  url: confirm_event_register_user
               },
             success: function(respons){
               dataTable_refresh();
@@ -199,7 +199,7 @@
                   param: { 
                           "course_member_id": course_member_id
                         },
-                  url: decline_register_user
+                  url: decline_event_register_user
               },
             success: function(respons){
               dataTable_refresh();

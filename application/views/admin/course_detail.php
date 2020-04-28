@@ -143,7 +143,6 @@
 
                             <div class="row small-text">
                               <p class="col-md-12">
-                                This form is used to add a mentor. Mentors that have been added can be deleted in the table.
                               </p>
                             </div>
                           </div>
@@ -173,7 +172,63 @@
               <div class="span12">
                 <div class="grid simple ">
                   <div class="grid-title">
-                    <h4>Course Chapter</h4>
+                    <h4>Upload Certificate</h4>
+                    <div class="tools">
+                      <a href="javascript:;" class="collapse"></a>
+                    </div>
+
+                  </div>
+                  <div class="grid-body ">
+                    
+                    <div class="alert alert-info" id="alertSuccess_certificate">
+                      <button class="close" onclick="alertSuccessHide_certificate()"></button>
+                      <p id="message_certificate"></p> </div>
+                    <div class="alert alert-danger" id="alertFailed_certificate">
+                      <button class="close" onclick="alertFailedHide_certificate()"></button>
+                      <p id="message_certificate"></p> </div>  
+                    
+
+                    <div class="grid-body no-border">
+                      <!-- <form class="form-no-horizontal-spacing" id="form-condensed"> -->
+                        <div class="row column-seperation">
+                          <div class="col-md-12">
+                            <div class="row form-row">
+                              
+                              <div class="col-md-10">
+                                <div class="col-md-2">
+                                  <button type="button" class="btn btn-white btn-cons" id="select_cert">Select File</button>
+                                </div>
+                                <div class="col-md-10">
+                                  <div id="results_cert" class="panel"></div>
+                                </div>  
+                                
+                              </div>
+                              <div class="col-md-2">  
+                                <div class="pull-right">
+                                  <a id="upload_cert" onclick="cert_handler(this)" class="btn btn-primary" type="button"><i class="fa fa-cloud-upload"></i></a>
+                                  <a id="print_cert"  class="btn btn-warning " type="button"><i class="fa fa-print"></i></a>
+                                  <a id="delete_cert" onclick="cert_handler(this)" class="btn btn-danger " type="button"><i class="fa fa-trash-o"></i></a>
+                                </div>
+                              </div>
+                             
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row-fluid" id="formaddcourse">
+              <div class="span12">
+                <div class="grid simple ">
+                  <div class="grid-title">
+                    <h4>Add Course Chapter</h4>
                     <div class="tools">
                       <a href="javascript:;" class="collapse"></a>
                     </div>
@@ -262,7 +317,7 @@
               <div class="span12">
                 <div class="grid simple ">
                   <div class="grid-title">
-                    <h4>Capters</h4>
+                    <h4>Chapters</h4>
                     <div class="tools">
                       <a href="javascript:;" class="collapse"></a>
                     </div>
@@ -318,7 +373,6 @@
 
     <script src="<?php echo base_url();?>assets/admin/assets/js/datatables.js" type="text/javascript"></script>
 
-
     <script type="text/javascript">
 
       //START OF INITIATING VARIABLE=============================================================
@@ -331,7 +385,20 @@
       var resumable       = [];
       var results         = [];
 
-
+      var select_cert = $("#select_cert");
+      var results_cert = $("#results_cert");
+      var resumable_cert = new Resumable({
+            target: noncurl_api_url + upload_certificate_url,
+            maxChunkRetries: 5,
+            query: {
+                course_id: course_id,
+            },
+            maxFiles: 3,
+            prioritizeFirstAndLastChunk: true,
+            simultaneousUploads: 4,
+            chunkSize: 1 * 1024 * 1024
+        });
+      resumable_cert.assignBrowse(select_cert);
 
       //END OF INITIATING VARIABLE=============================================================
 
@@ -354,6 +421,27 @@
 
       function alertFailedHide(){
         $("#alertFailed").hide();
+      }
+
+      $("#alertFailed_certificate").hide();
+      $("#alertSuccess_certificate").hide();
+      function alertSuccess_certificate() {
+        if ($("#alertSuccess_certificate").is(":hidden")) {
+          $("#alertSuccess_certificate").show();
+        }
+      }
+      function alertSuccessHide_certificate(){
+        $("#alertSuccess_certificate").hide();
+      }
+      
+      function alertFailed_certificate() {
+        if ($("#alertFailed_certificate").is(":hidden")) {
+          $("#alertFailed_certificate").show();
+        }
+      }
+
+      function alertFailedHide_certificate(){
+        $("#alertFailed_certificate").hide();
       }
 
       $("#alertFailed_chapter").hide();
@@ -600,6 +688,115 @@
           });
 
       }
+
+
+      resumable_cert.on('fileAdded', function(file, event) {
+
+        var template =
+            '<div data-uniqueid="' + file.uniqueIdentifier + '">' +
+            '<div class="fileName">' + file.fileName + ' (' + file.file.type + ')' + '</div>' +
+            '<div style="color:red;" class="large-6 right deleteFile_cert" data-toggle="tooltip" title="Delete"><i class="fa fa-times"></i></div>' +
+            '<div class="progress large-6">' +
+            '<span class="meter" style="width:0%;"></span>' +
+            '</div>' +
+            '</div>';
+
+        results_cert.append(template);
+
+      });
+
+       $(document).on('click', '.deleteFile_cert', function() {
+        var self = $(this),
+            parent = self.parent(),
+            identifier = parent.data('uniqueid'),
+            file = resumable_cert.getFromUniqueIdentifier(identifier);
+
+        resumable_cert.removeFile(file);
+        parent.remove();
+      });
+
+      function get_cert(){
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                param: {
+                    "ihateapple": course_single_dic,
+                    "id": course_id
+                },
+                url: get_datatable_url
+            },
+            success: function(respons) {
+              var jsonArr = JSON.parse(respons);
+              $("#print_cert").attr("href", jsonArr['data']['certificate']);  
+            }
+        });
+      } 
+      get_cert();
+
+      // ngapain juga sih gw bikin ni func??? heran gw
+      function cert_handler(obj){
+        if (obj.id == 'upload_cert') {
+          upload_cert(resumable_cert,results_cert);
+        }else if (obj.id == 'delete_cert') {
+          delete_cert();
+        }
+      }
+
+      function upload_cert(resumableObj, resultsObj) {
+          
+          if (resultsObj.children().length > 0) {
+            // alert(resumableObj.query());
+              resumableObj.upload();
+          } else {
+              // nothingToUpload.show();
+          }
+
+          resumableObj.on('fileProgress', function (file) {
+              
+          });
+
+          resumableObj.on('fileSuccess', function (file, message) {
+              
+          });
+
+          resumableObj.on('uploadStart', function () {
+              
+          });
+
+          resumableObj.on('complete', function () {
+              $('#message_certificate').text('Upload Complete');
+              alertSuccess_certificate();
+              $('.deleteFile_cert').click();
+              get_cert();
+          });
+
+          resumableObj.on('fileError', function(file, message){
+            $('#message_certificate').text('Upload Failed');
+            alertFailed_certificate();
+            $('.deleteFile_cert').click();
+          });
+
+      }
+
+      function delete_cert(){
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                param: {
+                    "course_id": course_id
+                },
+                url: delete_certificate_url
+            },
+            success: function(respons) {
+              alert('Success');
+              get_cert();  
+            }
+        });
+      }
+
+
     </script>
 
   </body>
