@@ -78,7 +78,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-offset-2 col-sm-10 col-md-offset-6 col-md-6">
-                    <button type="submit" class="btn btn-warning btn-theme font-lato fw-bold text-uppercase element-block">Proceed to checkout</button>
+                    <button type="submit" class="btn btn-warning btn-theme font-lato fw-bold text-uppercase element-block">Confirmation of Payment</button>
                 </div>
             </div>
         </form>

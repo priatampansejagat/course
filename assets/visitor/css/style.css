@@ -7525,6 +7525,12 @@ form .star-rating .customFormReset:checked+label {
 	background-color: #000;
 }
 
+@media (min-width: 240px) {
+	#logo-greeting {
+		width: 200px;
+	}
+}
+
 /* features aside styles */
 .features-aside .col {
 	display: -webkit-box;

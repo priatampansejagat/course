@@ -76,6 +76,7 @@ $route['payment'] = 'User/payment';
 $route['paymentconfirmation/(:any)'] = 'User/paymentConfirmation/$1';
 $route['coursedetail/registcourse/(:any)'] = 'User/registCourse/$1';
 $route['eventdetail/registevent/(:any)'] = 'User/registEvent/$1';
+$route['mentordetail/(:any)'] = 'User/mentorDetail/$1';
 $route['mycourse'] = 'User/myCourse';
 $route['invoice'] = 'User/invoice';
 
@@ -91,4 +92,3 @@ $route['adm_event'] = 'admin/EventController/index';
 $route['adm_event/(:any)'] = 'admin/EventController/eventBy_id/$1';
 $route['adm_event/participant/(:any)'] = 'admin/EventController/event_participant/$1';
 $route['adm_event/gallery/(:any)'] = 'admin/EventController/event_gallery/$1';
-

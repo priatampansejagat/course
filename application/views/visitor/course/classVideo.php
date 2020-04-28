@@ -52,9 +52,10 @@
                         <img class="center" src="<?= base_url(); ?>assets/visitor/images/logo-research-academy-grey.png" alt="Merry Jhonson" style="width: 97px;">
                     </div>
                     <div class="description-wrap">
-                        <h3 class="fw-normal" id="mentor_name">Merry Jhonson</h3>
-                        <h4 class="fw-normal" id="major_of_study">Back-end Developer</h4>
-                        <a href="#" class="btn btn-warning">view profil</a>
+                        <h3 class="fw-normal mentor_name" id="mentor_name">Merry Jhonson</h3>
+                        <h4 class="fw-normal major_of_study" id="major_of_study">Back-end Developer</h4>
+                        <p><span class="mentor_name"></span> is someone who has an educational background in the <span class="major_of_study"></span> who is active as a mentor at research-academy.org </p>
+                        <a href="" class="btn btn-warning" id="btn-profil">view profil</a>
                     </div>
                 </div>
             </article>
@@ -85,8 +86,9 @@
                     $("#mentor").text(dataJson.data.mentor.fullname);
                     $("#course_title").text(dataJson.data.course_detail.title);
                     $("#chapter_title").text("Chapter: " + value.tittle);
-                    $("#mentor_name").text(dataJson.data.mentor.fullname);
-                    $("#major_of_study").text(dataJson.data.mentor.major_of_study);
+                    $(".mentor_name").text(dataJson.data.mentor.fullname);
+                    $(".major_of_study").text(dataJson.data.mentor.major_of_study);
+                    $("#btn-profil").attr("href", '<?= base_url("mentordetail/") ?>' + dataJson.data.mentor.detail.id);
                     $("#video").append('<video width="100%" controls>' +
                         '<source src="' + value.video_link + '" type="video/mp4">' +
                         '<source src="' + value.video_link + '" type="video/ogg">' +

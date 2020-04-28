@@ -155,4 +155,6 @@
             ]
         });
     });
+
+    //# sourceURL=/view/payment/list.js
 </script>
