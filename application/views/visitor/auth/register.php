@@ -288,7 +288,7 @@
                             scrollTop: 0
                         }, "slow");
                         $("#alertFadeOut").fadeOut(3000);
-                        window.location.href = "login";
+                        window.location.href = "<?= base_url('login') ?>";
                     },
                     error: function(xhr, status, error) {
                         var err = eval("(" + xhr.responseText + ")");
