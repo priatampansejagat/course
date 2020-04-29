@@ -71,7 +71,7 @@
                                             </li>
                                         <?php } else { ?>
                                             <li>
-                                                <a href="login" class="btn btn-warning btn-theme text-uppercase" style="padding: 10px 20px; border-radius: 25px">Login</a>
+                                                <a href="<?= base_url('login') ?>" class="btn btn-warning btn-theme text-uppercase" style="padding: 10px 20px; border-radius: 25px">Login</a>
                                             </li>
                                         <?php } ?>
                                     </ul>
