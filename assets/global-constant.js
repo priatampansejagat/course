@@ -62,6 +62,6 @@ event_member_dic = "event_member";
 event_gallery_dic = "event_gallery";
 
 /*NON CURL*/
-// noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
-noncurl_api_url = "http://api.research-academy.org/";
+noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
+// noncurl_api_url = "http://api.research-academy.org/";
 
