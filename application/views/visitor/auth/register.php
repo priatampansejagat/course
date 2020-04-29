@@ -295,7 +295,7 @@
                         $("form[name='regist_form']")
                             .closest("form")
                             .trigger("reset");
-                        // window.location.href = "visitor";
+                        window.location.href = "<?= base_url('login') ?>";
                     },
                     error: function(xhr, status, error) {
                         var err = eval("(" + xhr.responseText + ")");

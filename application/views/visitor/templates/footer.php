@@ -23,11 +23,13 @@
 							<address class="ft-address">
 								<dl>
 									<dt><span class="fas fa-map-marker"><span class="sr-only">marker</span></span></dt>
-									<dd>Address: 9015 Sunset Boulevard United Kingdom</dd>
+									<dd>Headquarters: Jalan Warung Buncit Raya 405 Jakarta Selatan</dd>
 									<dt><span class="fas fa-phone-square"><span class="sr-only">phone</span></span></dt>
-									<dd>Call: <a href="tel:+2156237532">+ 215 623 7532</a></dd>
-									<dt><span class="fas fa-envelope-square"><span class="sr-only">email</span></span></dt>
-									<dd>Email: <a href="mailto:info@Studylms.com">info@Studylms.com</a></dd>
+									<dd>Call: <a href="tel:+6281227480007">+62 812 274 800 07</a></dd>
+									<dt><span class="fas fa-map-marker"><span class="sr-only">marker</span></span></dt>
+									<dd>Malang Branch Office: Pondok Indah Estate Blok B No. 11A Malang</dd>
+									<dt><span class="fas fa-phone-square"><span class="sr-only">phone</span></span></dt>
+									<dd>Call: <a href="tel:+6281227480007">+62 812 274 800 07</a></dd>
 								</dl>
 							</address>
 						</div>
