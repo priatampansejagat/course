@@ -320,7 +320,7 @@
                   url: get_datatable_url
               },
             success: function(respons){
-              console.log(respons);
+              // console.log(respons);
               var jsonArr = JSON.parse(respons);
 
               $("#example2").DataTable().fnClearTable();
