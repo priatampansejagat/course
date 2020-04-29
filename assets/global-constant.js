@@ -2,7 +2,7 @@ var pathparts = location.pathname.split("/");
 if (location.host == "localhost") {
 	var base_url = location.origin + "/" + pathparts[1].trim("/") + "/";
 } else {
-	var base_url = location.origin + "/" + pathparts[1].trim("/") + "/";
+	var base_url = location.origin + "/";
 }
 
 
@@ -64,4 +64,3 @@ event_gallery_dic = "event_gallery";
 /*NON CURL*/
 // noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
 noncurl_api_url = "http://api.research-academy.org/";
-
