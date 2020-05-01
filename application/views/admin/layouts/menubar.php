@@ -15,7 +15,7 @@
         </div>
         <!-- END MINI-PROFILE -->
         <!-- BEGIN SIDEBAR MENU -->
-        <p class="menu-title sm">BROWSE <span class="pull-right"><a href="javascript:;"><i class="material-icons">refresh</i></a></span></p>
+        <p class="menu-title sm">Menu</p>
         <ul>
 
           <?php
