@@ -10,8 +10,8 @@
             </li>
           </ul>
           <!-- BEGIN LOGO -->
-          <a href="index.html">
-            <img src="<?php echo base_url();?>assets/admin/assets/img/logo.png" class="logo" alt="" data-src="<?php echo base_url();?>assets/admin/assets/img/logo.png" data-src-retina="<?php echo base_url();?>assets/admin/assets/img/logo2x.png" width="106" height="21" />
+          <a href="#">
+            <img src="<?= base_url(); ?>assets/admin/assets/img/logo-ra.png" class="logo" alt="" data-src="<?= base_url(); ?>assets/admin/assets/img/logo-ra.png" data-src-retina="<?= base_url(); ?>assets/admin/assets/img/logo-ra.png" width="120" height="33" />
           </a>
           <!-- END LOGO -->
           <!-- <ul class="nav pull-right notifcation-center">
@@ -56,7 +56,7 @@
               </li> -->
               <!-- <li class="quicklinks"> <span class="h-seperate"></span></li> -->
               <li class="quicklinks">
-                <h5><span class="semi-bold"><?php echo($onpage); ?></span></h5>
+                <h5><span class="semi-bold"><?php echo ($onpage); ?></span></h5>
               </li>
               <!-- <li class="quicklinks">
                 <a href="#" class="" id="my-task-list" data-placement="bottom" data-content='' data-toggle="dropdown" data-original-title="Notifications">
@@ -74,7 +74,7 @@
             <div style="width:300px">
               <div class="notification-messages info">
                 <!-- <div class="user-profile">
-                  <img src="<?php echo base_url();?>assets/admin/assets/img/profiles/d.jpg" alt="" data-src="<?php echo base_url();?>assets/admin/assets/img/profiles/d.jpg" data-src-retina="<?php echo base_url();?>assets/admin/assets/img/profiles/d2x.jpg" width="35" height="35">
+                  <img src="<?php echo base_url(); ?>assets/admin/assets/img/profiles/d.jpg" alt="" data-src="<?php echo base_url(); ?>assets/admin/assets/img/profiles/d.jpg" data-src-retina="<?php echo base_url(); ?>assets/admin/assets/img/profiles/d2x.jpg" width="35" height="35">
                 </div> -->
                 <!-- <div class="message-wrapper">
                   <div class="heading">
@@ -96,7 +96,7 @@
           <div class="pull-right">
             <div class="chat-toggler sm">
               <!-- <div class="profile-pic">
-                <img src="<?php echo base_url();?>assets/admin/assets/img/profiles/avatar_small.jpg" alt="" data-src="<?php echo base_url();?>assets/admin/assets/img/profiles/avatar_small.jpg" data-src-retina="<?php echo base_url();?>assets/admin/assets/img/profiles/avatar_small2x.jpg" width="35" height="35" />
+                <img src="<?php echo base_url(); ?>assets/admin/assets/img/profiles/avatar_small.jpg" alt="" data-src="<?php echo base_url(); ?>assets/admin/assets/img/profiles/avatar_small.jpg" data-src-retina="<?php echo base_url(); ?>assets/admin/assets/img/profiles/avatar_small2x.jpg" width="35" height="35" />
                 <div class="availability-bubble online"></div>
               </div> -->
             </div>
@@ -126,9 +126,9 @@
               </li>
               <!-- <li class="quicklinks"> <span class="h-seperate"></span></li> -->
               <!-- <li class="quicklinks"> -->
-               <!--  <a href="#" class="chat-menu-toggle" data-webarch="toggle-right-side"><i class="material-icons">chat</i><span class="badge badge-important hide">1</span>
+              <!--  <a href="#" class="chat-menu-toggle" data-webarch="toggle-right-side"><i class="material-icons">chat</i><span class="badge badge-important hide">1</span>
                 </a> -->
-                <!-- <div class="simple-chat-popup chat-menu-toggle hide">
+              <!-- <div class="simple-chat-popup chat-menu-toggle hide">
                   <div class="simple-chat-popup-arrow"></div>
                   <div class="simple-chat-popup-inner">
                     <div style="width:100px">
