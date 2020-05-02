@@ -16,13 +16,20 @@ class User extends CI_Controller
         $this->load->helper('url');
     }
 
-    public function index()
+    private function isUser()
     {
         if (isset($_SESSION['id'])) {
             if ($_SESSION['role'] == AS_ADMIN) {
                 redirect('home');
             }
         }
+
+        return false;
+    }
+
+    public function index()
+    {
+        $this->isUser();
 
         $data['title'] = 'Home';
         $data['page_tittle'] = 'Research Academy';
@@ -103,6 +110,8 @@ class User extends CI_Controller
 
     public function setting()
     {
+        $this->isUser();
+
         $data['title'] = 'Setting';
         $data['page_title'] = 'My Account';
 
@@ -114,6 +123,8 @@ class User extends CI_Controller
 
     public function courseList()
     {
+        $this->isUser();
+
         $data['title'] = 'Course List';
         $data['page_title'] = 'Course List';
 
@@ -125,6 +136,8 @@ class User extends CI_Controller
 
     public function courseDetail($param)
     {
+        $this->isUser();
+
         $option = array(
             'type' => 'post',
             'url_api' => URL_API_DATATABLE,
@@ -148,6 +161,8 @@ class User extends CI_Controller
 
     public function eventList()
     {
+        $this->isUser();
+
         $data['title'] = 'Event List';
         $data['page_title'] = 'Event List';
 
@@ -159,6 +174,8 @@ class User extends CI_Controller
 
     public function eventDetail($param)
     {
+        $this->isUser();
+
         $option = array(
             'type' => 'post',
             'url_api' => URL_API_DATATABLE,
@@ -182,6 +199,8 @@ class User extends CI_Controller
 
     public function mentorDetail($param)
     {
+        $this->isUser();
+
         $option = array(
             'type' => 'post',
             'url_api' => URL_API_DATATABLE,
@@ -205,6 +224,8 @@ class User extends CI_Controller
 
     public function payment()
     {
+        $this->isUser();
+
         $data['title'] = 'Payment Confirmation';
         $data['page_title'] = 'Payment Confirmation';
 
@@ -216,6 +237,8 @@ class User extends CI_Controller
 
     public function paymentConfirmation($id)
     {
+        $this->isUser();
+
         $data['title'] = 'Payment Confirmation';
         $data['page_title'] = 'Payment Confirmation';
         $data['id_payment'] = $id;
@@ -228,6 +251,8 @@ class User extends CI_Controller
 
     public function registCourse($course_id)
     {
+        $this->isUser();
+
         if (!isset($_SESSION["id"])) {
             redirect('User/auth');
         }
@@ -263,6 +288,8 @@ class User extends CI_Controller
 
     public function registEvent($event_id)
     {
+        $this->isUser();
+
         if (!isset($_SESSION["id"])) {
             redirect('User/auth');
         }
@@ -298,6 +325,8 @@ class User extends CI_Controller
 
     public function myCourse()
     {
+        $this->isUser();
+
         $data['title'] = 'My Course';
         $data['page_title'] = 'My Course';
 
@@ -309,6 +338,8 @@ class User extends CI_Controller
 
     public function classDetail($course_id)
     {
+        $this->isUser();
+
         $data['title'] = 'Class Detail';
         $data['page_title'] = 'Class Detail';
         $data['course_id'] = $course_id;
@@ -321,6 +352,8 @@ class User extends CI_Controller
 
     public function classVideo($course_id, $chapter_id)
     {
+        $this->isUser();
+
         $data['title'] = 'Class Detail';
         $data['page_title'] = 'Class Detail';
         $data['course_id'] = $course_id;
@@ -334,6 +367,8 @@ class User extends CI_Controller
 
     public function invoice()
     {
+        $this->isUser();
+
         $data['title'] = 'Invoice';
         $data['page_title'] = 'Invoice';
 

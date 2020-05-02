@@ -88,7 +88,7 @@
                     $("#chapter_title").text("Chapter: " + value.tittle);
                     $(".mentor_name").text(dataJson.data.mentor.fullname);
                     $(".major_of_study").text(dataJson.data.mentor.major_of_study);
-                    $("#btn-profil").attr("href", '<?= base_url("mentordetail/") ?>' + dataJson.data.mentor.detail.id);
+                    $("#btn-profil").attr("href", '<?= base_url("mentordetail/") ?>' + dataJson.data.mentor.id);
                     $("#video").append('<video width="100%" controls>' +
                         '<source src="' + value.video_link + '" type="video/mp4">' +
                         '<source src="' + value.video_link + '" type="video/ogg">' +

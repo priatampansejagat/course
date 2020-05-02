@@ -111,7 +111,7 @@
                     searchable: false,
                     orderable: false,
                     createdCell: function(td, cellData, rowData, row, col) {
-                        var html = formatRupiah(cellData, "Idr");
+                        var html = formatRupiah(cellData, "IDR");
                         $(td).html(html);
                     }
                 },
