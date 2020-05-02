@@ -168,7 +168,7 @@
               </div>
             </div>
             
-            <div class="row-fluid" id="formaddcourse">
+            <div class="row-fluid" id="formadd_cert">
               <div class="span12">
                 <div class="grid simple ">
                   <div class="grid-title">
@@ -401,7 +401,7 @@
       resumable_cert.assignBrowse(select_cert);
 
       //END OF INITIATING VARIABLE=============================================================
-
+      $("#formadd_cert").hide();
       $("#alertFailed").hide();
       $("#alertSuccess").hide();
       function alertSuccess() {
