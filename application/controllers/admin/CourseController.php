@@ -59,7 +59,7 @@ class CourseController extends CI_Controller
 			$userCond = array('id' => $data['course']['info']['mentor_id']);
 			$data['course']['info']['mentor'] = $this->BasicQuery->selectAll('user',$userCond);
 
-			$data['course']['info']['description'] = $this->globalfunction->changeto_HTMLcharref($data['course']['info']['description']);
+			// $data['course']['info']['description'] = $this->globalfunction->changeto_HTMLcharref($data['course']['info']['description']);
 
 			// echo(json_encode($data));
 			$this->load->view('admin/course_detail',$data);
