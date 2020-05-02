@@ -23,13 +23,9 @@
 							<address class="ft-address">
 								<dl>
 									<dt><span class="fas fa-map-marker"><span class="sr-only">marker</span></span></dt>
-									<dd>Headquarters: Jalan Warung Buncit Raya 405 Jakarta Selatan</dd>
+									<dd>Malang, East java, Indonesia</dd>
 									<dt><span class="fas fa-phone-square"><span class="sr-only">phone</span></span></dt>
-									<dd>Call: <a href="tel:+6281227480007">+62 812 274 800 07</a></dd>
-									<dt><span class="fas fa-map-marker"><span class="sr-only">marker</span></span></dt>
-									<dd>Malang Branch Office: Pondok Indah Estate Blok B No. 11A Malang</dd>
-									<dt><span class="fas fa-phone-square"><span class="sr-only">phone</span></span></dt>
-									<dd>Call: <a href="tel:+6281227480007">+62 812 274 800 07</a></dd>
+									<dd><a href="tel:+6281227480007">+62 831 1196 3210</a></dd>
 								</dl>
 							</address>
 						</div>
