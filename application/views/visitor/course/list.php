@@ -53,9 +53,6 @@
                 $.each(dataJson.data, function(key, value) {
                     var date_custom = new Date(Date.parse(value.start_date));
                     course.append('<li class="course-data">' +
-                        '<div class="alignright">' +
-                        '<a href="coursedetail/' + value.id + '" class="btn btn-warning text-uppercase">detail</a>' +
-                        '</div>' +
                         '<div class="alignleft">' +
                         '<time datetime="2011-01-12" class="time text-uppercase">' +
                         '<strong class="date fw-normal">' + (date_custom.getDate() < 10 ? '0' + date_custom.getDate() : date_custom.getDate()) + '</strong>' +
@@ -66,6 +63,9 @@
                         '<div class="description-wrap">' +
                         '<h3 class="list-heading">' + value.title + '</h3>' +
                         '<address> by : ' + value.mentor.fullname + '</address>' +
+                        '</div>' +
+                        '<div>' +
+                        '<a href="coursedetail/' + value.id + '" class="btn btn-warning text-uppercase">detail</a>' +
                         '</div>' +
                         '</li>');
                 });
