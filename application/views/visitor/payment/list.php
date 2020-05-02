@@ -72,7 +72,6 @@
                 url: base_url + post_url,
                 type: "POST",
                 data: function(d) {
-                    console.log($("#role").val());
                     var data = {
                         param: {
                             length: d.length,
