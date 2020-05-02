@@ -89,6 +89,14 @@
                     $(this).addClass("active");
                     showPage(parseInt($(this).text()))
                 });
+
+                if (pageCount == 0) {
+                    course.append('<div class="alert alert-danger show fadeIn animated text-center" style="width:100% !important; margin-bottom:20px !important;">' +
+                        '<div class="description-wrap">' +
+                        '<h3 class="list-heading"><strong>Sorry,</strong> Data Not Found</h3>' +
+                        '</div>' +
+                        '</div>');
+                }
             }
         });
     });
