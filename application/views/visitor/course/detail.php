@@ -4,6 +4,11 @@ if ($data_course->data->mentor->detail == null) {
 } else {
     $image = $data_course->data->mentor->detail->profile_picture;
 }
+
+$start_date = strtotime($data_course->data->start_date);
+$end_date = strtotime($data_course->data->end_date);
+
+$duration = ($end_date - $start_date) / 60 / 60 / 24;
 ?>
 
 <main id="main">
@@ -74,10 +79,9 @@ if ($data_course->data->mentor->detail == null) {
                         <h3 class="text-uppercase">Take This Course</h3>
                     </header>
                     <label for="price">Price:</label>
-                    <strong class="price element-block font-lato" id="price"><?= rupiah($data_course->data->price, "Idr") ?></strong>
+                    <strong class="price element-block font-lato" id="price"><?= rupiah($data_course->data->price, "IDR") ?></strong>
                     <ul class="list-unstyled font-lato">
-                        <li><i class="far fa-clock icn no-shrink"></i> Duration: 30 days</li>
-                        <li><i class="fas fa-bullhorn icn no-shrink"></i> Lectures: 10</li>
+                        <li><i class="far fa-clock icn no-shrink"></i> Duration: <?= $duration ?> days</li>
                         <li><i class="far fa-address-card icn no-shrink"></i> Certificate of Completion</li>
                     </ul>
                 </section>

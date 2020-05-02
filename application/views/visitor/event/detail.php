@@ -25,9 +25,9 @@
             <article id="content" class="col-xs-12 col-md-12">
                 <!-- visualImageHolder -->
                 <div class="aligncenter visualImageHolder">
-                    <img src="<?= $data_event->event_info->cover_link ?>" alt="image description" style="max-height: 400px;">
+                    <img src="<?= $data_event->event_info->cover_link ?>" alt="image description" style="width: 83.5%;">
                     <!-- captionAddress -->
-                    <address class="captionAddress bg-theme">
+                    <address class="captionAddress bg-theme" style="max-height: 350px;">
                         <div class="addressColumn">
                             <i class="far fa-clock icn text-white"></i>
                             <strong class="title text-uppercase fw-semi element-block">start time :</strong>
@@ -53,7 +53,7 @@
                     <!-- ticketsInfoList -->
                     <!-- <div id="defaultCountdown" class="comming-timer"></div> -->
                     <div class="price-event">
-                        <h1 style="color: #ffc000"><?= rupiah($data_event->event_info->price, 'Idr') ?></h1>
+                        <h1 style="color: #ffc000"><?= rupiah($data_event->event_info->price, 'IDR') ?></h1>
                     </div>
                     <a href="registevent/<?= $data_event->event_info->id ?>" class="btn btn-default btn-white text-uppercase fw-bold font-lato">buy tickets</a>
                 </aside>
