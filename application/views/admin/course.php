@@ -393,7 +393,20 @@
     dataTable_refresh();
 
     function delcourse(obj) {
-      alert(obj.id);
+      // alert(obj.id);
+      $.ajax({
+        type: 'POST',
+        url: base_url + post_url,
+        data: {
+          param: {
+            "course_id": obj.id
+          },
+          url: delete_course_url
+        },
+        success: function(respons) {
+          alert('Success');
+        }
+      });
     }
 
 
