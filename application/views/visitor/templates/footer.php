@@ -36,10 +36,10 @@
 						<div class="row holder">
 							<div class="col-xs-12 col-sm-push-6 col-sm-6">
 								<ul class="socail-networks list-unstyled">
-									<li><a href="#"><span class="fab fa-facebook"></span></a></li>
-									<li><a href="#"><span class="fab fa-twitter"></span></a></li>
-									<li><a href="#"><span class="fab fa-instagram"></span></a></li>
-									<li><a href="#"><span class="fab fa-linkedin"></span></a></li>
+									<li><a href="https://web.facebook.com/researchacademy.org?_rdc=1&_rdr" target="_blank"><span class="fab fa-facebook"></span></a></li>
+									<li><a href="https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F106525727716692%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink" target="_blank"><span class="fab fa-facebook-messenger"></span></a></li>
+									<li><a href="https://www.instagram.com/researchacademy_/" target="_blank"><span class="fab fa-instagram"></span></a></li>
+									<li><a href="https://www.linkedin.com/in/research-academy-648a621a8/" target="_blank"><span class="fab fa-linkedin"></span></a></li>
 								</ul>
 							</div>
 							<div class="col-xs-12 col-sm-pull-6 col-sm-6">

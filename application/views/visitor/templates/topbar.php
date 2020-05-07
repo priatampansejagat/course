@@ -58,7 +58,10 @@
                                                 <a href="<?= base_url('mycourse') ?>">my course</a>
                                             </li>
                                             <li>
-                                                <a href="<?= base_url('payment') ?>">Payment Confirmation</a>
+                                                <a href="<?= base_url('myevent') ?>">my event</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('payment') ?>">Payment</a>
                                             </li>
                                         <?php } ?>
                                         <?php if ($this->session->userdata('id')) { ?>

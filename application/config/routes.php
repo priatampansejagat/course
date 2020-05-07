@@ -64,7 +64,7 @@ $route['login'] = 'User/auth';
 $route['logout'] = 'User/logout';
 $route['setting'] = 'User/setting';
 
-// page
+// page user
 $route['visitor'] = 'User/index';
 $route['courselist'] = 'User/courseList';
 $route['coursedetail/(:any)'] = 'User/courseDetail/$1';
@@ -72,12 +72,16 @@ $route['eventlist'] = 'User/eventList';
 $route['eventdetail/(:any)'] = 'User/eventDetail/$1';
 $route['classdetail/(:any)'] = 'User/classDetail/$1';
 $route['classdetail/lesson/(:any)/(:any)'] = 'User/classVideo/$1/$2';
+$route['eventdetail/lesson/(:any)/(:any)'] = 'User/classVideo/$1/$2';
 $route['payment'] = 'User/payment';
 $route['paymentconfirmation/(:any)'] = 'User/paymentConfirmation/$1';
 $route['coursedetail/registcourse/(:any)'] = 'User/registCourse/$1';
 $route['eventdetail/registevent/(:any)'] = 'User/registEvent/$1';
 $route['mentordetail/(:any)'] = 'User/mentorDetail/$1';
 $route['mycourse'] = 'User/myCourse';
+$route['myevent'] = 'User/myEvent';
+$route['myeventdetail/(:any)'] = 'User/myEventDetail/$1';
+$route['myeventdetail/classdetail/(:any)/(:any)'] = 'User/myClassEventDetail/$1/$2';
 $route['invoice'] = 'User/invoice';
 
 // registered entity

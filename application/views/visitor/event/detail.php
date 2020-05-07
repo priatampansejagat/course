@@ -58,18 +58,34 @@
                     <a href="registevent/<?= $data_event->event_info->id ?>" class="btn btn-default btn-white text-uppercase fw-bold font-lato">buy tickets</a>
                 </aside>
                 <h3 class="content-h3">Event Content</h3>
+                <p style="font-size: 15px;">There are several courses that you can get by following this event, such as:</p>
+                <div class="row">
+                    <?php foreach ($data_event->course_list as $key => $value) { ?>
+                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                            <article class="popular-post">
+                                <div class="aligncenter">
+                                    <!-- <img src="<?= base_url(); ?>assets/visitor/images/logo-research-academy-grey.png" alt="image description"> -->
+                                </div>
+                                <h3 class="post-heading"><a href="<?= base_url('coursedetail/' . $value->id) ?>"><?= $value->title ?></a></h3>
+                                <div class="post-author">
+                                    <h4 class="author-heading">by: <a href="<?= base_url('mentordetail/' . $value->mentor_detail->id) ?>"><?= $value->mentor_detail->fullname ?></a></h4>
+                                </div>
+                            </article>
+                        </div>
+                    <?php } ?>
+                </div>
                 <!-- eventContentTabsWrap -->
-                <div class="eventContentTabsWrap">
+                <!-- <div class="eventContentTabsWrap">
                     <ul class="nav nav-tabs no-shrink font-lato" role="tablist">
-                        <li role="presentation" class="active"><a href="#DiscussAbout" aria-controls="DiscussAbout" role="tab" data-toggle="tab">Discuss About</a></li>
+                        <li role="presentation" class="active"><a href="#DiscussAbout" aria-controls="DiscussAbout" role="tab" data-toggle="tab">Course</a></li>
                         <li role="presentation"><a href="#Participants" aria-controls="Participants" role="tab" data-toggle="tab">Mentor</a></li>
                     </ul>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade active in" id="DiscussAbout">
                             <ul class="list-unstyled listDefault">
-                                <?php foreach ($data_event->course_list as $key => $value) {
-                                    echo ('<li>' . $value->title . '</li>');
-                                } ?>
+                                <?php foreach ($data_event->course_list as $key => $value) { ?>
+                                    <li><a href="<?= base_url('coursedetail/' . $value->id) ?>"><?= $value->title ?></a></li>
+                                <?php } ?>
                             </ul>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="Participants">
@@ -80,7 +96,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- mapHolder -->
                 <h3 class="content-h3">Gallery</h3>
                 <div class="gallery">
@@ -110,7 +126,7 @@
                     $(".gallery").append('<div class="col-xs-12 col-sm-4 col-lg-4" style="margin-bottom: 20px">' +
                         '<div class="aligncenter">' +
                         '<a target="_blank" href="' + dataJson.data.gallery_list[index]['picture_link'] + '">' +
-                        '<img src="' + dataJson.data.gallery_list[index]['picture_link'] + '" alt="Cinque Terre" style="height:250px; width: 100%; object-fit: cover; object-position: 100% 0;">' +
+                        '<img src="' + dataJson.data.gallery_list[index]['picture_link'] + '" alt="Cinque Terre" style="height:250px; width: 100%; object-fit: cover; object-position: 50% 50%;">' +
                         '</a>' +
                         '</div>' +
                         '</div>');

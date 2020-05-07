@@ -211,8 +211,8 @@ class User extends CI_Controller
         $data_object = $this->curl_api->exec();
 
         if (isset($data_object->data->user->id)) {
-            $data['title'] = 'Detail Mentor';
-            $data['page_title'] = 'Detail Mentor';
+            $data['title'] = 'Mentor Detail';
+            $data['page_title'] = 'Mentor Detail';
             $data['data_user'] = $data_object->data;
 
             $this->load->view('visitor/templates/header', $data);
@@ -336,6 +336,19 @@ class User extends CI_Controller
         $this->load->view('visitor/templates/footer');
     }
 
+    public function myEvent()
+    {
+        $this->isUser();
+
+        $data['title'] = 'My Event';
+        $data['page_title'] = 'My Event';
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/event/myEvent', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
     public function classDetail($course_id)
     {
         $this->isUser();
@@ -347,6 +360,35 @@ class User extends CI_Controller
         $this->load->view('visitor/templates/header', $data);
         $this->load->view('visitor/templates/topbar', $data);
         $this->load->view('visitor/course/detailClass', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function myEventDetail($event_id)
+    {
+        $this->isUser();
+
+        $data['title'] = 'List Course Event';
+        $data['page_title'] = 'List Course Event';
+        $data['event_id'] = $event_id;
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/event/detailEvent', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function myClassEventDetail($event_id, $course_id)
+    {
+        $this->isUser();
+
+        $data['title'] = 'Course Detail';
+        $data['page_title'] = 'Course Detail';
+        $data['event_id'] = $event_id;
+        $data['course_id'] = $course_id;
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/event/classEvent', $data);
         $this->load->view('visitor/templates/footer');
     }
 
