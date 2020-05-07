@@ -92,6 +92,28 @@ class CourseController extends CI_Controller
 
 	}
 
+	public function course_assignment($id){
+		$this->globalfunction->isLogedIn('username');
+
+		if ($this->mysession->loginGetData('role')== AS_ADMIN) {
+
+			$data = $this->globalfunction->getBasicData();
+			$data['onpage'] = 'COURSE ASSIGNMENT';
+
+			$courseCond = array('id' => $id);
+			$courseCond2 = array('course_id' => $id);
+			$data['course']['info']			= $this->BasicQuery->selectAll('course',$courseCond);
+			$data['course']['member'] 		= $this->BasicQuery->selectAllResult('course_member',$courseCond2);
+
+			// echo(json_encode($data));
+			$this->load->view('admin/course_assignment',$data);
+
+		}else{
+			show_404();
+		}
+
+	}
+
 	
 
 }

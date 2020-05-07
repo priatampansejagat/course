@@ -250,7 +250,7 @@
       format: 'yyyy-mm-dd',
     });
     $('#start_date').change(function() {
-      var dob = $('#date_of_birth').val();
+      var dob = $('#start_date').val();
       if (dob != '') {
         dob = new Date(dob);
         var today = new Date();
@@ -263,7 +263,7 @@
       format: 'yyyy-mm-dd',
     });
     $('#end_date').change(function() {
-      var dob = $('#date_of_birth').val();
+      var dob = $('#end_date').val();
       if (dob != '') {
         dob = new Date(dob);
         var today = new Date();
@@ -317,42 +317,41 @@
     });
 
     // datatable
-    function dataTable_refresh() {
-      $.ajax({
-        type: 'POST',
-        url: base_url + post_url,
-        data: {
-          param: {
-            "ihateapple": course_dic
-          },
-          url: get_datatable_url
-        },
-        success: function(respons) {
-          // alert(respons);
-          var jsonArr = JSON.parse(respons);
+    // function dataTable_refresh() {
+    //   $.ajax({
+    //     type: 'POST',
+    //     url: base_url + post_url,
+    //     data: {
+    //       param: {
+    //         "ihateapple": course_dic
+    //       },
+    //       url: get_datatable_url
+    //     },
+    //     success: function(respons) {
+    //       var jsonArr = JSON.parse(respons);
 
-          $("#example2").DataTable().fnClearTable();
-          for (var i = 0; i < jsonArr['data'].length; i++) {
-            // console.log('datatable =' + jsonArr['data'][i]['id']);
-            var data = [
-              '',
-              i + 1,
-              jsonArr['data'][i]['title'],
-              jsonArr['data'][i]['mentor']['fullname'],
-              jsonArr['data'][i]['price'],
-              '<a onclick="delcourse(this)" class="btn btn-danger" id="' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' +
-              '<a class="btn btn-primary" href="course/' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Detail & Setting" ><i class="fa fa-cogs"></i></a> ' +
-              '<a class="btn btn-success" href="course/participant/' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Participant" ><i class="fa fa-users"></i></a>'
+    //       $("#example2").DataTable().fnClearTable();
+    //       for (var i = 0; i < jsonArr['data'].length; i++) {
+    //         // console.log('datatable =' + jsonArr['data'][i]['id']);
+    //         var data = [
+    //           '',
+    //           i + 1,
+    //           jsonArr['data'][i]['title'],
+    //           jsonArr['data'][i]['mentor']['fullname'],
+    //           jsonArr['data'][i]['price'],
+    //           '<a onclick="delcourse(this)" class="btn btn-danger" id="' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' +
+    //           '<a class="btn btn-primary" href="course/' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Detail & Setting" ><i class="fa fa-cogs"></i></a> ' +
+    //           '<a class="btn btn-success" href="course/participant/' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Participant" ><i class="fa fa-users"></i></a>'
 
-            ];
-            $("#example2").DataTable().fnAddData(data);
+    //         ];
+    //         $("#example2").DataTable().fnAddData(data);
 
-          }
+    //       }
 
-        }
-      });
-    }
-    dataTable_refresh();
+    //     }
+    //   });
+    // }
+    // dataTable_refresh();
 
     // datatable
     function dataTable_refresh() {
@@ -366,7 +365,6 @@
           url: get_datatable_url
         },
         success: function(respons) {
-          // console.log(respons);
           var jsonArr = JSON.parse(respons);
 
           $("#example2").DataTable().fnClearTable();
@@ -380,7 +378,8 @@
               jsonArr['data'][i]['price'],
               '<a onclick="delcourse(this)" class="btn btn-danger" id="' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' +
               '<a class="btn btn-primary" href="course/' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Detail & Setting" ><i class="fa fa-cogs"></i></a> ' +
-              '<a class="btn btn-success" href="course/participant/' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Participant" ><i class="fa fa-users"></i></a>'
+              '<a class="btn btn-success" href="course/participant/' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Participant" ><i class="fa fa-users"></i></a> ' +
+              '<a class="btn btn-white" href="course/' + jsonArr['data'][i]['id'] + '/assignment" data-toggle="tooltip" title="Assignments" ><i class="fa fa-folder-open"></i></a>'
 
             ];
             $("#example2").DataTable().fnAddData(data);

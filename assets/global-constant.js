@@ -29,6 +29,12 @@ delete_certificate_url 	= "cert_delete";
 confirm_register_user 	= "confirm_register";
 decline_register_user 	= "decline_register";
 
+// assignment
+assignment_download_url = 'assignment_download';
+
+// Certificate
+
+
 // event
 create_event_url = "createevent";
 add_course_event_url = "add_course_event";
@@ -61,6 +67,8 @@ event_dic = "event";
 event_single_dic = "single_event";
 event_member_dic = "event_member";
 event_gallery_dic = "event_gallery";
+assignment_all = "assignment_all";
+cert_status_dic = "cert_status";
 
 /*NON CURL*/
 noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";

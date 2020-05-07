@@ -46,6 +46,12 @@ class UsersController extends CI_Controller
 			if ($data['data']['user_detail']['profile_picture'] != '#') {
 				$data['profile_picture'] = $data['data']['user_detail']['profile_picture'];
 			}
+
+			// fungsi ga guna 
+			$isParticipant = false;
+			if ($data['data']['user']['role_id'] == AS_STUDENT) {
+				$isParticipant = true;
+			}
 			
 			// echo(json_encode($data));
 			$this->load->view('admin/user_info',$data);

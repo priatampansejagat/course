@@ -103,11 +103,12 @@
 
       $("#test2").hide();
 
+      var course_id = "<?php echo $course['info']['id']; ?>";
 
       // datatable
       function dataTable_refresh(){
         var condition = {
-                          'course_id':"<?php echo $course['info']['id']; ?>"
+                          'course_id': course_id
         };
 
         $.ajax({
@@ -123,7 +124,7 @@
             success: function(respons){
               // alert(respons);
               var jsonArr = JSON.parse(respons);
-              console.log(respons);
+              // console.log(respons);
               $("#example2").DataTable().fnClearTable();
               for (var i = 0; i < jsonArr['data'].length ; i++) {
                 // console.log('datatable =' + jsonArr['data'][i]['id']);
@@ -143,6 +144,7 @@
                           jsonArr['data'][i]['detail']['id'],
                           jsonArr['data'][i]['detail']['fullname'],
                           '<div style="'+style+'">'+jsonArr['data'][i]['confirmed']+'</div>',
+
                           '<a onclick="confirm(this)" class="btn btn-danger" id="'+jsonArr['data'][i]['id']+'"  name="'+jsonArr['data'][i]['detail']['fullname']+'"data-toggle="tooltip" title="Confirm" ><i class="fa fa-check"></i></a> ' +
                           '<a onclick="decline(this)" class="btn btn-white" id="'+jsonArr['data'][i]['id']+'"  name="'+jsonArr['data'][i]['detail']['fullname']+'"data-toggle="tooltip" title="Decline" ><i class="fa fa-times"></i></a> ' +
                           '<a class="btn btn-primary" href="<?php echo base_url(); ?>users/'+jsonArr['data'][i]['detail']['id']+'" data-toggle="tooltip" title="Detail" ><i class="fa fa-arrow-right"></i></a> '
@@ -156,6 +158,7 @@
           }});
       }
       dataTable_refresh();
+
 
 
 
@@ -206,12 +209,7 @@
               $("#cancelConfirm").click();
           }});
         }
-        
-
       }
-
-
-      
 
 
     </script>

@@ -427,7 +427,8 @@
                           i+1,
                           jsonArr['data']['course_list'][i]['title'],
                           jsonArr['data']['course_list'][i]['mentor_detail']['fullname'],
-                          '<a onclick="delbridge(this)" class="btn btn-danger" id="'+jsonArr['data']['course_list'][i]['id']+'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' 
+                          '<a onclick="delbridge(this)" class="btn btn-danger" id="'+jsonArr['data']['course_list'][i]['id']+'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> '  +
+                          '<a class="btn btn-white" href="<?php echo(base_url()); ?>course/' + jsonArr['data']['course_list'][i]['id'] + '/assignment" data-toggle="tooltip" title="Assignments" ><i class="fa fa-folder-open"></i></a>'
 
                 ];
                 $("#example2").DataTable().fnAddData(data); 
