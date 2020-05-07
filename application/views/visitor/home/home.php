@@ -19,7 +19,7 @@
 		<div class="container">
 			<!-- features aside -->
 			<aside class="features-aside">
-				<a href="#" class="col">
+				<a href="<?= base_url('courselist') ?>" class="col">
 					<span class="icn-wrap text-center no-shrink">
 						<img src="<?= base_url(); ?>assets/visitor/images/icon03.svg" width="43" height="39" alt="computer">
 					</span>
@@ -27,7 +27,7 @@
 						<h2 class="features-aside-heading">Course</h2>
 					</div>
 				</a>
-				<a href="#" class="col">
+				<a href="<?= base_url('eventlist') ?>" class="col">
 					<span class="icn-wrap text-center no-shrink">
 						<img src="<?= base_url(); ?>assets/visitor/images/icon01.svg" width="44" height="43" alt="trophy">
 					</span>
@@ -35,7 +35,7 @@
 						<h2 class="features-aside-heading">Event</h2>
 					</div>
 				</a>
-				<a href="#" class="col">
+				<a href="<?= base_url('') ?>" class="col">
 					<span class="icn-wrap text-center no-shrink">
 						<img src="<?= base_url(); ?>assets/visitor/images/icon02.svg" width="43" height="39" alt="computer">
 					</span>

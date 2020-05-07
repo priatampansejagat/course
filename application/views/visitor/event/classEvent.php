@@ -41,9 +41,10 @@
             url: base_url + post_url,
             data: {
                 param: {
-                    "ihateapple": "mycourse_room",
+                    "ihateapple": "myevent_room",
                     "user_id": "<?= $this->session->userdata["id"] ?>",
-                    "course_id": "<?= $course_id ?>"
+                    "course_id": "<?= $course_id ?>",
+                    'event_id': "<?= $event_id ?>"
                 },
 
                 url: get_datatable_url
@@ -61,25 +62,13 @@
                         '<div class="aligncenter">' +
                         '<img ' + image + ' alt="image description">' +
                         '</div>' +
-                        '<h3 class="post-heading"><a href="lesson/' + dataJson.data.course_detail.id + '/' + value.id + '">' + value.tittle + '</a></h3>' +
+                        '<h3 class="post-heading"><a href="<?= base_url() ?>eventdetail/lesson/' + dataJson.data.course_detail.id + '/' + value.id + '">' + value.tittle + '</a></h3>' +
                         '<div class="post-author">' +
                         '<h4 class="author-heading">by: ' + dataJson.data.mentor.fullname + '</h4>' +
                         '</div>' +
                         '</article>' +
                         '</div>');
                 });
-
-                // list.append('<div class="col-xs-12 col-sm-6 col-lg-4 class-data">' +
-                //     '<article class="popular-post">' +
-                //     '<div class="aligncenter">' +
-                //     '<img ' + image + ' alt="image description">' +
-                //     '</div>' +
-                //     '<h3 class="post-heading"><a href="lesson/' + dataJson.data.course_detail.id + '/' + dataJson.data.course_chapter.id + '">' + 'Task Assignment' + '</a></h3>' +
-                //     '<div class="post-author">' +
-                //     '<h4 class="author-heading">by: ' + dataJson.data.mentor.fullname + '</h4>' +
-                //     '</div>' +
-                //     '</article>' +
-                //     '</div>');
 
                 for (var i = 0; i < pageCount; i++) {
                     $(".pagination").append('<li><a href="#">' + (i + 1) + '</a></li> ');

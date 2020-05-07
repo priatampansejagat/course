@@ -13,16 +13,15 @@
             <!-- breadcrumb -->
             <ol class="breadcrumb">
                 <li><a href="visitor">Home</a></li>
-                <li class="active">Event List</li>
+                <li class="active">My Event</li>
             </ol>
         </div>
     </nav>
     <!-- upcoming events block -->
     <section class="upcoming-events-block container">
         <!-- upcoming events list -->
-        <div class="list-unstyled upcoming-events-list event-list">
-        </div>
-        <hr>
+        <ul class="list-unstyled upcoming-events-list myCourse">
+        </ul>
         <nav aria-label="Page navigation">
             <!-- pagination -->
             <ul class="pagination">
@@ -32,27 +31,27 @@
 </main>
 
 <script>
-    // A $( document ).ready() block.
     $(document).ready(function() {
         $.ajax({
             type: 'POST',
             url: base_url + post_url,
             data: {
                 param: {
-                    "ihateapple": "event"
+                    "ihateapple": "single_event",
+                    "event_id": "<?= $event_id ?>"
                 },
 
                 url: get_datatable_url
             },
             success: function(data) {
                 var pageSize = 10;
-                var event = $('.event-list');
+                var course = $('.myCourse');
                 var dataJson = JSON.parse(data);
                 var pageCount = dataJson.data.length / pageSize;
 
-                $.each(dataJson.data, function(key, value) {
+                $.each(dataJson.data.course_list, function(key, value) {
                     var date_custom = new Date(Date.parse(value.start_date));
-                    event.append('<li class="event-data">' +
+                    course.append('<li class="course-data">' +
                         '<div class="alignleft">' +
                         '<time datetime="2011-01-12" class="time text-uppercase">' +
                         '<strong class="date fw-normal">' + (date_custom.getDate() < 10 ? '0' + date_custom.getDate() : date_custom.getDate()) + '</strong>' +
@@ -62,21 +61,13 @@
                         '</div>' +
                         '<div class="description-wrap">' +
                         '<h3 class="list-heading">' + value.title + '</h3>' +
-                        '<address>' + limitText(value.description, 100) + '</address>' +
+                        '<address> by : ' + value.mentor_detail.fullname + '</address>' +
                         '</div>' +
                         '<div>' +
-                        '<a href="eventdetail/' + value.id + '" class="btn btn-warning text-uppercase">detail</a>' +
+                        '<a href="classdetail/' + dataJson.data.event_info.id + '/' + value.id + '" class="btn btn-warning text-uppercase">See Class</a>' +
                         '</div>' +
                         '</li>');
                 });
-
-                if (pageCount == 0) {
-                    course.append('<div class="alert alert-danger show fadeIn animated text-center" style="width:100% !important; margin-bottom:20px !important;">' +
-                        '<div class="description-wrap">' +
-                        '<h3 class="list-heading"><strong>Sorry,</strong> Data Not Found</h3>' +
-                        '</div>' +
-                        '</div>');
-                }
 
                 for (var i = 0; i < pageCount; i++) {
                     $(".pagination").append('<li><a href="#">' + (i + 1) + '</a></li> ');
@@ -84,8 +75,8 @@
                 $(".pagination li").first().addClass("active");
 
                 showPage = function(page) {
-                    $(".event-data").hide();
-                    $(".event-data").each(function(n) {
+                    $(".course-data").hide();
+                    $(".course-data").each(function(n) {
                         if (n >= pageSize * (page - 1) && n < pageSize * page)
                             $(this).show();
                     });
@@ -98,6 +89,14 @@
                     $(this).addClass("active");
                     showPage(parseInt($(this).text()))
                 });
+
+                if (pageCount == 0) {
+                    course.append('<div class="alert alert-danger show fadeIn animated text-center" style="width:100% !important; margin-bottom:20px !important;">' +
+                        '<div class="description-wrap">' +
+                        '<h3 class="list-heading"><strong>Sorry,</strong> Data Not Found</h3>' +
+                        '</div>' +
+                        '</div>');
+                }
             }
         });
     });
@@ -119,13 +118,4 @@
 
         return month[params];
     }
-
-    function limitText(text, maxLength) {
-        if (text.length > maxLength) {
-            var text = text.substr(0, maxLength) + '...';
-        }
-        return text;
-    }
-
-    //# sourceURL=/view/course/list.js
 </script>
