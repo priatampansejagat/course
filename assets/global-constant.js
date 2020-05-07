@@ -33,7 +33,8 @@ decline_register_user 	= "decline_register";
 assignment_download_url = 'assignment_download';
 
 // Certificate
-
+cert_enable_url = 'cert_enable';
+cert_disable_url = 'cert_disable';
 
 // event
 create_event_url = "createevent";

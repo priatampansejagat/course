@@ -118,6 +118,9 @@
                 var assignment_link = '#';
                 var user_id = jsonArr['data']['registered_user']['basic'][i]['id'];
                 var event_id = null;
+                var cert_enable = "cert_enable('"+ user_id +"', "+ event_id +")";
+                var cert_disable = "cert_disable('"+ user_id +"', "+ event_id +")";
+
 
                 if (jsonArr['data']['registered_user']['basic'][i] ['assignment'] != null) {
                   assignment_link = jsonArr['data']['registered_user']['basic'][i]['assignment']['assignment'];
@@ -131,8 +134,8 @@
 
                           '<p id="certcourse_stat_'+ jsonArr['data']['registered_user']['basic'][i]['id'] +'"></p>',
 
-                          '<a onclick="cert_enable('+ user_id +', '+ event_id +')" class="btn btn-primary btn-xs btn-mini" data-toggle="tooltip">enable certificate</a> '+
-                          '<a onclick="cert_disable('+ user_id +', '+ event_id +')" class="btn btn-danger btn-xs btn-mini" data-toggle="tooltip">disable certificate</a> '
+                          '<a onclick="'+cert_enable+'" class="btn btn-primary btn-xs btn-mini" data-toggle="tooltip">enable certificate</a> '+
+                          '<a onclick="'+cert_disable+'" class="btn btn-danger btn-xs btn-mini" data-toggle="tooltip">disable certificate</a> '
 
                 ];
 
@@ -152,6 +155,9 @@
                   var user_id = loop_user[j]['id'];
                   var event_id = loop_event[i]['info']['id'];
 
+                  var cert_enable = "cert_enable('"+ user_id +"', '"+ event_id +"')";
+                  var cert_disable = "cert_disable('"+ user_id +"', '"+ event_id +"')";
+
                   if (loop_user[j] ['assignment'] != null) {
                     assignment_link = loop_user[j]['assignment']['assignment'];
                   }
@@ -165,8 +171,8 @@
 
                             '<p id="certevent_stat_'+ loop_user[j]['id'] +'"></p>',
 
-                            '<a onclick="cert_enable('+ user_id +', '+ event_id +')" class="btn btn-primary btn-xs btn-mini" data-toggle="tooltip">enable certificate</a> '+
-                            '<a onclick="cert_disable('+ user_id +', '+ event_id +')" class="btn btn-danger btn-xs btn-mini" data-toggle="tooltip">disable certificate</a> '
+                            '<a onclick="'+cert_enable+'" class="btn btn-primary btn-xs btn-mini" data-toggle="tooltip">enable certificate</a> '+
+                            '<a onclick="'+cert_disable+'" class="btn btn-danger btn-xs btn-mini" data-toggle="tooltip">disable certificate</a> '
 
                   ];
 
@@ -197,32 +203,21 @@
             url: base_url + post_url,
             data: {
                   param: { 
-                          "ihateapple": cert_status_dic, 
                           "user_id": user_id,
                           "course_id": course_id,
-                          "event_id": null
+                          "event_id": event_id
                         },
-                  url: get_datatable_url
+                  url: cert_enable_url
               },
             success: function(respons){
-              console.log('respons = '+respons);
+              // console.log('respons = '+respons);
               var jsonArr = JSON.parse(respons);
               
-              if (jsonArr['data'] == null) {
-                var cert_stat = $("#certcourse_stat_"+user_id);
-                cert_stat.text('Disabled');
-                cert_stat.css("color","red");
+              if (jsonArr['message'] == 'Success') {
+                alert('Success');
               }else{
-                if (jsonArr['data']['status'] == 1) {
-                  var cert_stat = $("#certcourse_stat_"+user_id);
-                  cert_stat.text('Enabled');
-                  cert_stat.css("color","green");
-                }else{
-                  var cert_stat = $("#certcourse_stat_"+user_id);
-                  cert_stat.text('Disabled');
-                  cert_stat.css("color","red");
-                }
-              }
+                alert('Failed');
+              }              
           }});
 
         if (event_id == null) {
@@ -234,7 +229,28 @@
 
       function cert_disable(user_id, event_id){
 
-
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                  param: { 
+                          "user_id": user_id,
+                          "course_id": course_id,
+                          "event_id": event_id
+                        },
+                  url: cert_disable_url
+              },
+            success: function(respons){
+              // console.log('respons = '+respons);
+              var jsonArr = JSON.parse(respons);
+              
+              if (jsonArr['message'] == 'Success') {
+                alert('Success');
+              }else{
+                alert('Failed');
+              }              
+          }});
+           
         if (event_id == null) {
           certcourse_status_update(user_id);
         }else{
@@ -257,7 +273,7 @@
                   url: get_datatable_url
               },
             success: function(respons){
-              console.log('respons = '+respons);
+              // console.log('respons = '+respons);
               var jsonArr = JSON.parse(respons);
               
               if (jsonArr['data'] == null) {
@@ -292,7 +308,7 @@
                   url: get_datatable_url
               },
             success: function(respons){
-              console.log('respons = '+respons);
+              // console.log('respons = '+respons);
               var jsonArr = JSON.parse(respons);
               
               if (jsonArr['data'] == null) {
