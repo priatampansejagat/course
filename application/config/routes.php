@@ -72,7 +72,9 @@ $route['eventlist'] = 'User/eventList';
 $route['eventdetail/(:any)'] = 'User/eventDetail/$1';
 $route['classdetail/(:any)'] = 'User/classDetail/$1';
 $route['classdetail/lesson/(:any)/(:any)'] = 'User/classVideo/$1/$2';
+$route['classdetail/task/(:any)'] = 'User/classTask/$1';
 $route['eventdetail/lesson/(:any)/(:any)'] = 'User/classVideo/$1/$2';
+$route['taskevent/(:any)/(:any)'] = 'User/taskEvent/$1/$2';
 $route['payment'] = 'User/payment';
 $route['paymentconfirmation/(:any)'] = 'User/paymentConfirmation/$1';
 $route['coursedetail/registcourse/(:any)'] = 'User/registCourse/$1';
@@ -97,3 +99,6 @@ $route['adm_event'] = 'admin/EventController/index';
 $route['adm_event/(:any)'] = 'admin/EventController/eventBy_id/$1';
 $route['adm_event/participant/(:any)'] = 'admin/EventController/event_participant/$1';
 $route['adm_event/gallery/(:any)'] = 'admin/EventController/event_gallery/$1';
+
+// css
+$route['loading'] = 'course/assets/visitor/images/loading.gif';

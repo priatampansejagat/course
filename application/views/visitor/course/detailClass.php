@@ -69,17 +69,17 @@
                         '</div>');
                 });
 
-                // list.append('<div class="col-xs-12 col-sm-6 col-lg-4 class-data">' +
-                //     '<article class="popular-post">' +
-                //     '<div class="aligncenter">' +
-                //     '<img ' + image + ' alt="image description">' +
-                //     '</div>' +
-                //     '<h3 class="post-heading"><a href="lesson/' + dataJson.data.course_detail.id + '/' + dataJson.data.course_chapter.id + '">' + 'Task Assignment' + '</a></h3>' +
-                //     '<div class="post-author">' +
-                //     '<h4 class="author-heading">by: ' + dataJson.data.mentor.fullname + '</h4>' +
-                //     '</div>' +
-                //     '</article>' +
-                //     '</div>');
+                list.append('<div class="col-xs-12 col-sm-6 col-lg-4 class-data">' +
+                    '<article class="popular-post">' +
+                    '<div class="aligncenter">' +
+                    '<img ' + image + ' alt="image description">' +
+                    '</div>' +
+                    '<h3 class="post-heading"><a href="task/' + dataJson.data.course_detail.id + '/' + '">' + 'Task Assignment' + '</a></h3>' +
+                    '<div class="post-author">' +
+                    '<h4 class="author-heading">by: ' + dataJson.data.mentor.fullname + '</h4>' +
+                    '</div>' +
+                    '</article>' +
+                    '</div>');
 
                 for (var i = 0; i < pageCount; i++) {
                     $(".pagination").append('<li><a href="#">' + (i + 1) + '</a></li> ');

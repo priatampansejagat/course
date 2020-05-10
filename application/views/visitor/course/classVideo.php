@@ -49,7 +49,7 @@
                 <!-- instructorInfoBox -->
                 <div class="instructorInfoBox">
                     <div class="alignleft">
-                        <img class="center" src="<?= base_url(); ?>assets/visitor/images/logo-research-academy-grey.png" alt="Merry Jhonson" style="width: 97px;">
+                        <img class="center" src="<?= base_url(); ?>assets/visitor/images/logo-research-academy-grey.png" alt="Merry Jhonson" style="width: 100%; object-fit: cover; object-position: 50% 50%;">
                     </div>
                     <div class="description-wrap">
                         <h3 class="fw-normal mentor_name" id="mentor_name">Merry Jhonson</h3>

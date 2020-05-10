@@ -61,7 +61,7 @@ $duration = ($end_date - $start_date) / 60 / 60 / 24;
                 <!-- instructorInfoBox -->
                 <div class="instructorInfoBox">
                     <div class="alignleft">
-                        <a href="instructor-single.html"><img src="<?= $image ?>" alt="Intructor"></a>
+                        <img class="center" src="<?= base_url(); ?>assets/visitor/images/logo-research-academy-grey.png" alt="Merry Jhonson" style="width: 100%; object-fit: cover; object-position: 50% 50%;">
                     </div>
                     <div class="description-wrap">
                         <h3 class="fw-normal"><a href="instructor-single.html"><?= $data_course->data->mentor->fullname ?></a></h3>

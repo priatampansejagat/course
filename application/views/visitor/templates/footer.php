@@ -56,8 +56,20 @@
 				<div class="block"><img src="<?= base_url(); ?>assets/visitor/images/svg/hearts.svg" width="100" alt="loader"></div>
 			</div>
 			</div>
+			<div class="modal-loading"></div>
 
 			<script>
+				$body = $("body");
+
+				$(document).on({
+					ajaxStart: function() {
+						$body.addClass("loading");
+					},
+					ajaxStop: function() {
+						$body.removeClass("loading");
+					}
+				});
+
 				// Format Rupiah
 				function formatRupiah(angka, prefix) {
 					var number_string = angka.replace(/[^,\d]/g, '').toString(),

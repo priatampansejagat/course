@@ -71,7 +71,6 @@
     </section>
 </main>
 
-<script src="<?php echo base_url(); ?>assets/resumable/resumable.js" type="text/javascript"></script>
 <script>
     var regist_no = $('#regist_no').val(),
         nominal = $('#nominal').val(),

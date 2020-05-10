@@ -33,11 +33,14 @@
     <script src="<?= base_url(); ?>assets/visitor/js/jquery.js"></script>
 
     <!-- JS Global Constant API -->
-    <script src="<?php echo base_url() ?>assets/global-constant.js"></script>
+    <script src="<?= base_url() ?>assets/global-constant.js"></script>
 
     <!-- Datatables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+
+    <!-- resumable -->
+    <script src="<?= base_url(); ?>assets/resumable/resumable.js" type="text/javascript"></script>
 </head>
 
 <body>
