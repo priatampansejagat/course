@@ -162,6 +162,10 @@
                 'Please, Choose the File to Upload' +
                 '</div>' +
                 '</div>');
+            $("#alertFadeOut").delay(3000)
+                .fadeOut(function() {
+                    $(this).remove();
+                });
         }
 
         resumable.on('fileProgress', function(file) {
@@ -185,7 +189,10 @@
                 'File Upload Successful' +
                 '</div>' +
                 '</div>');
-            // $("#alertFadeOut").fadeOut(3000);
+            $("#alertFadeOut").delay(3000)
+                .fadeOut(function() {
+                    $(this).remove();
+                });
         });
 
         resumable.on('fileError', function(file, message) {
@@ -199,7 +206,10 @@
                 'File Failed to Upload' +
                 '</div>' +
                 '</div>');
-            // $("#alertFadeOut").fadeOut(3000);
+            $("#alertFadeOut").delay(3000)
+                .fadeOut(function() {
+                    $(this).remove();
+                });
         });
     });
 
