@@ -24,6 +24,7 @@ read_course_url = "course";
 create_course_url = "createcourse";
 create_chapter_url = "createchapter";
 create_chapter_url_vid = "createchapter_vid";
+update_course_url = "updatecourse";
 delete_course_url = "deletecourse";
 upload_certificate_url = "cert_upload";
 delete_certificate_url = "cert_delete";
