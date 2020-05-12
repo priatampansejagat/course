@@ -116,7 +116,9 @@
             target: noncurl_api_url + send_task_url,
             maxChunkRetries: 5,
             query: {
-                course_id: course_id
+                course_id: course_id,
+                user_id: user_id,
+                event_id: event_id
             },
             maxFiles: 1,
             fileType: ['pdf', 'docx', 'doc', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'ods', 'odt'],
