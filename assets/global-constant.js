@@ -40,6 +40,8 @@ cert_disable_url = 'cert_disable';
 
 // event
 create_event_url = "createevent";
+update_event_url = "updateevent";
+delete_event_url = "deleteevent";
 add_course_event_url = "add_course_event";
 add_cover_event_url = "add_cover_event";
 delete_cover_event_url = "delete_cover_event";
@@ -49,6 +51,7 @@ decline_event_register_user = "regisevent_decline";
 create_gallery_event_url = "create_gallery_event";
 upload_gallery_event_url = "upload_gallery_event";
 delete_picture_event_url = "delete_gallery_event";
+
 
 // user
 update_profile_url = "regisupdate";

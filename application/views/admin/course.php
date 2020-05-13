@@ -317,43 +317,6 @@
     });
 
     // datatable
-    // function dataTable_refresh() {
-    //   $.ajax({
-    //     type: 'POST',
-    //     url: base_url + post_url,
-    //     data: {
-    //       param: {
-    //         "ihateapple": course_dic
-    //       },
-    //       url: get_datatable_url
-    //     },
-    //     success: function(respons) {
-    //       var jsonArr = JSON.parse(respons);
-
-    //       $("#example2").DataTable().fnClearTable();
-    //       for (var i = 0; i < jsonArr['data'].length; i++) {
-    //         // console.log('datatable =' + jsonArr['data'][i]['id']);
-    //         var data = [
-    //           '',
-    //           i + 1,
-    //           jsonArr['data'][i]['title'],
-    //           jsonArr['data'][i]['mentor']['fullname'],
-    //           jsonArr['data'][i]['price'],
-    //           '<a onclick="delcourse(this)" class="btn btn-danger" id="' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' +
-    //           '<a class="btn btn-primary" href="course/' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Detail & Setting" ><i class="fa fa-cogs"></i></a> ' +
-    //           '<a class="btn btn-success" href="course/participant/' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Participant" ><i class="fa fa-users"></i></a>'
-
-    //         ];
-    //         $("#example2").DataTable().fnAddData(data);
-
-    //       }
-
-    //     }
-    //   });
-    // }
-    // dataTable_refresh();
-
-    // datatable
     function dataTable_refresh() {
       $.ajax({
         type: 'POST',
@@ -404,6 +367,7 @@
         },
         success: function(respons) {
           alert('Success');
+          dataTable_refresh();
         }
       });
     }

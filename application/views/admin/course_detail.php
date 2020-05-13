@@ -155,8 +155,8 @@
                           
                         </div>
                         <div class="pull-right">
-                          <button name="savecourse" id="savecourse" class="btn btn-primary btn-cons" type="submit"><i class="icon-ok"></i> Save</button>
-                          <a onclick="addcourse()" class="btn btn-white btn-cons" type="button">Cancel</a>
+                          <button name="updatecourse" id="updatecourse" class="btn btn-primary btn-cons" type="submit"><i class="icon-ok"></i> Save</button>
+                          <a onclick="location.reload()" class="btn btn-white btn-cons" type="button">Cancel</a>
                         </div>
                       </div>
 
@@ -485,6 +485,40 @@
       function alertFailedHide_video(){
         $("#alertFailed_video").hide();
       }
+
+
+
+
+      $("#updatecourse").click(function(){
+        var title = $('#title').val();
+        var description = $('#description').val();
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
+        var mentor_id = $('#mentor_id').val();
+        var price = $('#price').val();
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                  param: { 
+                    "id": course_id,
+                    "title": title,
+                    "description": description,
+                    "start_date": start_date,
+                    "end_date": end_date,
+                    "mentor_id": mentor_id,
+                    "price": price
+                  },
+                  url: update_course_url
+              },
+            success: function(respons){
+              // alert(respons);
+              var jsonArr = JSON.parse(respons);
+              alert('Success');
+              location.reload();
+
+          }});
+      });
 
       // 
       // datatable

@@ -318,6 +318,23 @@
       }
       dataTable_refresh();
 
+      function delevent(obj) {
+        // alert("delete => "+obj.id);
+        $.ajax({
+          type: 'POST',
+          url: base_url + post_url,
+          data: {
+            param: {
+              "event_id": obj.id
+            },
+            url: delete_event_url
+          },
+          success: function(respons) {
+            alert('Success');
+            dataTable_refresh();
+          }
+        });
+      }
 
     </script>
 

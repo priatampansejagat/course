@@ -127,8 +127,8 @@
                           
                         </div>
                         <div class="pull-right">
-                          <button name="saveevent" id="saveevent" class="btn btn-primary btn-cons" type="submit"><i class="icon-ok"></i> Save</button>
-                          <a onclick="addevent()" class="btn btn-white btn-cons" type="button">Cancel</a>
+                          <button name="updateevent" id="updateevent" class="btn btn-primary btn-cons" type="submit"><i class="icon-ok"></i> Save</button>
+                          <a onclick="location.reload()" class="btn btn-white btn-cons" type="button">Cancel</a>
                         </div>
                       </div>
 
@@ -403,6 +403,38 @@
       function alertFailedHide_addcourse(){
         $("#alertFailed_addcourse").hide();
       }
+
+
+      $("#updateevent").click(function(){
+        var title = $('#title').val();
+        var description = $('#description').val();
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
+        var price = $('#price').val();
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                  param: { 
+                    "id": event_id,
+                    "title": title,
+                    "description": description,
+                    "start_date": start_date,
+                    "end_date": end_date,
+                    "price": price
+                  },
+                  url: update_event_url
+              },
+            success: function(respons){
+              // alert(respons);
+              var jsonArr = JSON.parse(respons);
+              alert('Success');
+              location.reload();
+
+          }});
+      });
+
 
       // datatable
       function dataTable_refresh(){
