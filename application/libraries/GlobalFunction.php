@@ -105,6 +105,33 @@ class GlobalFunction{
 		return $data;
 	}
 
+	public function getBasicData_Mentor(){
+
+		$data=[];
+		// get data user data
+		$selfusername 	=	$this->CI->mysession->loginGetData('username');	
+		$dataUser = $this->CI->BasicQuery->selectAll('user',array('username' => $this->CI->mysession->loginGetData('username')));
+		$data['user'] = $dataUser;
+
+		// get menu
+		$condMenu = array( 'id_role' => AS_MENTOR );
+		$resultMenu = $this->CI->BasicQuery->selectAllResult('menu',$condMenu);
+
+		foreach ($resultMenu as $key => $value) {
+			
+			$data['menu'][$value['id']]=$value;
+
+			// selecting submenu
+			$condSubMenu = array('id_menu' => $value['id']);
+			$resultSubMenu = $this->CI->BasicQuery->selectAllResult('submenu',$condSubMenu);
+
+			$data['menu'][$value['id']]['submenu'] = $resultSubMenu;
+
+		}
+
+		return $data;
+	}
+
 
 }
 	

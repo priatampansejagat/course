@@ -27,9 +27,24 @@ class CourseController extends CI_Controller
 
 			$data = $this->globalfunction->getBasicData();
 			$data['onpage'] = 'COURSE';
+			$data['role'] = AS_ADMIN;
+			$data['user_id'] = $this->mysession->getData('id');
 
 			$userCond = array('role_id' => AS_MENTOR);
 			$data['mentor_list'] = $this->BasicQuery->selectAllResult('user',$userCond);
+			// echo(json_encode($data));
+			$this->load->view('admin/course',$data);
+
+		}else if ($this->mysession->loginGetData('role')== AS_MENTOR) {
+
+			$data = $this->globalfunction->getBasicData_Mentor();
+			$data['onpage'] = 'MY COURSE';
+			$data['role'] = AS_MENTOR;
+			$data['user_id'] = $this->mysession->getData('id');
+
+			// echo json_encode($this->mysession->getData('id'));
+			// $userCond = array('role_id' => AS_MENTOR);
+			// $data['mentor_list'] = $this->BasicQuery->selectAllResult('user',$userCond);
 			// echo(json_encode($data));
 			$this->load->view('admin/course',$data);
 

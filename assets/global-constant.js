@@ -23,6 +23,7 @@ send_paymentfile_url = "payconfirm_file";
 read_course_url = "course";
 create_course_url = "createcourse";
 create_chapter_url = "createchapter";
+delete_chapter_url = "deletechapter";
 create_chapter_url_vid = "createchapter_vid";
 update_course_url = "updatecourse";
 delete_course_url = "deletecourse";
@@ -56,7 +57,7 @@ delete_picture_event_url = "delete_gallery_event";
 // user
 update_profile_url = "regisupdate";
 update_profile_textbased_url = "regisupdate_text";
-
+delete_mentor_url = "delete_mentor";
 
 // multi-data
 get_datatable_url = "datatable";

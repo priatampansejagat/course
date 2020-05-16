@@ -213,6 +213,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
   <script type="text/javascript">
+
+    var role = "<?php echo($role); ?>";
+    var user_id = "<?php echo($user_id); ?>";
+
     $("#formaddcourse").hide();
 
     function addcourse() {
@@ -323,7 +327,9 @@
         url: base_url + post_url,
         data: {
           param: {
-            "ihateapple": course_dic
+            "ihateapple": course_dic,
+            "role": role,
+            "user_id" : user_id
           },
           url: get_datatable_url
         },
@@ -339,9 +345,12 @@
               jsonArr['data'][i]['title'],
               jsonArr['data'][i]['mentor']['fullname'],
               jsonArr['data'][i]['price'],
+
+              <?php if($role == AS_ADMIN){ ?>
               '<a onclick="delcourse(this)" class="btn btn-danger" id="' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' +
               '<a class="btn btn-primary" href="course/' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Detail & Setting" ><i class="fa fa-cogs"></i></a> ' +
               '<a class="btn btn-success" href="course/participant/' + jsonArr['data'][i]['id'] + '" data-toggle="tooltip" title="Participant" ><i class="fa fa-users"></i></a> ' +
+            <?php } ?>
               '<a class="btn btn-white" href="course/' + jsonArr['data'][i]['id'] + '/assignment" data-toggle="tooltip" title="Assignments" ><i class="fa fa-folder-open"></i></a>'
 
             ];

@@ -32,6 +32,14 @@ class HomeController extends CI_Controller
 			// echo(json_encode($data));
 			$this->load->view('admin/home',$data);
 
+		}else if ($this->mysession->loginGetData('role')==AS_MENTOR) {
+
+			$data = $this->globalfunction->getBasicData();
+			$data['onpage'] = 'HOME';
+			// echo(json_encode($data));
+			// $this->load->view('admin/home',$data);
+			redirect(base_url().'course','refresh');
+
 		}else{
 			show_404();
 		}

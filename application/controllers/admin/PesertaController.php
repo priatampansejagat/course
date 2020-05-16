@@ -29,7 +29,7 @@ class PesertaController extends CI_Controller
 			$data = $this->globalfunction->getBasicData();
 			$data['onpage'] = 'PESERTA';
 
-			$userCond = array('role_id' => AS_STUDENT);
+			$userCond = array('role_id' => AS_STUDENT, 'deleted' => ACTIVE);
 			$data['peserta'] = $this->BasicQuery->selectAllResult('user',$userCond);
 			// echo(json_encode($data));
 			$this->load->view('admin/peserta',$data);
