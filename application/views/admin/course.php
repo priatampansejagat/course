@@ -334,16 +334,23 @@
           url: get_datatable_url
         },
         success: function(respons) {
+          console.log(respons);
           var jsonArr = JSON.parse(respons);
 
           $("#example2").DataTable().fnClearTable();
           for (var i = 0; i < jsonArr['data'].length; i++) {
             // console.log('datatable =' + jsonArr['data'][i]['id']);
+            var mentor = "<i style='color:red'>none</i>";
+
+                if (jsonArr['data'][i]['mentor'] != null && jsonArr['data'][i]['mentor'] != "") {
+                  mentor = "<b>"+jsonArr['data'][i]['mentor']['fullname']+"</b>";
+                }
+
             var data = [
               '',
               i + 1,
               jsonArr['data'][i]['title'],
-              jsonArr['data'][i]['mentor']['fullname'],
+              mentor,
               jsonArr['data'][i]['price'],
 
               <?php if($role == AS_ADMIN){ ?>

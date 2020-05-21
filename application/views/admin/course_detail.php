@@ -842,7 +842,7 @@
             },
             success: function(respons) {
               alert('Success');
-              get_cert();  
+              dataTable_refresh();  
             }
         });
       }

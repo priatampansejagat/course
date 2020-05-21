@@ -62,7 +62,7 @@ class CourseController extends CI_Controller
 			$data = $this->globalfunction->getBasicData();
 			$data['onpage'] = 'COURSE DETAIL';
 
-			$userCond = array('role_id' => AS_MENTOR);
+			$userCond = array('role_id' => AS_MENTOR, 'deleted' => 1);
 			$data['mentor_list'] = $this->BasicQuery->selectAllResult('user',$userCond);
 			// echo(json_encode($data));
 
@@ -71,7 +71,7 @@ class CourseController extends CI_Controller
 			$data['course']['info']			= $this->BasicQuery->selectAll('course',$courseCond);
 			$data['course']['chapter'] 		= $this->BasicQuery->selectAllResult('course_chapter',$courseCond2);
 
-			$userCond = array('id' => $data['course']['info']['mentor_id']);
+			$userCond = array('id' => $data['course']['info']['mentor_id'], 'deleted' => 1);
 			$data['course']['info']['mentor'] = $this->BasicQuery->selectAll('user',$userCond);
 
 			// $data['course']['info']['description'] = $this->globalfunction->changeto_HTMLcharref($data['course']['info']['description']);
