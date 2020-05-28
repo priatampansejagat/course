@@ -78,5 +78,5 @@ assignment_all = "assignment_all";
 cert_status_dic = "cert_status";
 
 /*NON CURL*/
-noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
-// noncurl_api_url = "http://api.research-academy.org/";
+// noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
+noncurl_api_url = "http://api.research-academy.org/";
