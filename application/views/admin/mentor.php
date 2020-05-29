@@ -467,7 +467,7 @@
                           jsonArr['data'][i]['fullname'],
                           jsonArr['data'][i]['phone_number'],
                           jsonArr['data'][i]['country'],
-                          '<a onclick="delmentor('+jsonArr['data'][i]['fullname']+')" class="btn btn-danger" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> '+
+                          '<a onclick="delmentor(this)" id="'+user_id+'" class="btn btn-danger" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> '+
                           '<a href="'+ base_url+ 'users/'+ user_id +'" class="btn btn-primary" data-toggle="tooltip" title="Detail" ><i class="fa fa-arrow-right"></i></a> '
 
                 ];
@@ -480,8 +480,21 @@
       }
 
 
-      function delmentor($id){
-        alert('deleting mentor'+$id);
+      function delmentor(obj){
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                param: {
+                    "user_id": obj.id
+                },
+                url: delete_mentor_url
+            },
+            success: function(respons) {
+              alert('Success');
+              get_cert();  
+            }
+        });
       }
 
     </script>

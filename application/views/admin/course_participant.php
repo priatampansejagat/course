@@ -133,7 +133,7 @@
                 if (jsonArr['data'][i]['confirmed'] == 'registered') {
                   style="color:blue";
                 }else if (jsonArr['data'][i]['confirmed'] == 'paid') {
-                  style="color:yellow";
+                  style="color:orange";
                 }else if (jsonArr['data'][i]['confirmed'] == 'confirmed') {
                   style="color:green";
                 }else{
@@ -191,6 +191,7 @@
                   url: confirm_register_user
               },
             success: function(respons){
+              // alert("hello world");
               dataTable_refresh();
               $("#cancelConfirm").click();
           }});
@@ -205,6 +206,7 @@
                   url: decline_register_user
               },
             success: function(respons){
+              // alert("hello world");
               dataTable_refresh();
               $("#cancelConfirm").click();
           }});

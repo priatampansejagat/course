@@ -548,7 +548,7 @@
                           '<button class="btn btn-danger btn-xs btn-mini" id="chapter_video_upload_'+ chapter_id +'" name="chapter_video_upload_'+ chapter_id +'">upload Video</button> '+
                           '<div id="results_'+ chapter_id +'" class="panel"></div>',
 
-                          '<a onclick="delcourse(this)" class="btn btn-danger" id="'+ chapter_id +'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' 
+                          '<a onclick="delchapter(this)" class="btn btn-danger" id="'+ chapter_id +'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' 
 
                 ];
 
@@ -564,7 +564,7 @@
                           '<button class="btn btn-danger btn-xs btn-mini" id="chapter_video_upload_'+ chapter_id +'" name="chapter_video_upload_'+ chapter_id +'">upload Video</button> '+
                           '<div id="results_'+ chapter_id +'" class="panel"></div>',
 
-                          '<a onclick="delcourse(this)" class="btn btn-danger" id="'+ chapter_id +'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' 
+                          '<a onclick="delchapter(this)" class="btn btn-danger" id="'+ chapter_id +'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' 
 
                         ];
                 }
@@ -826,6 +826,23 @@
             success: function(respons) {
               alert('Success');
               get_cert();  
+            }
+        });
+      }
+
+      function delchapter(obj){
+         $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                param: {
+                    "chapter_id": obj.id
+                },
+                url: delete_chapter_url
+            },
+            success: function(respons) {
+              alert('Success');
+              dataTable_refresh();  
             }
         });
       }

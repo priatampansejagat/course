@@ -27,9 +27,24 @@ class CourseController extends CI_Controller
 
 			$data = $this->globalfunction->getBasicData();
 			$data['onpage'] = 'COURSE';
+			$data['role'] = AS_ADMIN;
+			$data['user_id'] = $this->mysession->getData('id');
 
 			$userCond = array('role_id' => AS_MENTOR);
 			$data['mentor_list'] = $this->BasicQuery->selectAllResult('user',$userCond);
+			// echo(json_encode($data));
+			$this->load->view('admin/course',$data);
+
+		}else if ($this->mysession->loginGetData('role')== AS_MENTOR) {
+
+			$data = $this->globalfunction->getBasicData_Mentor();
+			$data['onpage'] = 'MY COURSE';
+			$data['role'] = AS_MENTOR;
+			$data['user_id'] = $this->mysession->getData('id');
+
+			// echo json_encode($this->mysession->getData('id'));
+			// $userCond = array('role_id' => AS_MENTOR);
+			// $data['mentor_list'] = $this->BasicQuery->selectAllResult('user',$userCond);
 			// echo(json_encode($data));
 			$this->load->view('admin/course',$data);
 
@@ -47,7 +62,7 @@ class CourseController extends CI_Controller
 			$data = $this->globalfunction->getBasicData();
 			$data['onpage'] = 'COURSE DETAIL';
 
-			$userCond = array('role_id' => AS_MENTOR);
+			$userCond = array('role_id' => AS_MENTOR, 'deleted' => 1);
 			$data['mentor_list'] = $this->BasicQuery->selectAllResult('user',$userCond);
 			// echo(json_encode($data));
 
@@ -56,7 +71,7 @@ class CourseController extends CI_Controller
 			$data['course']['info']			= $this->BasicQuery->selectAll('course',$courseCond);
 			$data['course']['chapter'] 		= $this->BasicQuery->selectAllResult('course_chapter',$courseCond2);
 
-			$userCond = array('id' => $data['course']['info']['mentor_id']);
+			$userCond = array('id' => $data['course']['info']['mentor_id'], 'deleted' => 1);
 			$data['course']['info']['mentor'] = $this->BasicQuery->selectAll('user',$userCond);
 
 			// $data['course']['info']['description'] = $this->globalfunction->changeto_HTMLcharref($data['course']['info']['description']);
@@ -98,6 +113,19 @@ class CourseController extends CI_Controller
 		if ($this->mysession->loginGetData('role')== AS_ADMIN) {
 
 			$data = $this->globalfunction->getBasicData();
+			$data['onpage'] = 'COURSE ASSIGNMENT';
+
+			$courseCond = array('id' => $id);
+			$courseCond2 = array('course_id' => $id);
+			$data['course']['info']			= $this->BasicQuery->selectAll('course',$courseCond);
+			$data['course']['member'] 		= $this->BasicQuery->selectAllResult('course_member',$courseCond2);
+
+			// echo(json_encode($data));
+			$this->load->view('admin/course_assignment',$data);
+
+		}else if ($this->mysession->loginGetData('role')== AS_MENTOR) {
+
+			$data = $this->globalfunction->getBasicData_Mentor();
 			$data['onpage'] = 'COURSE ASSIGNMENT';
 
 			$courseCond = array('id' => $id);

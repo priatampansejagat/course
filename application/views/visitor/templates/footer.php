@@ -25,7 +25,7 @@
 									<dt><span class="fas fa-map-marker"><span class="sr-only">marker</span></span></dt>
 									<dd>Malang, East java, Indonesia</dd>
 									<dt><span class="fas fa-phone-square"><span class="sr-only">phone</span></span></dt>
-									<dd><a href="tel:+6281227480007">+62 831 1196 3210</a></dd>
+									<dd><a href="tel:+6283122841955">+62 831-2284-1955</a></dd>
 								</dl>
 							</address>
 						</div>
