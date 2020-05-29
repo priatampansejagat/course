@@ -44,7 +44,7 @@
                 url: get_datatable_url
             },
             success: function(data) {
-                var pageSize = 3;
+                var pageSize = 10;
                 var course = $('.myCourse');
                 var dataJson = JSON.parse(data);
                 var pageCount = dataJson.data.length / pageSize;
