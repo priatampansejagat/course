@@ -105,3 +105,7 @@ $route['adm_event/gallery/(:any)'] = 'admin/EventController/event_gallery/$1';
 
 // css
 $route['loading'] = 'course/assets/visitor/images/loading.gif';
+
+
+// zoom
+$route['zoomtes'] = 'admin/ZoomController/index'; 
