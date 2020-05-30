@@ -65,6 +65,7 @@ $route['logout'] = 'User/logout';
 $route['setting'] = 'User/setting';
 
 // page user
+$route['certificate'] = 'User/certificate';
 $route['visitor'] = 'User/index';
 $route['courselist'] = 'User/courseList';
 $route['coursedetail/(:any)'] = 'User/courseDetail/$1';
@@ -73,6 +74,8 @@ $route['eventdetail/(:any)'] = 'User/eventDetail/$1';
 $route['classdetail/(:any)'] = 'User/classDetail/$1';
 $route['classdetail/lesson/(:any)/(:any)'] = 'User/classVideo/$1/$2';
 $route['classdetail/task/(:any)'] = 'User/classTask/$1';
+$route['classdetail/certificate/(:any)'] = 'User/certificateDetail/$1';
+$route['certificate/(:any)'] = 'User/certificate/$1';
 $route['eventdetail/lesson/(:any)/(:any)'] = 'User/classVideo/$1/$2';
 $route['taskevent/(:any)/(:any)'] = 'User/taskEvent/$1/$2';
 $route['payment'] = 'User/payment';
