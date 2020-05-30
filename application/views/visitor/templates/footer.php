@@ -95,6 +95,9 @@
 			<script src="<?= base_url(); ?>assets/visitor/js/jquery.main.js"></script>
 			<!-- include jQuery -->
 			<script type="text/javascript" src="<?= base_url(); ?>assets/visitor/js/init.js"></script>
+
+			<!-- video.js -->
+			<script src="https://vjs.zencdn.net/7.8.2/video.js"></script>
 			</body>
 
 			</html>

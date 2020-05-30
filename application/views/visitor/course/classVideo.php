@@ -89,10 +89,12 @@
                     $(".mentor_name").text(dataJson.data.mentor.fullname);
                     $(".major_of_study").text(dataJson.data.mentor.major_of_study);
                     $("#btn-profil").attr("href", '<?= base_url("mentordetail/") ?>' + dataJson.data.mentor.id);
-                    $("#video").append('<video width="100%" controls>' +
+                    $("#video").append('<video id="my-video" class="video-js" controls preload="auto" data-setup="{}" style="width: 100%; height: 100%">' +
                         '<source src="' + value.video_link + '" type="video/mp4">' +
-                        '<source src="' + value.video_link + '" type="video/ogg">' +
+                        '<source src="' + value.video_link + '" type="video/webm">' +
+                        '<p class="vjs-no-js">' +
                         'Your browser does not support the video tag.' +
+                        '<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video </a>' +
                         '</video>');
                 });
             }
