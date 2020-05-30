@@ -82,7 +82,7 @@
             success: function(data) {
                 var dataJson = JSON.parse(data);
                 $.each(dataJson.data.course_chapter, function(key, value) {
-                    $("#description").text(dataJson.data.course_detail.description);
+                    $("#description").text(dataJson.data.course_chapter[0]['description']);
                     $("#mentor").text(dataJson.data.mentor.fullname);
                     $("#course_title").text(dataJson.data.course_detail.title);
                     $("#chapter_title").text("Chapter: " + value.tittle);
