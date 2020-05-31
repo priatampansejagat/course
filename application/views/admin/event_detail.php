@@ -195,6 +195,88 @@
                 </div>
               </div>
             </div>
+
+
+            <div class="row-fluid" id="formaddcourse">
+              <div class="span12">
+                <div class="grid simple ">
+                  <div class="grid-title">
+                    <h4>Meeting Via Zoom</h4>
+                    <div class="tools">
+                      <a href="javascript:;" class="collapse"></a>
+                    </div>
+
+                  </div>
+                  <div class="grid-body ">
+                    
+                    <div class="grid-body no-border">
+                      <!-- <form class="form-no-horizontal-spacing" id="form-condensed"> -->
+                        <div class="row column-seperation">
+                          <div class="col-md-12">
+                            <div class="row form-row">
+                              
+                              <div id="zoom_enable">
+                                <div class="row form-row">
+                                  <div class="col-md-2">
+                                    <a href="https://zoom.us/oauth/authorize?response_type=code&client_id=pewdqWT7SJSIc6oGfYAfOA&redirect_uri=http://temporaryapi.rumahpeneleh.or.id/zoomoauthtoken" target="_BLANK" class="btn btn-primary btn-cons" id="activate_zoom">Login to Zoom</a>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div id="zoom_setting">
+                                <div class="row form-row">
+                                  <div class="col-md-12">
+                                    <b>Topic : </b><input type='text' placeholder="" class="form-control" id='zoom_topic' name="zoom_topic" value="" />
+                                  </div>
+                                </div>
+                                <div class="row form-row">
+                                  <div class="col-md-4">
+                                    <b>Start Date : </b><input type='text' placeholder="Start Date" class="form-control" id='zoom_start_date' name="zoom_start_date" />
+                                  </div>
+                                  <div class="col-md-1">
+                                    <b>Hour : </b>
+                                    <input type='text' placeholder="24" class="form-control " id='zoom_start_time_hour' name="zoom_start_time_hour" /> 
+                                  </div>  
+
+                                  <div class="col-md-1">  
+                                    <b>Min : </b>
+                                    <input type='text' placeholder="59" class="form-control" id='zoom_start_time_min' name="zoom_start_time_min" /> 
+                                  </div> 
+
+                                  <div class="col-md-1"> 
+                                    <b>Sec : </b>  
+                                    <input type='text' placeholder="59" class="form-control" id='zoom_start_time_sec' name="zoom_start_time_sec" />
+                                  
+                                  </div>
+                                  <div class="col-md-2">
+                                    <b>Duration : </b><input type='text' placeholder="Minutes" class="form-control" id='zoom_duration' name="zoom_duration" value="" />  
+                                  </div>
+                                </div>
+                                <div class="row form-row">
+                                  <div class="col-md-8">
+                                    <b>Password : </b><input type='text' placeholder="" class="form-control" id='zoom_password' name="zoom_password" value="" />
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                             
+                             
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-actions" id="zoom_control">
+                          <div class="pull-right">
+                            <button type="button" class="btn btn-danger btn-cons" id="delete_zoom">Reset</button>
+                            <button type="button" class="btn btn-primary btn-cons" id="save_zoom">Save Settings</button>
+                          </div>
+                        </div>
+                    </div>
+                    
+
+                  </div>
+                </div>
+              </div>
+            </div>
             
 
             <div class="row-fluid" id="formaddevent">
@@ -239,6 +321,8 @@
                                   <button name="add_course" id="add_course" class="btn btn-primary btn-cons" type="submit"><i class="icon-ok"></i> Add</button>
                                   <!-- <a onclick="clearchapter()" class="btn btn-white btn-cons" type="button">Clear</a> -->
                                 </div>
+
+
 
 
                               </div>
@@ -316,6 +400,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>assets/admin/assets/plugins/datatables-responsive/js/lodash.min.js"></script>
 
     <script src="<?php echo base_url();?>assets/admin/assets/js/datatables.js" type="text/javascript"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
     <script type="text/javascript">
 
@@ -403,6 +488,45 @@
       function alertFailedHide_addcourse(){
         $("#alertFailed_addcourse").hide();
       }
+
+      $('#start_date').datepicker({
+          format: 'yyyy-mm-dd',
+      });
+      $('#end_date').datepicker({
+          format: 'yyyy-mm-dd',
+      });
+      $('#start_date').change(function() {
+                var dob = $('#start_date').val();
+                if (dob != '') {
+                    dob = new Date(dob);
+                    var today = new Date();
+                    var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+                }
+            });
+      $('#end_date').change(function() {
+                var dob = $('#end_date').val();
+                if (dob != '') {
+                    dob = new Date(dob);
+                    var today = new Date();
+                    var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+                }
+            });
+
+
+      $('#zoom_start_date').datepicker({
+          format: 'yyyy-mm-dd',
+      });
+      $('#zoom_start_date').change(function() {
+                var dob = $('#zoom_start_date').val();
+                if (dob != '') {
+                    dob = new Date(dob);
+                    var today = new Date();
+                    var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+                }
+            });
+
+      // $("#zoom_control").hide();
+      // $("#zoom_setting").hide();
 
 
       $("#updateevent").click(function(){
@@ -627,6 +751,37 @@
             }
         });
       }
+
+
+      $("#save_zoom").click(function(){
+        // alert($("#zoom_start_date").val()+ "T" + 
+        //                             $("#zoom_start_time_hour").val()+":"+
+        //                             $("#zoom_start_time_min").val()+":"+
+        //                             $("#zoom_start_time_sec").val());
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                param: {
+                  'event_id'  : event_id,
+                  'topic'     : $("#zoom_topic").val(),
+                  'start_time': $("#zoom_start_date").val()+ "T" + 
+                                    $("#zoom_start_time_hour").val()+":"+
+                                    $("#zoom_start_time_min").val()+":"+
+                                    $("#zoom_start_time_sec").val(),
+                  'duration'  : $("#zoom_duration").val(),  
+                  'password'  : $("#zoom_password").val()                
+                },
+                url: zoom_create_url
+            },
+            success: function(respons) {
+              console.log(respons);
+              alert('Success');
+              
+            }
+        });
+      });
 
 
     </script>

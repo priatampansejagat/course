@@ -139,7 +139,7 @@
                         var id = cellData.id;
                         if (cellData.status == 1) {
                             console.log(typeof(cellData.id));
-                            var html = '<a href="#" class="btn disabled" style="background-color: #b3b3b3; color:white; width: 200px;">Waiting for Amin Confirmation</a>';
+                            var html = '<a href="#" class="btn disabled" style="background-color: #b3b3b3; color:white; width: 200px;">Waiting for Admin Confirmation</a>';
                         } else if (cellData.status == 2) {
                             console.log(typeof(cellData.id));
                             var html = '<a href="#" class="btn btn-success disabled">Payment Accepted</a>';
