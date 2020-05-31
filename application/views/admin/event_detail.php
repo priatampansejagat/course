@@ -258,6 +258,14 @@
                                   </div>
                                   
                                 </div>
+
+                                <div class="row form-row">
+                                  <div class="col-md-12">
+                                    <a href="" target="_BLANK" class="btn btn-block btn-success btn-cons" id="zoom_start_meeting">START MEETING</a>
+                                  </div>
+                                  
+                                </div>
+
                               </div>
                              
                              
@@ -265,6 +273,10 @@
                           </div>
                         </div>
                         <div class="form-actions" id="zoom_control">
+                          
+                          <div class="pull-left">
+                            
+                          </div>
                           <div class="pull-right">
                             <button type="button" class="btn btn-danger btn-cons" id="delete_zoom">Reset</button>
                             <button type="button" class="btn btn-primary btn-cons" id="save_zoom">Save Settings</button>
@@ -753,12 +765,51 @@
       }
 
 
-      $("#save_zoom").click(function(){
-        // alert($("#zoom_start_date").val()+ "T" + 
-        //                             $("#zoom_start_time_hour").val()+":"+
-        //                             $("#zoom_start_time_min").val()+":"+
-        //                             $("#zoom_start_time_sec").val());
+      function get_zoom(){
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                param: {
+                    "ihateapple" : get_zoom_event_alldata,
+                    "event_id": event_id
+                },
+                url: get_datatable_url
+            },
+            success: function(respons) {
+              console.log(respons);
+              var jsonArr = JSON.parse(respons);
 
+              if (jsonArr['data'] == null) {
+                $("#zoom_topic").val('');
+                $("#zoom_start_date").val('');
+                $("#zoom_start_time_hour").val('');
+                $("#zoom_start_time_min").val('');
+                $("#zoom_start_time_sec").val('');
+                $("#zoom_duration").val('');
+                $("#zoom_password").val('');
+                $("#zoom_start_meeting").attr("href", '#');
+
+              }else{
+                var zoomdate = jsonArr['data']['start_time'].split('T');
+                var zoomtime = zoomdate[1].split(':');
+
+                $("#zoom_topic").val(jsonArr['data']['topic']);
+                $("#zoom_start_date").val(zoomdate[0]);
+                $("#zoom_start_time_hour").val(zoomtime[0]);
+                $("#zoom_start_time_min").val(zoomtime[1]);
+                $("#zoom_start_time_sec").val(zoomtime[2]);
+                $("#zoom_duration").val(jsonArr['data']['duration']);
+                $("#zoom_password").val(jsonArr['data']['password']);
+                $("#zoom_start_meeting").attr("href", jsonArr['data']['start_url']);
+              }
+              
+              
+            }
+        });
+      } get_zoom();
+
+      $("#save_zoom").click(function(){
         $.ajax({
             type: 'POST',
             url: base_url + post_url,
@@ -783,6 +834,24 @@
         });
       });
 
+
+      $("#delete_zoom").click(function(){
+        $.ajax({
+            type: 'POST',
+            url: base_url + post_url,
+            data: {
+                param: {
+                    "event_id": event_id
+                },
+                url: zoom_delete_url
+            },
+            success: function(respons) {
+              console.log(respons);
+              get_zoom();
+
+            }
+        });
+      });
 
     </script>
 
