@@ -80,8 +80,8 @@ get_zoom_event = "zoom_event";
 get_zoom_event_alldata = "zoom_event_alldata";
 
 /*NON CURL*/
-// noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
-noncurl_api_url = "http://api.research-academy.org/";
+noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
+// noncurl_api_url = "http://api.research-academy.org/";
 
 
 /*ZOOM*/
