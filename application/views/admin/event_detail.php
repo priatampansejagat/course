@@ -594,27 +594,30 @@
               var jsonArr = JSON.parse(respons);
 
               $("#example2").DataTable().fnClearTable();
-              for (var i = 0; i < jsonArr['data']['course_list'].length ; i++) {
-                // console.log('datatable =' + jsonArr['data'][i]['id']);
-                // alert(jsonArr['data']['course_list'][i]['mentor_detail']['fullname']);
-                var mentor = "<i style='color:red'>none</i>";
+              if (jsonArr['data']['course_list'] != null) {
+                for (var i = 0; i < jsonArr['data']['course_list'].length ; i++) {
+                  // console.log('datatable =' + jsonArr['data'][i]['id']);
+                  // alert(jsonArr['data']['course_list'][i]['mentor_detail']['fullname']);
+                  var mentor = "<i style='color:red'>none</i>";
 
-                if (jsonArr['data']['course_list'][i]['mentor_detail']['fullname'] != null && jsonArr['data']['course_list'][i]['mentor_detail']['fullname'] != "") {
-                  mentor = "<b>"+jsonArr['data']['course_list'][i]['mentor_detail']['fullname']+"</b>";
+                  if (jsonArr['data']['course_list'][i]['mentor_detail']['fullname'] != null && jsonArr['data']['course_list'][i]['mentor_detail']['fullname'] != "") {
+                    mentor = "<b>"+jsonArr['data']['course_list'][i]['mentor_detail']['fullname']+"</b>";
+                  }
+
+                  var data = [
+                            '',
+                            i+1,
+                            jsonArr['data']['course_list'][i]['title'],
+                            mentor,
+                            '<a onclick="delbridge(this)" class="btn btn-danger" id="'+jsonArr['data']['course_list'][i]['id']+'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> '  +
+                            '<a class="btn btn-white" href="<?php echo(base_url()); ?>course/' + jsonArr['data']['course_list'][i]['id'] + '/assignment" data-toggle="tooltip" title="Assignments" ><i class="fa fa-folder-open"></i></a>'
+
+                  ];
+                  $("#example2").DataTable().fnAddData(data); 
+
                 }
-
-                var data = [
-                          '',
-                          i+1,
-                          jsonArr['data']['course_list'][i]['title'],
-                          mentor,
-                          '<a onclick="delbridge(this)" class="btn btn-danger" id="'+jsonArr['data']['course_list'][i]['id']+'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> '  +
-                          '<a class="btn btn-white" href="<?php echo(base_url()); ?>course/' + jsonArr['data']['course_list'][i]['id'] + '/assignment" data-toggle="tooltip" title="Assignments" ><i class="fa fa-folder-open"></i></a>'
-
-                ];
-                $("#example2").DataTable().fnAddData(data); 
-
-              } 
+              }
+               
 
           }});
       }
@@ -681,7 +684,10 @@
             },
             success: function(respons) {
               var jsonArr = JSON.parse(respons);
-              $("#print_cover").attr("href", jsonArr['data']['event_info']['cover_link']);  
+              if (jsonArr['data']['event_info'] != null) {
+                $("#print_cover").attr("href", jsonArr['data']['event_info']['cover_link']);
+              }
+                
             }
         });
       } 
