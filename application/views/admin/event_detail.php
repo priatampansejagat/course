@@ -266,6 +266,12 @@
                                   
                                 </div>
 
+                                <div class="row small-text">
+                                  <p class="col-md-12">
+                                    NOTE - Please login to zoom by clicking the <b>"Login to Zoom"</b> button, before performing operations on zoom.
+                                  </p>
+                                </div>
+
                               </div>
                              
                              
@@ -777,7 +783,7 @@
                 url: get_datatable_url
             },
             success: function(respons) {
-              console.log(respons);
+              // console.log(respons);
               var jsonArr = JSON.parse(respons);
 
               if (jsonArr['data'] == null) {
@@ -827,7 +833,7 @@
                 url: zoom_create_url
             },
             success: function(respons) {
-              console.log(respons);
+              // console.log(respons);
               alert('Success');
               
             }
@@ -841,7 +847,7 @@
             url: base_url + post_url,
             data: {
                 param: {
-                    "event_id": event_id
+                    'event_id': event_id
                 },
                 url: zoom_delete_url
             },
