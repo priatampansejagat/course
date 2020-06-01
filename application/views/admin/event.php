@@ -222,7 +222,7 @@
           format: 'yyyy-mm-dd',
       });
       $('#start_date').change(function() {
-          var dob = $('#date_of_birth').val();
+          var dob = $('#start_date').val();
           if (dob != '') {
               dob = new Date(dob);
               var today = new Date();
@@ -235,7 +235,7 @@
           format: 'yyyy-mm-dd',
       });
       $('#end_date').change(function() {
-          var dob = $('#date_of_birth').val();
+          var dob = $('#end_date').val();
           if (dob != '') {
               dob = new Date(dob);
               var today = new Date();

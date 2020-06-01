@@ -372,6 +372,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>assets/admin/assets/plugins/datatables-responsive/js/lodash.min.js"></script>
 
     <script src="<?php echo base_url();?>assets/admin/assets/js/datatables.js" type="text/javascript"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
     <script type="text/javascript">
 
@@ -487,6 +488,29 @@
       }
 
 
+      $('#start_date').datepicker({
+          format: 'yyyy-mm-dd',
+      });
+      $('#end_date').datepicker({
+          format: 'yyyy-mm-dd',
+      });
+      
+      $('#start_date').change(function() {
+                var dob = $('#start_date').val();
+                if (dob != '') {
+                    dob = new Date(dob);
+                    var today = new Date();
+                    var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+                }
+            });
+      $('#end_date').change(function() {
+                var dob = $('#end_date').val();
+                if (dob != '') {
+                    dob = new Date(dob);
+                    var today = new Date();
+                    var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+                }
+            });
 
 
       $("#updatecourse").click(function(){

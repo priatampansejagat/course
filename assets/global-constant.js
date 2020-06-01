@@ -76,7 +76,15 @@ event_member_dic = "event_member";
 event_gallery_dic = "event_gallery";
 assignment_all = "assignment_all";
 cert_status_dic = "cert_status";
+get_zoom_event = "zoom_event";
+get_zoom_event_alldata = "zoom_event_alldata";
 
 /*NON CURL*/
 noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
 // noncurl_api_url = "http://api.research-academy.org/";
+
+
+/*ZOOM*/
+zoom_activation_url = "zoomactivate";
+zoom_create_url = "zoomcreatemeeting";
+zoom_delete_url = "zoomdeletemeeting";
