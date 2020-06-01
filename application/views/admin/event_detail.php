@@ -235,7 +235,7 @@
                                   </div>
                                   <div class="col-md-1">
                                     <b>Hour : </b>
-                                    <input type='text' placeholder="24" class="form-control " id='zoom_start_time_hour' name="zoom_start_time_hour" /> 
+                                    <input type='text' placeholder="23" class="form-control " id='zoom_start_time_hour' name="zoom_start_time_hour" /> 
                                   </div>  
 
                                   <div class="col-md-1">  
