@@ -48,16 +48,13 @@
                 var course = $('.myCourse');
                 var dataJson = JSON.parse(data);
                 var pageCount = dataJson.data.length / pageSize;
+                var image = 'src="<?= base_url(); ?>assets/visitor/images/logo-research-academy-grey.png"'
 
                 $.each(dataJson.data.course_list, function(key, value) {
                     var date_custom = new Date(Date.parse(value.start_date));
                     course.append('<li class="course-data">' +
                         '<div class="alignleft">' +
-                        '<time datetime="2011-01-12" class="time text-uppercase">' +
-                        '<strong class="date fw-normal">' + (date_custom.getDate() < 10 ? '0' + date_custom.getDate() : date_custom.getDate()) + '</strong>' +
-                        '<strong class="month fw-light font-lato">' + month(date_custom.getMonth()) + '</strong>' +
-                        '<strong class="day fw-light font-lato">' + (date_custom.getFullYear()) + '</strong>' +
-                        '</time>' +
+                        '<img ' + image + ' alt="image description">' +
                         '</div>' +
                         '<div class="description-wrap">' +
                         '<h3 class="list-heading">' + value.title + '</h3>' +
@@ -67,6 +64,37 @@
                         '<a href="classdetail/' + dataJson.data.event_info.id + '/' + value.id + '" class="btn btn-warning text-uppercase">See Class</a>' +
                         '</div>' +
                         '</li>');
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + post_url,
+                    data: {
+                        param: {
+                            "ihateapple": "zoom_event",
+                            "event_id": "<?= $event_id ?>"
+                        },
+
+                        url: get_datatable_url
+                    },
+                    success: function(data) {
+                        var course = $('.myCourse');
+                        var dataJson = JSON.parse(data);
+                        var pageCount = dataJson.data.length / pageSize;
+
+                        course.append('<li class="course-data">' +
+                            '<div class="alignleft">' +
+                            '<img ' + image + ' alt="image description">' +
+                            '</div>' +
+                            '<div class="description-wrap">' +
+                            '<h3 class="list-heading">' + 'Live Conference' + '</h3>' +
+                            '<address> by : ' + 'Research Academy' + '</address>' +
+                            '</div>' +
+                            '<div>' +
+                            '<a href="' + dataJson.data + '" class="btn btn-warning text-uppercase" target="_blank">Join Conference</a>' +
+                            '</div>' +
+                            '</li>');
+                    }
                 });
 
                 for (var i = 0; i < pageCount; i++) {
