@@ -75,7 +75,7 @@ $route['classdetail/(:any)'] = 'User/classDetail/$1';
 $route['classdetail/lesson/(:any)/(:any)'] = 'User/classVideo/$1/$2';
 $route['classdetail/task/(:any)'] = 'User/classTask/$1';
 $route['classdetail/certificate/(:any)'] = 'User/certificateDetail/$1';
-$route['certificate/(:any)'] = 'User/certificate/$1';
+$route['certificate/(:any)/(:any)'] = 'User/certificate/$1/$2';
 $route['eventdetail/lesson/(:any)/(:any)'] = 'User/classVideo/$1/$2';
 $route['taskevent/(:any)/(:any)'] = 'User/taskEvent/$1/$2';
 $route['payment'] = 'User/payment';
@@ -108,4 +108,4 @@ $route['loading'] = 'course/assets/visitor/images/loading.gif';
 
 
 // zoom
-$route['zoomtes'] = 'admin/ZoomController/index'; 
+$route['zoomtes'] = 'admin/ZoomController/index';

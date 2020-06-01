@@ -66,7 +66,7 @@
                                         <?php } ?>
                                         <?php if ($this->session->userdata('id')) { ?>
                                             <li class="dropdown">
-                                                <a href="#" class="btn btn-warning btn-theme text-uppercase dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 10px 20px; border-radius: 25px"><?= $this->session->userdata('username') ?></a>
+                                                <a href="#" class="btn btn-warning btn-theme text-uppercase dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 10px 20px; border-radius: 25px"><?= substr($this->session->userdata["username"], 0, 6); ?></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="<?= base_url('setting') ?>">Settings</a></li>
                                                     <li><a href="<?= base_url('logout') ?>">Logout</a></li>

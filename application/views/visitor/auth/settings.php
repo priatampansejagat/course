@@ -59,7 +59,7 @@
                         </div>
                         <div class="col-xs-12 col-md-9">
                             <div class="btns-wrap">
-                                <button type="submit" class="btn btn-theme btn-warning fw-bold font-lato text-uppercase">Login</button>
+                                <button type="submit" class="btn btn-theme btn-warning fw-bold font-lato text-uppercase">Send</button>
                             </div>
                         </div>
                     </div>
