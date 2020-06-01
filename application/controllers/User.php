@@ -448,4 +448,45 @@ class User extends CI_Controller
         $this->load->view('visitor/payment/invoice', $data);
         $this->load->view('visitor/templates/footer');
     }
+
+    public function certificateDetail($course_id)
+    {
+        $this->isUser();
+
+        $data['title'] = 'Class Detail';
+        $data['page_title'] = 'Class Detail';
+        $data['course_id'] = $course_id;
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/course/certificateDetail', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function certificate($course_id, $id)
+    {
+        $this->isUser();
+
+        $option = array(
+            'type' => 'post',
+            'url_api' => URL_API_DATATABLE,
+            'data' => json_encode((object) ["ihateapple" => "mycourse_room", "user_id" => $_SESSION["id"], "course_id" => $course_id]),
+        );
+
+        $this->curl_api->set_option($option);
+        $data_object = $this->curl_api->exec();
+
+        $data['course_id'] = $course_id;
+        preg_match_all('!\d+!', $id, $cert_no);
+        $data['cert_no'] = $cert_no;
+        // var_dump($data['cert_no']);
+        // die;
+        if (isset($data_object->data->course_detail->id)) {
+            $data['title'] = 'Certificate';
+            $data['page_title'] = 'Certificate';
+            $data['data_course'] = $data_object;
+
+            $this->load->view('visitor/certificate/certificate', $data);
+        }
+    }
 }
