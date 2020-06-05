@@ -17,7 +17,9 @@
     ?>
 
     
-
+    <!-- GC -->
+    <script src="<?= base_url(); ?>assets/global-constant.js"></script>
+    <!-- end GC -->
   </head>
 
   <body class="">
@@ -128,7 +130,7 @@
               },
             
             success: function(respons){
-             
+              // console.log(respons);
               alert('Success');
               
           }});
