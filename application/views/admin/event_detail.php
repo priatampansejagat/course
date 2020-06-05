@@ -801,6 +801,7 @@
                 $("#zoom_duration").val('');
                 $("#zoom_password").val('');
                 $("#zoom_start_meeting").attr("href", '#');
+                $("#zoom_start_meeting").hide();
 
               }else{
                 var zoomdate = jsonArr['data']['start_time'].split('T');
@@ -814,6 +815,7 @@
                 $("#zoom_duration").val(jsonArr['data']['duration']);
                 $("#zoom_password").val(jsonArr['data']['password']);
                 $("#zoom_start_meeting").attr("href", jsonArr['data']['start_url']);
+                $("#zoom_start_meeting").show();
               }
               
               
@@ -840,6 +842,7 @@
             },
             success: function(respons) {
               // console.log(respons);
+              get_zoom();
               alert('Success');
               
             }
@@ -858,9 +861,9 @@
                 url: zoom_delete_url
             },
             success: function(respons) {
-              console.log(respons);
+              // console.log(respons);
               get_zoom();
-
+              alert('Success');
             }
         });
       });

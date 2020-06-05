@@ -84,6 +84,8 @@
     <a href="#" class="scrollup">Scroll</a>
     <div class="footer-widget">
       <div class="pull-right">
-        <a href="<?php echo base_url() . 'logout'; ?>"><i class="material-icons">power_settings_new</i> Logout</a></div>
+        <a href="<?php echo base_url() . 'logout'; ?>"><i class="material-icons">power_settings_new</i> Logout </a></div> 
+      <div class="pull-left">
+        <a href="<?php echo base_url() . 'settings'; ?>"><i class="material-icons">miscellaneous_services</i> Settings </a></div>  
     </div>
     <!-- END SIDEBAR -->

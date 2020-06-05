@@ -53,7 +53,6 @@ create_gallery_event_url = "create_gallery_event";
 upload_gallery_event_url = "upload_gallery_event";
 delete_picture_event_url = "delete_gallery_event";
 
-
 // user
 update_profile_url = "regisupdate";
 update_profile_textbased_url = "regisupdate_text";
