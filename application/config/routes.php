@@ -90,6 +90,7 @@ $route['myeventdetail/classdetail/(:any)/(:any)'] = 'User/myClassEventDetail/$1/
 $route['invoice'] = 'User/invoice';
 
 // registered entity
+$route['settings'] = 'admin/SettingsController/index';
 $route['home'] = 'admin/HomeController/index';
 $route['users/(:any)'] = 'admin/UsersController/single_user/$1';
 $route['participant'] = 'admin/PesertaController/index';
