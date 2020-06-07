@@ -53,20 +53,21 @@
                 <table>
                     <tr>
                         <td style="width: 30%;">
-                            <img src="<?= base_url('assets/visitor/images/stamp.png') ?>" alt="" style="width: 15%; position: absolute; z-index: -100; top: 590px; left: 120px; vertical-align: top;"><br><br><br><br><br><br><br>
-                            <span style="font-size:20px"><i>Issue Date</i></span><br>
-                            <span style="font-size:25px; text-transform: capitalize; text-decoration: underline;"><b><?= dateFormat($data_course->data->course_detail->end_date) ?></b></span><br>
+                            <img src="<?= base_url('assets/visitor/images/stamp.png') ?>" alt="" style="width: 15%; position: absolute; z-index: -100; top: 540px; left: 430px; vertical-align: top;"><br><br><br><br><br><br><br><br>
+                            <span style="font-size:15px"><i>Issue Date</i></span><br>
+                            <span style="font-size:20px; text-transform: capitalize; text-decoration: underline;"><b><?= dateFormat($data_course->data->course_detail->end_date) ?></b></span><br>
                             <span style="font-size:15px"><i>Seal</i></span><br><br>
                         </td>
                         <td style="width: 40%;">
-                            <img src="<?= base_url('assets/visitor/images/ttd_asep_irawan.png') ?>" alt="" style="width: 55%"><br>
-                            <span style="font-size:25px; text-transform: capitalize; text-decoration: underline;"><b>Asep Irawan</b></span><br>
+                            <br>
+                            <img src="<?= base_url('assets/visitor/images/ttd_asep_irawan.png') ?>" alt="" style="width: 55%; margin-bottom: -20px;"><br>
+                            <span style="font-size:20px; text-transform: capitalize; text-decoration: underline;"><b>Asep Irawan</b></span><br>
                             <span style="font-size:15px"><i>Managing Director of Research Academy</i></span><br><br>
                         </td>
                         <td style="width: 30%; text-align: left;">
                             <br><br><br><br><br><br><br>
                             <span style="font-size:15px;">Certificate No.</span><br>
-                            <span style="font-size:25px; text-decoration: underline;"><b><?= $cert_no[0][0] ?>/IRC/<?= dateRomawi($data_course->data->course_detail->end_date) ?></b></span><br>
+                            <span style="font-size:20px; text-decoration: underline;"><b><?= $cert_no[0][0] ?>/sertf.AR/<?= dateRomawi($data_course->data->course_detail->end_date) ?></b></span><br>
                         </td>
                     </tr>
                 </table>

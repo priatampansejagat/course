@@ -62,7 +62,7 @@
                         '<div class="aligncenter">' +
                         '<img ' + image + ' alt="image description">' +
                         '</div>' +
-                        '<h3 class="post-heading"><a href="<?= base_url() ?>eventdetail/lesson/' + dataJson.data.course_detail.id + '/' + value.id + '">' + value.tittle + '</a></h3>' +
+                        '<h3 class="post-heading"><a href="<?= base_url() ?>eventdetail/lesson/' + dataJson.data.event_member.event_id + '/' + dataJson.data.course_detail.id + '/' + value.id + '">' + value.tittle + '</a></h3>' +
                         '<div class="post-author">' +
                         '<h4 class="author-heading">by: ' + dataJson.data.mentor.fullname + '</h4>' +
                         '</div>' +

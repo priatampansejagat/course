@@ -91,10 +91,6 @@
                     $("#btn-profil").attr("href", '<?= base_url("mentordetail/") ?>' + dataJson.data.mentor.id);
                     $("#video").append('<video id="my-video" class="video-js" controls preload="auto" data-setup="{}" style="width: 100%; height: 100%">' +
                         '<source src="' + value.video_link + '" type="video/mp4">' +
-                        '<source src="' + value.video_link + '" type="video/3gp">' +
-                        '<source src="' + value.video_link + '" type="video/mkv">' +
-                        '<source src="' + value.video_link + '" type="video/mpeg">' +
-                        '<source src="' + value.video_link + '" type="video/wmp">' +
                         '<source src="' + value.video_link + '" type="video/webm">' +
                         '<p class="vjs-no-js">' +
                         'Your browser does not support the video tag.' +
