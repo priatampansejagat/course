@@ -70,9 +70,10 @@
             url: base_url + post_url,
             data: {
                 param: {
-                    "ihateapple": "mycourse_room",
+                    "ihateapple": "myevent_room",
                     "user_id": "<?= $this->session->userdata["id"] ?>",
                     "course_id": "<?= $course_id ?>",
+                    "event_id": "<?= $event_id ?>",
                     "single_chapter": true,
                     "chapter_id": "<?= $chapter_id ?>",
                 },

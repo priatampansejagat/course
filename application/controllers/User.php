@@ -407,6 +407,22 @@ class User extends CI_Controller
         $this->load->view('visitor/templates/footer');
     }
 
+    public function classEventVideo($event_id, $course_id, $chapter_id)
+    {
+        $this->isUser();
+
+        $data['title'] = 'Class Detail';
+        $data['page_title'] = 'Class Detail';
+        $data['course_id'] = $course_id;
+        $data['chapter_id'] = $chapter_id;
+        $data['event_id'] = $event_id;
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/event/classEventVideo', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
     public function classTask($course_id)
     {
         $this->isUser();
