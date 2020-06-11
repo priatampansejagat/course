@@ -170,9 +170,24 @@
                               <div class="col-md-10">
                                 <div class="col-md-2">
                                   <button type="button" class="btn btn-white btn-cons" id="select_cover">Select File</button>
+
+                                  
+
                                 </div>
+                                
                                 <div class="col-md-10">
+
                                   <div id="results_cover" class="panel"></div>
+
+                                  <div id="progress_hide">
+                                    
+                                    <div class="progress transparent progress-small no-radius">
+                                      <div class="progress-bar progress-bar-success animate-progress-bar" id="progress_percentage" data-percentage="0%"></div>
+                                    </div>
+
+                                    <div class="heading pull-right"> <span class="animate-number" data-value="0" id="progress_number" data-animation-duration="1200">0</span>% </div>
+                                  </div>
+                                  
                                 </div>  
                                 
                               </div>
@@ -444,6 +459,8 @@
 
       //END OF INITIATING VARIABLE=============================================================
 
+      $("#progress_hide").hide();
+
       $("#alertFailed").hide();
       $("#alertSuccess").hide();
       function alertSuccess() {
@@ -652,13 +669,14 @@
             '<div data-uniqueid="' + file.uniqueIdentifier + '">' +
             '<div class="fileName">' + file.fileName + ' (' + file.file.type + ')' + '</div>' +
             '<div style="color:red;" class="large-6 right deleteFile_cover" data-toggle="tooltip" title="Delete"><i class="fa fa-times"></i></div>' +
-            '<div class="progress large-6">' +
-            '<span class="meter" style="width:0%;"></span>' +
-            '</div>' +
             '</div>';
 
         results_cover.append(template);
-
+        $("#progress_hide").show();
+        $("#progress_percentage").attr("data-percentage",0+"%");
+        $("#progress_percentage").attr("style","width:"+0+"%");
+        $("#progress_number").attr("data-value",0);
+        $("#progress_number").html(0);
       });
 
       $(document).on('click', '.deleteFile_cover', function() {
@@ -669,6 +687,7 @@
 
         resumable_cover.removeFile(file);
         parent.remove();
+        $("#progress_hide").hide();
       });
 
       function get_cover(){
@@ -712,7 +731,11 @@
           }
 
           resumableObj.on('fileProgress', function (file) {
-              
+            var progress = Math.floor(file.progress() * 100);
+              $("#progress_percentage").attr("data-percentage",progress+"%");
+              $("#progress_percentage").attr("style","width:"+progress+"%");
+              $("#progress_number").attr("data-value",progress);
+              $("#progress_number").html(progress);
           });
 
           resumableObj.on('fileSuccess', function (file, message) {
@@ -728,6 +751,8 @@
               alertSuccess_cover();
               $('.deleteFile_cover').click();
               get_cover();
+              $("#progress_hide").hide();
+
           });
 
           resumableObj.on('fileError', function(file, message){
