@@ -82,8 +82,8 @@ payment_paid = "payment_paid_adm";
 
 
 /*NON CURL*/
-// noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
-noncurl_api_url = "http://api.research-academy.org/";
+noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
+// noncurl_api_url = "http://api.research-academy.org/";
 
 
 /*ZOOM*/
