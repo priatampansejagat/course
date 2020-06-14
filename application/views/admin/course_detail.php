@@ -817,7 +817,7 @@
             }
         });
       } 
-      get_cert();
+      // get_cert();
 
       // ngapain juga sih gw bikin ni func??? heran gw
       function cert_handler(obj){
