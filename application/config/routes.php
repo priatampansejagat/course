@@ -65,6 +65,7 @@ $route['logout'] = 'User/logout';
 $route['setting'] = 'User/setting';
 
 // page user
+$route['forget_pass'] = 'User/forget_pass';
 $route['certificate'] = 'User/certificate';
 $route['visitor'] = 'User/index';
 $route['courselist'] = 'User/courseList';
@@ -88,6 +89,7 @@ $route['myevent'] = 'User/myEvent';
 $route['myeventdetail/(:any)'] = 'User/myEventDetail/$1';
 $route['myeventdetail/classdetail/(:any)/(:any)'] = 'User/myClassEventDetail/$1/$2';
 $route['invoice'] = 'User/invoice';
+$route['change_password'] = 'User/change_password';
 
 // registered entity
 $route['settings'] = 'admin/SettingsController/index';

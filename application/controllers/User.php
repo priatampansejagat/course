@@ -108,6 +108,11 @@ class User extends CI_Controller
         $this->load->view('visitor/auth/register');
     }
 
+    public function forget_pass()
+    {
+        $this->load->view('visitor/auth/forget_pass');
+    }
+
     public function setting()
     {
         $this->isUser();
@@ -131,6 +136,19 @@ class User extends CI_Controller
         $this->load->view('visitor/templates/header', $data);
         $this->load->view('visitor/templates/topbar', $data);
         $this->load->view('visitor/course/list', $data);
+        $this->load->view('visitor/templates/footer');
+    }
+
+    public function change_password()
+    {
+        $this->isUser();
+
+        $data['title'] = 'Change Password';
+        $data['page_title'] = 'Change Password';
+
+        $this->load->view('visitor/templates/header', $data);
+        $this->load->view('visitor/templates/topbar', $data);
+        $this->load->view('visitor/auth/change_password', $data);
         $this->load->view('visitor/templates/footer');
     }
 

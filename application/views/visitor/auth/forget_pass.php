@@ -38,21 +38,12 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url('<?= base_url(); ?>assets/auth/images/08.jpg'); background-repeat: no-repeat; background-position: center; background-attachment: fixed;">
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                <form class="login100-form validate-form" method="POST" action="<?= base_url('User/auth') ?>">
+                <form class="login100-form validate-form">
                     <span class="login100-form-title p-b-49">
                         <img class="hidden-xs" src="<?= base_url(); ?>assets/visitor/images/logo-research-academy-dark.png" style="width: 50%" alt="studylms">
                     </span>
 
-                    <?php if ($this->session->flashdata('login_error')) { ?>
-                        <div class="alert alert-danger alert-dismissible show fadeIn animated" id="alertFadeOut" style="width:100% !important; margin-bottom:0 !important;">
-                            <div class="alert-body">
-                                <button class="close" data-dismiss="alert">
-                                    <span>&times;</span>
-                                </button>
-                                <strong>Login Gagal</strong><br>Periksa kembali username dan password.
-                            </div>
-                        </div>
-                    <?php } ?>
+                    <div id="message"></div>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                         <span class="label-input100">Username</span>
@@ -60,33 +51,18 @@
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <span class="label-input100">Password</span>
-                        <input class="input100" type="password" id="password" name="password" placeholder="Type your password">
-                        <span class="focus-input100"></span>
-                    </div><br>
-                    <div class="text-right p-b-31">
-                        <a href="<?= base_url('forget_pass')?>">
-                            Forgot password?
-                        </a>
-                    </div>
-
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
-                            <button class="login100-form-btn" id="login">
-                                Login
-                            </button>
+                            <a href="#" class="login100-form-btn" id="send_pass">
+                                Set Password
+                            </a>
                         </div>
                     </div>
                 </form>
 
-                <div class="container-login100-form-btn p-t-15">
-                    <a class="text-center" href="<?= base_url('visitor') ?>">Back to Home</a>
-                </div>
-
                 <div class="flex-col-c p-t-50">
-                    <p>Don't Have an Account? <a href="register">Sign Up</a> Now</p>
+                    <p>Back to Login Page? <a href="<?= base_url('login') ?>">Click Here</a></p>
                 </div>
             </div>
         </div>
@@ -97,6 +73,63 @@
 
     <script>
         $("#alertFadeOut").fadeOut(3000);
+
+        $('#send_pass').click(function() {
+            var username = $('#username').val();
+
+            if (username) {
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + post_url,
+                    data: {
+                        param: {
+                            "username": username,
+                        },
+                        url: "forgot_pass"
+                    },
+                    success: function(data) {
+                        $('#message').html(
+                            '<div id="alertFadeOut" class="alert alert-primary alert-dismissible show fadeIn animated" id="alertFadeOut" style="width:100% !important; margin-bottom:20px !important;">' +
+                            '<div class="alert-body">' +
+                            '<strong>Congratulations! </strong>Please Check Your Email to Get your New Password' +
+                            '</div>' +
+                            '</div>');
+                        $("html, body").animate({
+                            scrollTop: 0
+                        }, "slow");
+                        $("#alertFadeOut").fadeOut(3000);
+                        $("form[name='regist_form']")
+                            .closest("form")
+                            .trigger("reset");
+                    },
+                    error: function(xhr, status, error) {
+                        var err = eval("(" + xhr.responseText + ")");
+                        $('#message').html(
+                            '<div class="alert alert-danger alert-dismissible show fadeIn animated" id="alertFadeOut" style="width:100% !important; margin-bottom:20px !important;">' +
+                            '<div class="alert-body">' +
+                            '<strong>Sorry! </strong>Username Does not Exist <br>' +
+                            err.message +
+                            '</div>' +
+                            '</div>');
+                        $("html, body").animate({
+                            scrollTop: 0
+                        }, "slow");
+                        $("#alertFadeOut").fadeOut(3000);
+                    }
+                });
+            } else {
+                $('#message').html(
+                    '<div class="alert alert-danger alert-dismissible show fadeIn animated" id="alertFadeOut" style="width:100% !important; margin-bottom:20px !important;">' +
+                    '<div class="alert-body">' +
+                    '<strong>Sorry! </strong>Please Fill all Data' +
+                    '</div>' +
+                    '</div>');
+                $("html, body").animate({
+                    scrollTop: 0
+                }, "slow");
+                $("#alertFadeOut").fadeOut(3000);
+            }
+        });
 
         //# sourceURL=/view/login/login.js
     </script>

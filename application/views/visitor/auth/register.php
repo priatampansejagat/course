@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
+    <link rel="shortcut icon" href="<?= base_url(); ?>assets/visitor/images/logo-research-academy.png">
     <title>Register | Research Academy</title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="<?= base_url(); ?>assets/auth/images/icons/favicon.ico" />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/auth/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -178,7 +178,7 @@
                 </div>
 
                 <div class="container-login100-form-btn p-t-15">
-                    <a class="text-center" href="visitor">Back to Home</a>
+                    <a class="text-center" href="<?= base_url('visitor') ?>">Back to Home</a>
                 </div>
 
                 <div class="flex-col-c p-t-50">

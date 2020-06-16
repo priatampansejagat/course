@@ -5,7 +5,6 @@ if (location.host == "localhost") {
 	var base_url = location.origin + "/";
 }
 
-
 /* URL BACKEND CURL */
 post_url = "api/IndexApi/post";
 post_file_url = "api/IndexApi/post_file";
@@ -17,6 +16,7 @@ add_user_url = "regissubmit";
 login_user_url = "login";
 
 // course
+send_data_profil_url = "regisupdate";
 send_payment_url = "payconfirm";
 send_task_url = "course_assignment";
 send_paymentfile_url = "payconfirm_file";
@@ -33,11 +33,11 @@ confirm_register_user = "confirm_register";
 decline_register_user = "decline_register";
 
 // assignment
-assignment_download_url = 'assignment_download';
+assignment_download_url = "assignment_download";
 
 // Certificate
-cert_enable_url = 'cert_enable';
-cert_disable_url = 'cert_disable';
+cert_enable_url = "cert_enable";
+cert_disable_url = "cert_disable";
 
 // event
 create_event_url = "createevent";
@@ -81,7 +81,6 @@ get_zoom_event_alldata = "zoom_event_alldata";
 /*NON CURL*/
 noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";
 // noncurl_api_url = "http://api.research-academy.org/";
-
 
 /*ZOOM*/
 zoom_activation_url = "zoomactivate";
