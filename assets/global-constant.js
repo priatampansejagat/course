@@ -77,6 +77,9 @@ assignment_all = "assignment_all";
 cert_status_dic = "cert_status";
 get_zoom_event = "zoom_event";
 get_zoom_event_alldata = "zoom_event_alldata";
+payment_incomplete = "payment_incomplete_adm";
+payment_paid = "payment_paid_adm";
+
 
 /*NON CURL*/
 noncurl_api_url = "http://temporaryapi.rumahpeneleh.or.id/";

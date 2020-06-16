@@ -7,17 +7,22 @@
 
       $this->load->view('admin/layouts/header');
     ?>
+    <link href="<?php echo base_url();?>assets/admin/assets/plugins/jquery-notifications/css/messenger.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<?php echo base_url();?>assets/admin/assets/plugins/jquery-notifications/css/messenger-theme-flat.css" rel="stylesheet" type="text/css" media="screen" />
+    <!-- BELOW CSS FILE IS NOT REQUIRED -->
+    <link href="<?php echo base_url();?>assets/admin/assets/plugins/jquery-notifications/css/location-sel.css" rel="stylesheet" type="text/css" media="screen" />
 
     <link href="<?php echo base_url();?>assets/admin/assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo base_url();?>assets/admin/assets/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url();?>assets/admin/assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
+
 
     <?php   
       $this->load->view('admin/layouts/csshandler');
     ?>
 
     <style type="text/css">
-      .deleteFile {
+      /*.deleteFile {
           padding: 3px 7px;
           color: #bf0000;
           font-weight: bold;
@@ -27,7 +32,7 @@
           color:#fff;
           line-height:18px;
           font-size:12px;
-      }
+      }*/
     </style>
 
     <!-- GC -->
@@ -341,6 +346,7 @@
                           <th>Description</th>
                           <th>Video</th>
                           <th>Action</th>
+
                         </tr>
                       </thead>
                       <tbody></tbody>
@@ -363,6 +369,8 @@
     <!-- jshandler -->
     <?php $this->load->view('admin/layouts/jshandler');  ?>
 
+    <script src="<?php echo base_url();?>assets/admin/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
     <script src="<?php echo base_url();?>assets/resumable/resumable.js" type="text/javascript"></script>
 
     <script src="<?php echo base_url();?>assets/admin/assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
@@ -373,6 +381,17 @@
 
     <script src="<?php echo base_url();?>assets/admin/assets/js/datatables.js" type="text/javascript"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
+    <script src="<?php echo base_url();?>assets/admin/assets/plugins/jquery-notifications/js/messenger.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url();?>assets/admin/assets/plugins/jquery-notifications/js/messenger-theme-future.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/admin/assets/plugins/jquery-notifications/js/demo/location-sel.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/admin/assets/plugins/jquery-notifications/js/demo/theme-sel.js"></script>
+
+    <script type="text/javascript" src="<?php echo base_url();?>assets/admin/assets/plugins/jquery-notifications/js/demo/demo.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/admin/assets/js/notifications.js"></script>
+
 
     <script type="text/javascript">
 
@@ -562,7 +581,8 @@
               for (var i = 0; i < jsonArr['data'].length ; i++) {
                 // console.log('datatable =' + jsonArr['data'][i]['id']);
                 var chapter_id = jsonArr['data'][i]['id'];
-
+                var id_progress = 'progress_'+chapter_id;
+                // var id_progress = 'progress_'+chapter_id;
                 var data = [
                           '',
                           jsonArr['data'][i]['sequence'],
@@ -570,7 +590,7 @@
                           jsonArr['data'][i]['description'],
                           '<button class="btn btn-warning btn-xs btn-mini" id="chapter_video_select_'+ chapter_id +'" name="chapter_video_select_'+ chapter_id +'">Add Video</button> '+
                           '<button class="btn btn-danger btn-xs btn-mini" id="chapter_video_upload_'+ chapter_id +'" name="chapter_video_upload_'+ chapter_id +'">upload Video</button> '+
-                          '<div id="results_'+ chapter_id +'" class="panel"></div>',
+                          '<div id="results_'+ chapter_id +'" class="panel"></div>' ,
 
                           '<a onclick="delchapter(this)" class="btn btn-danger" id="'+ chapter_id +'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' 
 
@@ -586,7 +606,7 @@
                           '<a href="'+ vid_link +'" class="btn btn-success btn-xs btn-mini" id="chapter_video_view_'+ chapter_id +'" name="chapter_video_view_'+ chapter_id +'">Watch</a> '+
                           '<button class="btn btn-warning btn-xs btn-mini" id="chapter_video_select_'+ chapter_id +'" name="chapter_video_select_'+ chapter_id +'">Add Video</button> '+
                           '<button class="btn btn-danger btn-xs btn-mini" id="chapter_video_upload_'+ chapter_id +'" name="chapter_video_upload_'+ chapter_id +'">upload Video</button> '+
-                          '<div id="results_'+ chapter_id +'" class="panel"></div>',
+                          '<div id="results_'+ chapter_id +'" class="panel"></div>' ,
 
                           '<a onclick="delchapter(this)" class="btn btn-danger" id="'+ chapter_id +'" data-toggle="tooltip" title="Delete" ><i class="fa fa-trash-o"></i></a> ' 
 
@@ -606,6 +626,9 @@
 
 
       function initiateResumable(chapter_id){
+
+        // hide progress bar
+        // $("#progress_"+chapter_id).hide();
 
         uploadButton[chapter_id] = $("#chapter_video_upload_"+ chapter_id );
         uploadButton[chapter_id].hide();
@@ -640,9 +663,9 @@
                     '<div data-uniqueid="' + file.uniqueIdentifier + '">' +
                     '<div class="fileName">' + file.fileName + ' (' + file.file.type + ')' + '</div>' +
                     '<div style="color:red;" class="large-6 right deleteFile_'+chapter_id+'" data-toggle="tooltip" title="Delete"><i class="fa fa-times"></i></div>'+
-                    '<div class="progress large-6">' +
-                    '<span class="meter" style="width:0%;"></span>' +
-                    '</div>' +
+
+                    
+
                     '</div>';
 
                 results[ chapter_id ].append(template);
@@ -714,14 +737,17 @@
           
           if (results[chapter_id].children().length > 0) {
               resumable[chapter_id].upload();
+              $("#chapter_video_upload_"+chapter_id).prop('disabled', true);
           } else {
               // nothingToUpload.show();
           }
 
           resumable[chapter_id].on('fileProgress', function (file) {
               var progress = Math.floor(file.progress() * 100);
-              // $('[data-uniqueId=' + file.uniqueIdentifier + ']').find('.meter').css('width', progress + '%');
-              $('[data-uniqueId=' + file.uniqueIdentifier + ']').find('.meter').html('&nbsp;' + progress + '%');
+              // $('.' + file.uniqueIdentifier).find('.meter').css('width', progress + '%');
+              // $('.' + file.uniqueIdentifier).find('.meter').html('&nbsp;' + progress + '%');
+              $("#chapter_video_upload_"+chapter_id).html('Uploading ('+progress+' %)');
+              // console.log('progress : '+file.uniqueIdentifier+ ':' +progress);
           });
 
           resumable[chapter_id].on('fileSuccess', function (file, message) {
@@ -737,6 +763,7 @@
               $('#message_video').text('Upload Complete');
               alertSuccess_video();
               $('.deleteFile_'+chapter_id).click();
+              dataTable_refresh();
           });
 
           resumable[chapter_id].on('fileError', function(file, message){
@@ -790,7 +817,7 @@
             }
         });
       } 
-      get_cert();
+      // get_cert();
 
       // ngapain juga sih gw bikin ni func??? heran gw
       function cert_handler(obj){
